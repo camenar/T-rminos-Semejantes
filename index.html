@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="description" content="Recurso educativo interactivo: Términos semejantes - Álgebra 8° - I.E. Merceditas Gómez Martínez, Medellín">
+<meta property="og:title" content="Álgebra 8° · Términos semejantes">
+<meta property="og:description" content="Reduce términos semejantes con el Mercado de Frutas y contextos reales de Medellín">
+<meta property="og:type" content="website">
+<title>Álgebra 8° · Sem. 3 · Términos semejantes · I.E. Merceditas Gómez Martínez</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="document.dispatchEvent(new Event('katex-ready'))"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F2040;--blue:#1C3A6E;--blue-mid:#2E75B6;
+  --green:#2E7D32;--teal:#00695C;--amber:#C47C1A;--red:#B71C1C;
+  --green-b:#27AE60;--amber-b:#E08C20;--red-b:#C0392B;
+  --cream:#F7F6F2;--warm:#EDECEA;--border:#C0BDB4;
+  --text:#1C1C1E;--text2:#3A3A3C;--text3:#6B6B6E;
+  --fs-xs:clamp(18px, 1.25vw, 26px);
+  --fs-sm:clamp(22px, 1.6vw, 32px);
+  --fs-md:clamp(26px, 2vw, 40px);
+  --fs-lg:clamp(32px, 2.6vw, 50px);
+  --fs-xl:clamp(38px, 3.2vw, 62px);
+  --fs-2xl:clamp(48px, 4.2vw, 80px);
+  --fs-3xl:clamp(60px, 5.8vw, 105px);
+  --gap:clamp(14px, 1.6vw, 22px);
+  --pad:clamp(20px, 2.8vw, 40px);
+  --line-h:1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+  }
+}
+.nbtn:focus, #fs-btn:focus, .video-link:focus, button:focus {
+  outline: 3px solid var(--amber-b); outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(224,140,32,0.3);
+}
+.sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+
+html,body{width:100%;height:100%;overflow:hidden;background:#0a101e;
+  font-family:'DM Sans',system-ui,sans-serif; font-size:16px; line-height:var(--line-h)}
+#deck{width:100vw;height:100vh;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;background:var(--cream)}
+.slide.active{opacity:1;pointer-events:all}
+.slide.enter-r{animation:inR .32s cubic-bezier(.22,.68,0,1.1) forwards}
+.slide.enter-l{animation:inL .32s cubic-bezier(.22,.68,0,1.1) forwards}
+@keyframes inR{from{transform:translateX(3.5%);opacity:0}to{transform:none;opacity:1}}
+@keyframes inL{from{transform:translateX(-3.5%);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+header.hdr{background:var(--navy);height:clamp(44px,5.2vh,60px);display:flex;align-items:center;
+  padding:0 var(--pad);justify-content:space-between;flex-shrink:0}
+.hdr-b{font-size:var(--fs-xs);font-weight:500;color:#A8C4E8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-badge{background:var(--blue);color:#fff;font-size:var(--fs-xs);font-weight:800;
+  padding:6px clamp(12px,1.8vw,22px);border-radius:6px;letter-spacing:.08em;
+  text-transform:uppercase;white-space:nowrap;flex-shrink:0;margin-left:14px}
+
+footer.ftr{background:var(--warm);border-top:2px solid var(--border);height:clamp(36px,4vh,48px);
+  display:flex;align-items:center;padding:0 var(--pad);justify-content:space-between;flex-shrink:0}
+.ftr span{font-size:var(--fs-xs);color:var(--text3);font-weight:500}
+
+main.body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  scroll-behavior: smooth;
+  padding: clamp(16px,2.2vh,28px) var(--pad) clamp(12px,1.5vh,20px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+main.body::-webkit-scrollbar { width: 6px; }
+main.body::-webkit-scrollbar-track { background: transparent; }
+main.body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+main.body::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+
+.s-portada{background:var(--blue)}
+.portada-inner{width:100%;max-width:1400px;margin:0 auto;
+  padding:clamp(36px,6vh,80px) clamp(48px,7vw,100px);
+  display:flex;flex-direction:column;gap:clamp(16px,2.8vh,32px)}
+.p-ie{font-size:var(--fs-sm);color:rgba(180,210,240,.85);text-align:center;letter-spacing:.05em}
+.p-area{font-size:var(--fs-md);font-weight:700;color:rgba(180,210,240,.95);
+  text-align:center;letter-spacing:.16em;text-transform:uppercase}
+.p-title{font-family:'DM Serif Display',serif;font-size:var(--fs-3xl);
+  color:#fff;text-align:center;line-height:1.05;animation:fadeUp .9s .1s both}
+.p-sub{font-size:var(--fs-xl);color:rgba(200,228,255,.9);text-align:center;
+  font-style:italic;animation:fadeUp .9s .25s both}
+.p-divider{height:3px;background:rgba(255,255,255,.25);border-radius:2px; margin:clamp(8px,1.5vh,14px) 0}
+.p-card-grid{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(12px,1.4vw,20px);animation:fadeUp .9s .4s both}
+.p-card{background:rgba(255,255,255,.09);border:2px solid rgba(255,255,255,.18);
+  border-radius:14px;padding:clamp(18px,2.2vh,30px) clamp(14px,1.8vw,24px);
+  display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.p-card-num{width:clamp(48px,5vw,64px);height:clamp(48px,5vw,64px);border-radius:50%;
+  background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;
+  font-size:var(--fs-lg);font-weight:700;color:#fff}
+.p-card-title{font-size:var(--fs-lg);font-weight:700;color:#fff;line-height:1.15}
+.p-card-sub{font-size:var(--fs-sm);color:rgba(200,228,255,.8);font-style:italic;line-height:1.4}
+.p-docente{font-size:var(--fs-sm);color:rgba(180,210,240,.7);text-align:right;font-style:italic}
+
+.title-row{display:flex;align-items:flex-start;gap:16px}
+.accent-bar{width:clamp(10px,1vw,14px);border-radius:6px;flex-shrink:0;align-self:stretch;min-height:48px}
+.slide-title{font-family:'DM Serif Display',serif;
+  font-size:var(--fs-xl);color:var(--navy);line-height:1.08}
+.slide-instr{font-size:var(--fs-md);color:var(--text2);font-style:italic;margin-top:6px;line-height:1.4}
+.badge{display:inline-flex;align-items:center;font-size:var(--fs-sm);font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:6px;margin-bottom:4px}
+
+.activacion-previa{
+  background:var(--warm);border-left:5px solid var(--blue-mid);
+  border-radius:0 10px 10px 0;padding:clamp(14px,1.6vh,22px) clamp(16px,2vw,28px);
+  font-size:var(--fs-md);color:var(--text2);margin-bottom:var(--gap);
+  font-style:italic}
+.activacion-previa strong{color:var(--navy);font-style:normal}
+
+.det-box{background:#FFF8ED;border:3px solid var(--amber);border-radius:14px;
+  padding:clamp(16px,2vh,24px) clamp(18px,2.2vw,30px);
+  display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px)}
+.det-label{font-size:var(--fs-sm);font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber)}
+.det-text{font-family:'DM Serif Display',serif;
+  font-size:var(--fs-lg);color:var(--text);line-height:1.55;font-style:italic}
+.det-q{font-size:var(--fs-xl);font-weight:800;color:var(--navy);line-height:1.35}
+
+.conexion-ciencias{
+  background:#E3F2FD;border-left:5px solid var(--blue-mid);
+  border-radius:0 10px 10px 0;padding:clamp(12px,1.4vh,18px) clamp(16px,2vw,28px);
+  font-size:var(--fs-sm);color:var(--text2);margin-top:10px; line-height:1.6}
+
+.maquina-layout{display:flex;gap:clamp(18px,2.2vw,34px);align-items:flex-start}
+.maquina-left{
+  background:var(--navy);border-radius:14px;
+  padding:clamp(18px,2.2vh,30px) clamp(20px,2.4vw,32px);
+  display:flex;flex-direction:column;gap:clamp(12px,1.4vh,20px);
+  flex:0 0 auto;width:clamp(240px,24vw,320px);align-items:center}
+.maq-title{font-size:var(--fs-sm);font-weight:800;color:#A8C4E8;
+  text-transform:uppercase;letter-spacing:.12em;text-align:center}
+.maq-expr{font-family:'DM Serif Display',serif;
+  font-size:var(--fs-2xl);color:var(--amber-b);text-align:center;font-weight:400}
+.maq-arrow{font-size:var(--fs-xl);color:rgba(255,255,255,.5);text-align:center}
+.maq-io{display:flex;flex-direction:column;gap:10px;width:100%}
+.maq-slot{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.25);
+  border-radius:10px;padding:clamp(10px,1.2vh,16px) clamp(12px,1.5vw,18px);
+  display:flex;justify-content:space-between;align-items:center;gap:12px}
+.maq-slot-lbl{font-size:var(--fs-xs);color:#A8C4E8;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+.maq-slot-val{font-size:var(--fs-lg);font-weight:800;color:#fff}
+.maquina-right{flex:1;display:flex;flex-direction:column;gap:clamp(10px,1.2vh,16px);min-width:0}
+
+.sust-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm)}
+.sust-table th{background:var(--navy);color:#fff;
+  padding:clamp(10px,1.2vh,16px) clamp(12px,1.5vw,18px);text-align:center;font-size:var(--fs-sm)}
+.sust-table td{padding:clamp(9px,1.1vh,14px) clamp(12px,1.5vw,18px);
+  border-bottom:2px solid var(--border);text-align:center;
+  color:var(--text);font-size:var(--fs-md)}
+.sust-table tr:nth-child(even) td{background:#fff}
+.sust-table tr:nth-child(odd) td{background:var(--warm)}
+.sust-table .paso-col{font-size:var(--fs-md);color:var(--text2);
+  font-style:italic;text-align:left}
+
+.paso-row{display:flex;align-items:center;gap:clamp(12px,1.4vw,20px);
+  background:#fff;border:2px solid var(--border);border-radius:12px;
+  padding:clamp(12px,1.4vh,20px) clamp(16px,2vw,26px);border-left:6px solid var(--blue);
+  opacity:0;transform:translateY(14px);transition:opacity .4s,transform .4s}
+.paso-row.vis{opacity:1;transform:none}
+.paso-num{width:clamp(32px,3.4vw,48px);height:clamp(32px,3.4vw,48px);border-radius:50%;
+  background:var(--blue);display:flex;align-items:center;justify-content:center;
+  font-size:var(--fs-md);font-weight:800;color:#fff;flex-shrink:0}
+.paso-lbl{font-size:var(--fs-sm);font-weight:800;color:var(--blue);
+  flex-shrink:0;min-width:clamp(110px,12vw,160px)}
+.paso-body{font-size:var(--fs-md);color:var(--text);flex:1;line-height:1.4}
+.paso-note{font-size:var(--fs-xs);color:var(--text3);font-style:italic;
+  text-align:right;flex-shrink:0}
+
+.result-bar{background:var(--navy);border-radius:12px;
+  padding:clamp(14px,1.8vh,24px) clamp(18px,2.2vw,30px);
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  font-size:var(--fs-2xl);font-weight:800;color:var(--amber-b);text-align:center;
+  opacity:0;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.result-bar.vis{opacity:1;transform:none}
+
+.error-box{background:#FFF0F0;border:3px solid var(--red);border-radius:14px;
+  padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px);
+  display:flex;flex-direction:column;gap:clamp(8px,1vh,12px)}
+.error-title{font-size:var(--fs-sm);font-weight:800;color:var(--red)}
+.error-txt{font-size:var(--fs-sm);color:var(--text);line-height:1.55}
+
+.formal-box{background:var(--warm);border:3px solid var(--green);border-radius:14px;
+  padding:clamp(16px,2vh,28px) clamp(18px,2.2vw,32px);
+  display:flex;flex-direction:column;gap:clamp(14px,1.8vh,22px);
+  align-items:stretch}
+.formal-title{font-size:var(--fs-lg);font-weight:800;color:var(--green);text-align:center}
+.formal-step{background:#fff;border:2px solid var(--border);border-radius:10px;
+  padding:clamp(12px,1.4vh,20px) clamp(16px,2vw,24px);
+  display:flex;align-items:center;gap:16px;width:100%;
+  opacity:0;transition:opacity .4s}
+.formal-step.vis{opacity:1}
+.formal-step-n{width:clamp(32px,3.4vw,44px);height:clamp(32px,3.4vw,44px);border-radius:50%;
+  background:var(--green);display:flex;align-items:center;justify-content:center;
+  font-size:var(--fs-md);font-weight:800;color:#fff;flex-shrink:0}
+.formal-step-txt{font-size:var(--fs-md);color:var(--text);line-height:1.4}
+.conj-box{background:#E8F5E9;border:3px solid var(--green);border-radius:12px;
+  padding:clamp(12px,1.4vh,20px) clamp(16px,2vw,24px);
+  font-size:var(--fs-md);color:var(--green);font-style:italic;line-height:1.5}
+
+.espacio-respuesta{
+  background:#fff;border:2.5px dashed var(--border);border-radius:10px;
+  padding:clamp(12px,1.4vh,18px) clamp(14px,1.8vw,22px);
+  font-size:var(--fs-md);color:var(--text);min-height:clamp(80px,10vh,120px);
+  margin:var(--gap) 0;font-style:italic}
+.espacio-respuesta:focus{
+  border-color:var(--blue-mid);outline:none;box-shadow:0 0 0 4px rgba(46,117,182,0.25)}
+
+.checkpoint{
+  background:#E8F4FD;border:2.5px solid var(--blue-mid);border-radius:12px;
+  padding:clamp(12px,1.4vh,18px) clamp(14px,1.8vw,22px);
+  margin:var(--gap) 0;font-size:var(--fs-sm); line-height:1.6}
+.checkpoint strong{color:var(--navy);display:block;margin-bottom:8px}
+.checkpoint .pista{
+  background:#fff;padding:10px 14px;border-radius:8px;margin-top:10px;
+  border-left:4px solid var(--amber);font-style:italic;color:var(--text2)}
+.checkpoint button{
+  background:var(--blue-mid);color:#fff;border:none;padding:6px 14px;
+  border-radius:6px;font-size:var(--fs-xs);cursor:pointer;margin-top:8px; font-weight:600}
+.checkpoint button:hover{background:var(--blue)}
+
+.botones-diferenciacion{display:flex;gap:10px;flex-wrap:wrap;margin:var(--gap) 0}
+.btn-ayuda,.btn-desafio{
+  font-size:var(--fs-xs);padding:8px 16px;border-radius:24px;
+  border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  transition:transform .1s,box-shadow .2s; font-weight:600}
+.btn-ayuda{background:#E8F5E9;color:var(--green);border:2.5px solid var(--green)}
+.btn-ayuda:hover{background:#C8E6C9;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}
+.btn-desafio{background:#FFF3E0;color:var(--amber);border:2.5px solid var(--amber)}
+.btn-desafio:hover{background:#FFE0B2;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}
+.contenido-ayuda,.contenido-desafio{
+  display:none;background:var(--warm);border-radius:10px;
+  padding:clamp(12px,1.4vh,18px) clamp(14px,1.8vw,22px);
+  margin:10px 0;font-size:var(--fs-sm);border-left:5px solid var(--blue-mid); line-height:1.6}
+.contenido-ayuda.visible,.contenido-desafio.visible{display:block;animation:fadeUp .3s}
+
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap:clamp(10px,1vw,16px)}
+.ex-card{background:#fff;border-radius:14px;border:2.5px solid var(--border);
+  border-top:6px solid transparent;
+  padding:clamp(14px,1.8vh,22px) clamp(14px,1.8vw,22px);
+  display:flex;flex-direction:column;gap:clamp(10px,1.2vh,14px);
+  opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s}
+.ex-card.vis{opacity:1;transform:none}
+.ex-head{display:flex;align-items:center;gap:14px}
+.ex-num{width:clamp(32px,3.4vw,48px);height:clamp(32px,3.4vw,48px);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:var(--fs-md);color:#fff;flex-shrink:0}
+.ex-title{font-size:var(--fs-md);font-weight:800;color:var(--text)}
+.ex-ctx{font-size:var(--fs-sm);color:var(--text2);font-style:italic;line-height:1.4}
+.ex-task{background:var(--warm);border-radius:10px;
+  padding:clamp(12px,1.4vh,18px) clamp(14px,1.8vw,20px);
+  font-size:var(--fs-lg);font-weight:800;color:var(--navy);text-align:center;
+  border:2px solid var(--border)}
+
+.comp-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm)}
+.comp-table th{background:var(--blue);color:#fff;
+  padding:clamp(10px,1.2vh,16px) clamp(12px,1.5vw,20px);text-align:left}
+.comp-table td{padding:clamp(10px,1.2vh,15px) clamp(12px,1.5vw,20px);
+  border-bottom:2px solid var(--border);color:var(--text);
+  vertical-align:top;line-height:1.4}
+.comp-table tr:nth-child(even) td{background:#fff}
+.comp-table tr:nth-child(odd) td{background:var(--warm)}
+.comp-table td:first-child{font-weight:800;color:var(--blue);background:#EBF4FB!important}
+
+/* Slide 7 — filas de tabla con transición */
+.comp-table tr.tabla-row{opacity:0;transition:opacity .4s}
+.comp-table tr.tabla-row.vis{opacity:1}
+
+.slide-7-layout{display:flex;gap:var(--gap);align-items:flex-start;flex-wrap:wrap}
+.slide-7-col{flex:1;min-width:min(100%, 320px);display:flex;flex-direction:column;gap:var(--gap)}
+
+.meta-q{background:#E0F2F1;border:3px solid var(--teal);border-radius:14px;
+  padding:clamp(14px,1.8vh,24px) clamp(16px,2vw,28px)}
+.meta-qlbl{font-size:var(--fs-xs);font-weight:800;color:var(--teal);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.meta-qtxt{font-family:'DM Serif Display',serif;
+  font-size:var(--fs-xl);color:var(--text);font-style:italic;line-height:1.55}
+.semaforo{display:flex;flex-direction:column;gap:clamp(12px,1.4vh,20px)}
+.sema-item{display:flex;align-items:flex-start;gap:18px;background:#fff;
+  border-radius:12px;padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px);
+  border:2.5px solid var(--border);
+  opacity:0;transform:translateX(16px);transition:opacity .45s,transform .45s}
+.sema-item.vis{opacity:1;transform:none}
+.sema-circle{width:clamp(50px,5.5vw,74px);height:clamp(50px,5.5vw,74px);
+  border-radius:50%;flex-shrink:0}
+.sema-txt{font-size:var(--fs-md);color:var(--text);line-height:1.35}
+.sema-sub{display:block;font-size:var(--fs-sm);color:var(--text3);
+  margin-top:4px;font-style:italic}
+
+.video-row{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap:clamp(10px,1vw,16px)}
+.video-card{background:#fff;border:2.5px solid var(--border);border-radius:12px;
+  padding:clamp(12px,1.4vh,20px) clamp(14px,1.8vw,22px);
+  display:flex;flex-direction:column;gap:10px;
+  border-top:5px solid var(--blue-mid)}
+.video-lbl{font-size:var(--fs-xs);font-weight:800;color:var(--blue-mid);
+  text-transform:uppercase;letter-spacing:.1em}
+.video-title{font-size:var(--fs-md);font-weight:800;color:var(--navy);line-height:1.3}
+.video-desc{font-size:var(--fs-sm);color:var(--text2);font-style:italic;line-height:1.4}
+.video-link{display:inline-flex;align-items:center;gap:8px;margin-top:6px;
+  font-size:var(--fs-sm);font-weight:700;color:var(--blue-mid);text-decoration:none;
+  background:#EBF4FB;padding:8px 16px;border-radius:8px;transition:background .2s}
+.video-link:hover{background:#D0E8F7}
+
+.check-box{background:#E8F5E9;border:2.5px solid var(--green);border-radius:10px;
+  padding:clamp(10px,1.2vh,16px) clamp(14px,1.8vw,22px);
+  font-size:var(--fs-md);color:var(--green);font-weight:700;
+  opacity:0;transition:opacity .4s}
+.check-box.vis{opacity:1}
+
+.evidencia-box{
+  background:#fff;border:3px solid var(--green);border-radius:12px;
+  padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px);
+  margin-top:var(--gap);display:none}
+.evidencia-box.visible{display:block;animation:fadeUp .4s}
+.evidencia-box h4{color:var(--green);margin-bottom:10px;font-size:var(--fs-md)}
+.evidencia-box ul{padding-left:24px;font-size:var(--fs-sm);color:var(--text2); line-height:1.6}
+.btn-exportar{
+  background:var(--green-b);color:#fff;border:none;padding:10px 22px;
+  border-radius:8px;font-weight:700;cursor:pointer;margin-top:12px;
+  font-size:var(--fs-sm);display:inline-flex;align-items:center;gap:8px}
+.btn-exportar:hover{background:var(--green)}
+
+#fs-btn{position:fixed;top:clamp(10px,1.2vh,16px);right:clamp(76px,8.5vw,100px);z-index:200;
+  background:rgba(15,32,64,.8);border:2px solid rgba(255,255,255,.25);
+  color:#fff;cursor:pointer;font-size:18px;width:42px;height:42px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+#fs-btn:hover{background:var(--blue-mid)}
+#nav{position:fixed;bottom:clamp(16px,2.2vh,26px);right:clamp(20px,2.8vw,34px);
+  display:flex;align-items:center;gap:clamp(10px,1.2vw,16px);z-index:100}
+.nbtn{width:clamp(46px,5vw,62px);height:clamp(46px,5vw,62px);border-radius:50%;
+  background:rgba(15,32,64,.9);border:2px solid rgba(255,255,255,.2);
+  color:#fff;cursor:pointer;font-size:clamp(20px,2.4vw,28px);
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.nbtn:hover{background:var(--blue-mid)}
+#ncnt{font-size:clamp(15px,1.6vw,20px);color:rgba(255,255,255,.9);
+  background:rgba(15,32,64,.85);padding:clamp(6px,.8vh,10px) clamp(14px,1.8vw,22px);
+  border-radius:24px;font-family:monospace;font-weight:700}
+#pbar{position:fixed;bottom:0;left:0;height:5px;background:var(--blue-mid);
+  transition:width .32s ease;z-index:100}
+#hint{position:fixed;bottom:clamp(16px,2.2vh,26px);left:clamp(20px,2.8vw,34px);
+  font-size:14px;color:rgba(255,255,255,.55);background:rgba(15,32,64,.75);
+  padding:8px 16px;border-radius:24px;font-family:monospace;
+  transition:opacity .3s;z-index:100}
+
+.feedback-msg{
+  position:fixed;top:clamp(70px,9vh,90px);left:50%;transform:translateX(-50%);
+  background:var(--green);color:#fff;padding:12px 24px;border-radius:10px;
+  font-size:var(--fs-sm);font-weight:600;box-shadow:0 6px 16px rgba(0,0,0,0.25);
+  z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;max-width:90vw;text-align:center}
+.feedback-msg.error{background:var(--red-b)}
+.feedback-msg.show{opacity:1}
+
+.katex{font-size:1.2em !important}
+.katex-display{margin:0 !important}
+.kbig .katex{font-size:1.4em !important}
+
+@media(max-width:1100px) and (orientation:landscape){
+  :root{
+    --fs-xs:clamp(16px, 1.6vw, 24px); --fs-sm:clamp(19px, 2vw, 28px);
+    --fs-md:clamp(22px, 2.4vw, 34px); --fs-lg:clamp(26px, 2.8vw, 42px);
+    --fs-xl:clamp(30px, 3.4vw, 50px); --fs-2xl:clamp(38px, 4.4vw, 64px);
+  }
+  .p-card-grid{grid-template-columns:repeat(3,1fr)}
+  .maquina-layout{flex-direction:column}
+  .maquina-left{width:100%}
+}
+@media(min-width:1920px){
+  :root{
+    --fs-xs:26px; --fs-sm:32px; --fs-md:40px; --fs-lg:50px;
+    --fs-xl:62px; --fs-2xl:80px; --fs-3xl:105px; --gap:22px; --pad:40px;
+  }
+}
+@media print {
+  #deck,#nav,#fs-btn,#pbar,#hint,.feedback-msg{display:none!important}
+  .slide{position:static!important;opacity:1!important;page-break-after:always; background:#fff!important}
+  .slide.active{pointer-events:auto}
+  body{background:#fff;height:auto;overflow:visible}
+  main.body{padding:24px;overflow:visible}
+  .katex{font-size:1.2em!important}
+}
+</style>
+</head>
+<body>
+
+<div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+<div id="deck"></div>
+<button id="fs-btn" title="Pantalla completa (F)" aria-label="Alternar pantalla completa">⛶</button>
+<div id="nav" role="navigation" aria-label="Navegación de diapositivas">
+  <button class="nbtn" id="bp" aria-label="Diapositiva anterior">&#8592;</button>
+  <span id="ncnt" aria-live="polite">1 / 24</span>
+  <button class="nbtn" id="bn" aria-label="Siguiente diapositiva">&#8594;</button>
+</div>
+<div id="pbar" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100"></div>
+<div id="hint">Espacio / → avanzar  ·  ← retroceder  ·  F pantalla completa</div>
+<div id="feedback" class="feedback-msg" role="status" aria-live="polite"></div>
+
+<script>
+function announceToScreenReader(message) {
+  const region = document.getElementById('live-region');
+  if (region) { region.textContent = ''; setTimeout(() => { region.textContent = message; }, 100); }
+}
+function showFeedback(message, isError = false) {
+  const fb = document.getElementById('feedback');
+  if (!fb) return;
+  fb.textContent = message;
+  fb.className = 'feedback-msg' + (isError ? ' error' : '') + ' show';
+  setTimeout(() => { fb.classList.remove('show'); }, 3000);
+}
+function saveProgress(slideIndex, clicks) {
+  try { localStorage.setItem('algebra8_sem3_progress', JSON.stringify({ slide: slideIndex, clicks: clicks, timestamp: Date.now() })); }
+  catch(e) { console.warn('No se pudo guardar el progreso:', e); }
+}
+function loadProgress() {
+  try {
+    const saved = localStorage.getItem('algebra8_sem3_progress');
+    if (saved) { const data = JSON.parse(saved); if (Date.now() - data.timestamp < 86400000) return data; }
+  } catch(e) { console.warn('No se pudo cargar el progreso:', e); }
+  return null;
+}
+function toggleContent(btn, targetClass) {
+  const card = btn.closest('.ex-card') || btn.closest('.formal-box') || document.body;
+  const content = card.querySelector('.' + targetClass);
+  if (content) {
+    content.classList.toggle('visible');
+    const isExpanded = content.classList.contains('visible');
+    btn.setAttribute('aria-expanded', isExpanded);
+    announceToScreenReader(isExpanded ? 'Contenido adicional visible' : 'Contenido adicional oculto');
+  }
+}
+function togglePista(btn) {
+  const pista = btn.nextElementSibling;
+  if(pista && pista.classList.contains('pista')) {
+    const isHidden = pista.hasAttribute('hidden');
+    pista.hidden = !isHidden;
+    btn.textContent = isHidden ? 'Ocultar pista' : 'Ver pista';
+    announceToScreenReader(isHidden ? 'Pista mostrada' : 'Pista oculta');
+  }
+}
+function verificarRespuesta(ejercicioId, respuestaEsperada, inputSelector) {
+  const input = document.querySelector(inputSelector);
+  if (!input) return;
+  const valor = input.value.trim().replace(/\s+/g, '');
+  const esperada = respuestaEsperada.toString().trim().replace(/\s+/g, '');
+  if (valor === esperada) {
+    showFeedback('¡Correcto! 🎉 Bien hecho.');
+    announceToScreenReader('Respuesta correcta');
+    input.style.borderColor = 'var(--green)'; input.style.backgroundColor = '#E8F5E9';
+  } else {
+    showFeedback('Casi... Revisa los signos y paréntesis. ', true);
+    announceToScreenReader('Respuesta incorrecta. Intenta de nuevo');
+    input.style.borderColor = 'var(--red)'; input.style.backgroundColor = '#FFF0F0';
+  }
+}
+function exportarEvidencia() {
+  const respuestas = [];
+  document.querySelectorAll('.espacio-respuesta').forEach((el, i) => { if(el.textContent.trim()) respuestas.push(`Espacio ${i+1}: ${el.textContent.trim()}`); });
+  if(respuestas.length === 0) { showFeedback('Escribe primero en los espacios de respuesta 💡', true); return; }
+  const contenido = `EVIDENCIAS - Álgebra 8° - Términos semejantes\n${new Date().toLocaleString('es-CO')}\n\n${respuestas.join('\n\n---\n\n')}`;
+  try {
+    const blob = new Blob([contenido], {type: 'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url;
+    a.download = `algebra8_evidencias_${new Date().toISOString().slice(0,10)}.txt`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    showFeedback('📥 Evidencias guardadas exitosamente'); announceToScreenReader('Archivo de evidencias descargado');
+  } catch(e) { console.log(contenido); navigator.clipboard?.writeText(contenido); showFeedback('📋 Contenido copiado al portapapeles'); announceToScreenReader('Evidencias copiadas al portapapeles'); }
+}
+function guardarReflexion() {
+  const reflexion = document.querySelector('.meta-q + .espacio-respuesta');
+  const semaforo = document.querySelector('.sema-item.vis');
+  let mensaje = 'Reflexión guardada:\n';
+  if(reflexion?.textContent.trim()) mensaje += `• Mi reflexión: ${reflexion.textContent.trim()}\n`;
+  if(semaforo) {
+    const color = semaforo.querySelector('.sema-circle').style.background;
+    const texto = semaforo.querySelector('.sema-txt')?.textContent.trim();
+    mensaje += `• Semáforo: ${color} - ${texto}`;
+  }
+  console.log(mensaje); navigator.clipboard?.writeText(mensaje);
+  showFeedback('💾 Reflexión y semáforo guardados'); announceToScreenReader('Tu reflexión ha sido guardada');
+}
+
+
+var mfSel=null;
+function mfPick(el){
+  if(el.dataset.done) return;
+  if(mfSel && document.body.contains(mfSel)) mfSel.style.outline='';
+  mfSel=el; el.style.outline='3px solid #C47C1A'; el.style.outlineOffset='2px';
+  var msg=document.getElementById('mf-msg');
+  if(msg){ msg.textContent='Fruta seleccionada: ahora toca su canasta.'; msg.style.color='var(--text2)'; }
+}
+function mfExp(){
+  var m=document.getElementById('mf-m'), a=document.getElementById('mf-a'), e=document.getElementById('mf-exp');
+  if(m&&a&&e){ e.textContent = m.textContent+'m + '+a.textContent+'a'; }
+}
+function mfDrop(bin){
+  var msg=document.getElementById('mf-msg');
+  if(mfSel && !document.body.contains(mfSel)) mfSel=null;
+  if(!mfSel){ if(msg){ msg.textContent='Primero toca una fruta de la lista.'; msg.style.color='var(--amber)'; } return; }
+  var k=mfSel.dataset.k;
+  if(k!==bin){
+    if(msg){ msg.innerHTML='\u2717 Esa fruta no va ah\u00ed: <strong>'+(k==='m'?'mango':'aguacate')+'</strong> y <strong>'+(bin==='m'?'mango':'aguacate')+'</strong> no son semejantes.'; msg.style.color='var(--red)'; }
+    mfSel.style.outline=''; mfSel=null;
+    if(window.announceToScreenReader) announceToScreenReader('No son semejantes');
+    return;
+  }
+  mfSel.dataset.done='1'; mfSel.style.opacity='.3'; mfSel.style.pointerEvents='none'; mfSel.style.outline='';
+  var c=document.getElementById('mf-'+bin); if(c){ c.textContent=(parseInt(c.textContent,10)||0)+1; }
+  mfSel=null; mfExp();
+  if(msg){ msg.textContent='\u2713 Bien: se juntan las del mismo tipo.'; msg.style.color='var(--green)'; }
+}
+function mfCheck(){
+  var pool=document.getElementById('mf-pool'), m=document.getElementById('mf-m'), a=document.getElementById('mf-a'), msg=document.getElementById('mf-msg');
+  if(!pool||!m||!a||!msg) return;
+  var em=parseInt(pool.dataset.em,10), ea=parseInt(pool.dataset.ea,10);
+  var gm=parseInt(m.textContent,10), ga=parseInt(a.textContent,10);
+  if(gm+ga < em+ea){ msg.textContent='A\u00fan faltan frutas por guardar en su canasta.'; msg.style.color='var(--amber)'; return; }
+  msg.innerHTML='\u2713 \u00a1Compra reducida! <strong>'+em+'m + '+ea+'a</strong>. No es '+(em+ea)+' \u00abfrutas\u00bb sueltas: son dos grupos distintos.';
+  msg.style.color='var(--green)';
+  if(window.showFeedback) showFeedback('\u00a1Correcto! \ud83c\udf89 Redujiste la compra a '+em+'m + '+ea+'a.');
+  if(window.announceToScreenReader) announceToScreenReader('Compra reducida correctamente');
+}
+function mfReset(){
+  var m=document.getElementById('mf-m'), a=document.getElementById('mf-a'), msg=document.getElementById('mf-msg');
+  if(m) m.textContent='0'; if(a) a.textContent='0'; if(msg) msg.textContent='';
+  document.querySelectorAll('#mf-pool .mf-fruit').forEach(function(el){ el.dataset.done=''; el.style.opacity='1'; el.style.pointerEvents='auto'; el.style.outline=''; });
+  mfSel=null; mfExp();
+}
+
+var VOT_FB="https://fracciones-merceditas-default-rtdb.firebaseio.com";
+var VOT_NS="semejantes";
+var VOT_CORRECT={1:'si',2:'no',3:'no',4:'si',5:'si',6:'no'};
+var votTimer=null;
+function votDate(){ return new Date().toISOString().slice(0,10); }
+function votInit(){ if(votTimer) clearInterval(votTimer); votPoll(); votTimer=setInterval(votPoll,2500); }
+function votPoll(){
+  var grid=document.getElementById('vot-grid');
+  if(!grid){ if(votTimer) clearInterval(votTimer); return; }
+  fetch(VOT_FB+'/'+VOT_NS+'/'+votDate()+'.json').then(function(r){return r.json();})
+    .then(function(all){ votRender(all||{}); }).catch(function(){});
+}
+function votRender(all){
+  var total=0;
+  for(var q=1;q<=6;q++){
+    var obj=all['q'+q]||{}; var si=0,no=0;
+    for(var k in obj){ if(obj[k]==='si')si++; else if(obj[k]==='no')no++; }
+    total+=si+no; var tot=si+no, ps=tot?Math.round(si/tot*100):0, pn=tot?100-ps:0;
+    var sb=document.getElementById('vot-si-'+q), nb=document.getElementById('vot-no-'+q);
+    var sc=document.getElementById('vot-sc-'+q), nc=document.getElementById('vot-nc-'+q);
+    if(sb) sb.style.width=ps+'%'; if(nb) nb.style.width=pn+'%';
+    if(sc) sc.textContent=si; if(nc) nc.textContent=no;
+  }
+  var liveEl=document.getElementById('vot-live');
+  if(liveEl) liveEl.textContent = total>0 ? ('\ud83d\udfe2 EN VIVO \u00b7 '+total+' votos') : '\u26aa Esperando votos\u2026';
+}
+function votReveal(q){
+  var correct=VOT_CORRECT[q]; var card=document.getElementById('vot-card-'+q); if(!card) return;
+  var win=card.querySelector('.vot-'+correct+'-row'); if(win){ win.style.outline='3px solid var(--green)'; win.style.borderRadius='8px'; }
+  var lose=card.querySelector('.vot-'+(correct==='si'?'no':'si')+'-row'); if(lose) lose.style.opacity='.4';
+  var btn=card.querySelector('.vot-reveal'); if(btn){ btn.textContent='\u2713 '+(correct==='si'?'Semejantes':'No'); btn.style.background='var(--green)'; btn.style.color='#fff'; btn.style.borderColor='var(--green)'; }
+}
+function votDemo(){
+  var date=votDate();
+  for(var q=1;q<=6;q++){ var correct=VOT_CORRECT[q];
+    for(var i=0;i<12;i++){ var choice=Math.random()<0.72?correct:(correct==='si'?'no':'si');
+      fetch(VOT_FB+'/'+VOT_NS+'/'+date+'/q'+q+'/demo'+i+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(choice)}); } }
+  setTimeout(votPoll,900);
+}
+function votReset(){ if(!confirm('\u00bfBorrar todos los votos de hoy?')) return;
+  fetch(VOT_FB+'/'+VOT_NS+'/'+votDate()+'.json',{method:'DELETE'}).then(function(){ setTimeout(votPoll,500); }); }
+const SLIDES=[
+/* 1 — PORTADA DE SEMANA */
+{noH:true,noF:true,clicks:0,cls:'s-portada',html:`
+<div class="portada-inner">
+  <div class="p-ie">I.E. Merceditas Gómez Martínez — Medellín, Antioquia</div>
+  <div class="p-area">Álgebra · Grado 8° · Período 2 · Bloque 1 · Semana 3</div>
+  <div class="p-title">Términos semejantes</div>
+  <div class="p-sub">«Lo que se parece se junta» — Mercado de Frutas</div>
+  <div class="p-divider"></div>
+  <div class="p-card-grid">
+    <div class="p-card"><div class="p-card-num">1</div><div class="p-card-title">Sesión 1</div><div class="p-card-sub">Plaza Minorista y Mercado de Frutas: descubrir la regla</div></div>
+    <div class="p-card"><div class="p-card-num">2</div><div class="p-card-title">Sesión 2</div><div class="p-card-sub">De la metáfora a la regla: formalizar y reducir</div></div>
+    <div class="p-card"><div class="p-card-num">3</div><div class="p-card-title">Sesión 3</div><div class="p-card-sub">Yo agrupo solo: práctica, error y cierre</div></div>
+  </div>
+  <div class="p-docente">Docente: Carlos Alberto Mena Romaña</div>
+</div>`},
+
+/* 2 — DIVISOR SESIÓN 1 */
+{noH:true,noF:true,clicks:0,cls:'s-portada',html:`
+<div class="portada-inner">
+  <div class="p-area">Semana 3 · Términos semejantes</div>
+  <div class="p-title" style="font-size:var(--fs-2xl)">Sesión 1 — Lo que se parece se junta</div>
+  <div class="p-sub">Descubrir la regla manipulando el Mercado de Frutas</div>
+  <div class="p-divider"></div>
+  <div class="p-card-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="p-card"><div class="p-card-num">🔍</div><div class="p-card-title">Exploración</div><div class="p-card-sub">La compra en la Plaza Minorista — ¿se pueden sumar frutas distintas?</div></div>
+    <div class="p-card"><div class="p-card-num">🧺</div><div class="p-card-title">Construcción</div><div class="p-card-sub">Mercado de Frutas — agrupar tarjetas por color y por exponente</div></div>
+  </div>
+</div>`},
+
+/* 3 — DETONANTE (Exploración) */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Exploración',badge:'EXPLORACIÓN',badgeColor:'#C47C1A',clicks:0,fL:'Sem. 3 · Sesión 1 · Exploración',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--amber); min-width:14px"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--amber);color:#fff">Situación detonante</div>
+    <div class="slide-title">La compra en la Plaza Minorista</div>
+    <div class="slide-instr">Lee la situación. Escribe tu respuesta ANTES de simbolizar.</div>
+  </div>
+</div>
+<div class="activacion-previa">
+  <strong>🧠 Recordemos:</strong> en la Semana 2 una letra podía reemplazarse por un número. Hoy la pregunta cambia: ¿cuándo dos cantidades escritas con letras se pueden juntar en una sola?
+</div>
+<div class="det-box">
+  <div class="det-label"> Contexto real — Medellín</div>
+  <div class="det-text">
+    En la <strong>Plaza Minorista</strong>, una señora compra <strong>3 mangos</strong>, <strong>2 aguacates</strong>, <strong>5 mangos</strong> más, <strong>1 aguacate</strong> y <strong>4 limones</strong>.
+    Cada mango cuesta <em style="font-weight:700">m</em> pesos, cada aguacate <em style="font-weight:700">a</em> pesos y cada limón <em style="font-weight:700">l</em> pesos.
+  </div>
+  <div class="det-q">¿Cómo expresarías el gasto total en una sola fórmula algebraica?</div>
+  <div class="espacio-respuesta" contenteditable="true" role="textbox" aria-label="Escribe tu fórmula aquí" style="min-height:60px"></div>
+  <div style="font-size:var(--fs-md);color:var(--text2);line-height:1.6">
+    <strong style="font-size:var(--fs-md)">Pregunta trampa:</strong> ¿Puedes sumar 3+2+5+1+4 = 15 y decir que gastó «15 frutas por peso»? ¿Por qué esa suma no tiene sentido?
+  </div>
+</div>
+<div class="conexion-ciencias">
+  Conexión con la vida diaria: en una cuenta del mercado nunca sumamos «peras con manzanas». El álgebra usa exactamente esa misma lógica para decidir qué términos se pueden juntar y cuáles no.
+</div>`},
+
+/* 4 — CONSTRUCCIÓN (Mercado de Frutas) */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Construcción',badge:'CONSTRUCCIÓN',clicks:4,fL:'Sem. 3 · Sesión 1 · Mercado de Frutas',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Mercado de Frutas — agrupa por color (y por exponente)</div>
+    <div class="slide-instr">Cada color es una variable. Solo se juntan tarjetas del MISMO color y del MISMO exponente. Predice antes de cada clic.</div>
+  </div>
+</div>
+<div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:6px;font-size:var(--fs-sm);color:var(--text2)">
+  <span>Convenciones:</span>
+  <span style="display:inline-flex;align-items:center;gap:6px;margin-right:4px"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);background:#B83232;color:#fff;width:22px;height:22px;border-radius:6px"></span><span style="font-size:var(--fs-sm);color:var(--text2)">mango = m</span></span><span style="display:inline-flex;align-items:center;gap:6px;margin-right:4px"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);background:#1A6B5A;color:#fff;width:22px;height:22px;border-radius:6px"></span><span style="font-size:var(--fs-sm);color:var(--text2)">aguacate = a</span></span><span style="display:inline-flex;align-items:center;gap:6px;margin-right:4px"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);background:#C47C1A;color:#fff;width:22px;height:22px;border-radius:6px"></span><span style="font-size:var(--fs-sm);color:var(--text2)">limón = l</span></span><span style="display:inline-flex;align-items:center;gap:6px;margin-right:4px"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);background:#6C3483;color:#fff;width:26px;height:22px;border-radius:6px"></span><span style="font-size:var(--fs-sm);color:var(--text2)">m² (caja)</span></span>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--gap)">
+  <div class="paso-row" data-c="1"><div class="paso-num">1</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+      <div style="font-size:var(--fs-sm);color:var(--text2);font-style:italic">Lista dictada: «3 mangos + 5 mangos»</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-xl);color:var(--blue-mid)">&rarr;</span> <span style="display:inline-block;background:#E8F5E9;border:2.5px solid var(--green);border-radius:10px;padding:6px 16px;font-weight:800;font-size:var(--fs-lg);color:var(--green)">= 8m</span></div>
+    </div></div>
+  <div class="paso-row" data-c="2"><div class="paso-num">2</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+      <div style="font-size:var(--fs-sm);color:var(--text2);font-style:italic">Lista dictada: «2 mangos + 3 aguacates + 4 mangos»</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-xl);color:var(--blue-mid)">&rarr;</span> <span style="display:inline-block;background:#E8F5E9;border:2.5px solid var(--green);border-radius:10px;padding:6px 16px;font-weight:800;font-size:var(--fs-lg);color:var(--green)">= 6m + 3a</span></div>
+    </div></div>
+  <div class="paso-row" data-c="3" style="border-left-color:var(--red)"><div class="paso-num" style="background:var(--red)">3</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+      <div style="font-size:var(--fs-sm);color:var(--red);font-style:italic;font-weight:700">Caso clave: «3m + 2m²» — misma letra, distinto exponente</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#6C3483;color:#fff;min-width:34px;height:30px;border-radius:7px">m²</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#6C3483;color:#fff;min-width:34px;height:30px;border-radius:7px">m²</span> <span style="font-size:var(--fs-xl);color:var(--blue-mid)">&rarr;</span> <span style="display:inline-block;background:#FFF0F0;border:2.5px solid var(--red);border-radius:10px;padding:6px 16px;font-weight:800;font-size:var(--fs-md);color:var(--red)">✗ no se juntan: 3m + 2m²</span></div>
+      <div style="font-size:var(--fs-sm);color:var(--text2)">El exponente convierte a <strong>m²</strong> en una «fruta distinta»: una caja de mangos no es lo mismo que un mango suelto.</div>
+    </div></div>
+  <div class="conj-box" data-c="4" style="opacity:0;transition:opacity .4s">
+    <strong>Regla que construimos:</strong> dos términos son <strong>semejantes</strong> cuando tienen <strong>las mismas variables elevadas a los mismos exponentes</strong>. Solo entonces se suman (o restan) sus coeficientes; la parte literal no cambia.
+  </div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* S1+ — VOTACIÓN EN VIVO */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Votación en vivo',badge:'VOTACIÓN EN VIVO',badgeColor:'#1A6B5A',clicks:0,fL:'Sem. 3 · Sesión 1 · ¿Semejantes o no? (celulares)',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--green)"></div>
+  <div style="flex:1">
+    <div class="slide-title">¿Son términos semejantes? — votación desde el celular</div>
+    <div class="slide-instr">Cada estudiante abre el enlace y decide en cada par. Vemos los resultados en vivo y luego revelamos.</div>
+  </div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px;background:var(--warm);border-radius:12px;padding:10px 14px">
+  <div style="font-size:var(--fs-md);color:var(--text)">📱 Voten en: <strong style="color:var(--blue)">bit.ly/semejantes-merceditas</strong></div>
+  <div id="vot-live" style="font-size:var(--fs-sm);font-weight:800;color:var(--green)">⚪ Esperando votos…</div>
+  <div style="margin-left:auto;display:flex;gap:8px">
+    <button type="button" onclick="votDemo()" style="font-size:var(--fs-xs);font-weight:700;padding:6px 12px;border-radius:8px;border:2px solid var(--blue-mid);background:#fff;color:var(--blue-mid);cursor:pointer">Demo</button>
+    <button type="button" onclick="votReset()" style="font-size:var(--fs-xs);font-weight:700;padding:6px 12px;border-radius:8px;border:2px solid var(--red);background:#fff;color:var(--red);cursor:pointer">Reiniciar</button>
+  </div>
+</div>
+<div id="vot-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,1.2vh,14px)"><div id="vot-card-1" style="background:#fff;border:2px solid var(--border);border-radius:12px;padding:10px 12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-size:var(--fs-md);font-weight:800;color:var(--navy)">3x  y  5x</span><button type="button" class="vot-reveal" onclick="votReveal(1)" style="font-size:var(--fs-xs);font-weight:700;padding:4px 10px;border-radius:8px;border:2px solid var(--blue-mid);background:#fff;color:var(--blue-mid);cursor:pointer">Revelar</button></div><div class="vot-si-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--green);min-width:90px">Semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-si-1" style="height:100%;width:0%;background:var(--green);transition:width .4s"></div></div><span id="vot-sc-1" style="font-size:var(--fs-xs);font-weight:800;color:var(--green);min-width:22px;text-align:right">0</span></div><div class="vot-no-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--red);min-width:90px">No semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-no-1" style="height:100%;width:0%;background:var(--red);transition:width .4s"></div></div><span id="vot-nc-1" style="font-size:var(--fs-xs);font-weight:800;color:var(--red);min-width:22px;text-align:right">0</span></div></div><div id="vot-card-2" style="background:#fff;border:2px solid var(--border);border-radius:12px;padding:10px 12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-size:var(--fs-md);font-weight:800;color:var(--navy)">4x²  y  7x</span><button type="button" class="vot-reveal" onclick="votReveal(2)" style="font-size:var(--fs-xs);font-weight:700;padding:4px 10px;border-radius:8px;border:2px solid var(--blue-mid);background:#fff;color:var(--blue-mid);cursor:pointer">Revelar</button></div><div class="vot-si-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--green);min-width:90px">Semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-si-2" style="height:100%;width:0%;background:var(--green);transition:width .4s"></div></div><span id="vot-sc-2" style="font-size:var(--fs-xs);font-weight:800;color:var(--green);min-width:22px;text-align:right">0</span></div><div class="vot-no-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--red);min-width:90px">No semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-no-2" style="height:100%;width:0%;background:var(--red);transition:width .4s"></div></div><span id="vot-nc-2" style="font-size:var(--fs-xs);font-weight:800;color:var(--red);min-width:22px;text-align:right">0</span></div></div><div id="vot-card-3" style="background:#fff;border:2px solid var(--border);border-radius:12px;padding:10px 12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-size:var(--fs-md);font-weight:800;color:var(--navy)">2m  y  9n</span><button type="button" class="vot-reveal" onclick="votReveal(3)" style="font-size:var(--fs-xs);font-weight:700;padding:4px 10px;border-radius:8px;border:2px solid var(--blue-mid);background:#fff;color:var(--blue-mid);cursor:pointer">Revelar</button></div><div class="vot-si-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--green);min-width:90px">Semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-si-3" style="height:100%;width:0%;background:var(--green);transition:width .4s"></div></div><span id="vot-sc-3" style="font-size:var(--fs-xs);font-weight:800;color:var(--green);min-width:22px;text-align:right">0</span></div><div class="vot-no-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--red);min-width:90px">No semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-no-3" style="height:100%;width:0%;background:var(--red);transition:width .4s"></div></div><span id="vot-nc-3" style="font-size:var(--fs-xs);font-weight:800;color:var(--red);min-width:22px;text-align:right">0</span></div></div><div id="vot-card-4" style="background:#fff;border:2px solid var(--border);border-radius:12px;padding:10px 12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-size:var(--fs-md);font-weight:800;color:var(--navy)">6  y  10</span><button type="button" class="vot-reveal" onclick="votReveal(4)" style="font-size:var(--fs-xs);font-weight:700;padding:4px 10px;border-radius:8px;border:2px solid var(--blue-mid);background:#fff;color:var(--blue-mid);cursor:pointer">Revelar</button></div><div class="vot-si-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--green);min-width:90px">Semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-si-4" style="height:100%;width:0%;background:var(--green);transition:width .4s"></div></div><span id="vot-sc-4" style="font-size:var(--fs-xs);font-weight:800;color:var(--green);min-width:22px;text-align:right">0</span></div><div class="vot-no-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--red);min-width:90px">No semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-no-4" style="height:100%;width:0%;background:var(--red);transition:width .4s"></div></div><span id="vot-nc-4" style="font-size:var(--fs-xs);font-weight:800;color:var(--red);min-width:22px;text-align:right">0</span></div></div><div id="vot-card-5" style="background:#fff;border:2px solid var(--border);border-radius:12px;padding:10px 12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-size:var(--fs-md);font-weight:800;color:var(--navy)">5ab  y  2ab</span><button type="button" class="vot-reveal" onclick="votReveal(5)" style="font-size:var(--fs-xs);font-weight:700;padding:4px 10px;border-radius:8px;border:2px solid var(--blue-mid);background:#fff;color:var(--blue-mid);cursor:pointer">Revelar</button></div><div class="vot-si-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--green);min-width:90px">Semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-si-5" style="height:100%;width:0%;background:var(--green);transition:width .4s"></div></div><span id="vot-sc-5" style="font-size:var(--fs-xs);font-weight:800;color:var(--green);min-width:22px;text-align:right">0</span></div><div class="vot-no-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--red);min-width:90px">No semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-no-5" style="height:100%;width:0%;background:var(--red);transition:width .4s"></div></div><span id="vot-nc-5" style="font-size:var(--fs-xs);font-weight:800;color:var(--red);min-width:22px;text-align:right">0</span></div></div><div id="vot-card-6" style="background:#fff;border:2px solid var(--border);border-radius:12px;padding:10px 12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-size:var(--fs-md);font-weight:800;color:var(--navy)">3a²b  y  4ab²</span><button type="button" class="vot-reveal" onclick="votReveal(6)" style="font-size:var(--fs-xs);font-weight:700;padding:4px 10px;border-radius:8px;border:2px solid var(--blue-mid);background:#fff;color:var(--blue-mid);cursor:pointer">Revelar</button></div><div class="vot-si-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--green);min-width:90px">Semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-si-6" style="height:100%;width:0%;background:var(--green);transition:width .4s"></div></div><span id="vot-sc-6" style="font-size:var(--fs-xs);font-weight:800;color:var(--green);min-width:22px;text-align:right">0</span></div><div class="vot-no-row" style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font-size:var(--fs-xs);font-weight:700;color:var(--red);min-width:90px">No semejantes</span><div style="flex:1;height:14px;background:var(--warm);border-radius:7px;overflow:hidden"><div id="vot-no-6" style="height:100%;width:0%;background:var(--red);transition:width .4s"></div></div><span id="vot-nc-6" style="font-size:var(--fs-xs);font-weight:800;color:var(--red);min-width:22px;text-align:right">0</span></div></div></div>`,onEnter:()=>votInit()},
+
+/* S1+ — MERCADO INTERACTIVO */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Mercado interactivo',badge:'INTERACTIVO',badgeColor:'#1A6B5A',clicks:0,fL:'Sem. 3 · Sesión 1 · Mercado interactivo',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Mercado de Frutas interactivo — toca, agrupa y reduce</div>
+    <div class="slide-instr">Toca una fruta de la lista y luego su canasta. Si la equivocas, te avisa. Al final pulsa «Verificar».</div>
+  </div>
+</div>
+<div style="background:var(--warm);border-radius:14px;padding:clamp(10px,1.4vh,16px) clamp(16px,2vw,24px);margin-bottom:10px">
+  <div style="font-size:var(--fs-sm);color:var(--text2);margin-bottom:8px">Lista de compra (toca para seleccionar):</div>
+  <div id="mf-pool" data-em="5" data-ea="3" style="display:flex;flex-wrap:wrap;gap:8px"><button type="button" class="mf-fruit" data-k="m" onclick="mfPick(this)" style="background:#B83232;color:#fff;width:clamp(36px,3.6vw,46px);height:clamp(36px,3.6vw,46px);border:none;border-radius:9px;font-weight:800;font-size:var(--fs-md);cursor:pointer;transition:opacity .2s,outline .15s">m</button><button type="button" class="mf-fruit" data-k="a" onclick="mfPick(this)" style="background:#1A6B5A;color:#fff;width:clamp(36px,3.6vw,46px);height:clamp(36px,3.6vw,46px);border:none;border-radius:9px;font-weight:800;font-size:var(--fs-md);cursor:pointer;transition:opacity .2s,outline .15s">a</button><button type="button" class="mf-fruit" data-k="m" onclick="mfPick(this)" style="background:#B83232;color:#fff;width:clamp(36px,3.6vw,46px);height:clamp(36px,3.6vw,46px);border:none;border-radius:9px;font-weight:800;font-size:var(--fs-md);cursor:pointer;transition:opacity .2s,outline .15s">m</button><button type="button" class="mf-fruit" data-k="m" onclick="mfPick(this)" style="background:#B83232;color:#fff;width:clamp(36px,3.6vw,46px);height:clamp(36px,3.6vw,46px);border:none;border-radius:9px;font-weight:800;font-size:var(--fs-md);cursor:pointer;transition:opacity .2s,outline .15s">m</button><button type="button" class="mf-fruit" data-k="a" onclick="mfPick(this)" style="background:#1A6B5A;color:#fff;width:clamp(36px,3.6vw,46px);height:clamp(36px,3.6vw,46px);border:none;border-radius:9px;font-weight:800;font-size:var(--fs-md);cursor:pointer;transition:opacity .2s,outline .15s">a</button><button type="button" class="mf-fruit" data-k="m" onclick="mfPick(this)" style="background:#B83232;color:#fff;width:clamp(36px,3.6vw,46px);height:clamp(36px,3.6vw,46px);border:none;border-radius:9px;font-weight:800;font-size:var(--fs-md);cursor:pointer;transition:opacity .2s,outline .15s">m</button><button type="button" class="mf-fruit" data-k="a" onclick="mfPick(this)" style="background:#1A6B5A;color:#fff;width:clamp(36px,3.6vw,46px);height:clamp(36px,3.6vw,46px);border:none;border-radius:9px;font-weight:800;font-size:var(--fs-md);cursor:pointer;transition:opacity .2s,outline .15s">a</button><button type="button" class="mf-fruit" data-k="m" onclick="mfPick(this)" style="background:#B83232;color:#fff;width:clamp(36px,3.6vw,46px);height:clamp(36px,3.6vw,46px);border:none;border-radius:9px;font-weight:800;font-size:var(--fs-md);cursor:pointer;transition:opacity .2s,outline .15s">m</button></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-bottom:10px">
+  <div role="button" tabindex="0" onclick="mfDrop('m')" style="background:#fff;border:2.5px dashed #B83232;border-radius:14px;padding:clamp(8px,1.2vh,14px);text-align:center;cursor:pointer">
+    <div style="font-size:var(--fs-sm);color:var(--text2)">🧺 Canasta de mangos (m)</div>
+    <div style="font-size:var(--fs-2xl);font-weight:800;color:#B83232"><span id="mf-m">0</span> m</div>
+  </div>
+  <div role="button" tabindex="0" onclick="mfDrop('a')" style="background:#fff;border:2.5px dashed #1A6B5A;border-radius:14px;padding:clamp(8px,1.2vh,14px);text-align:center;cursor:pointer">
+    <div style="font-size:var(--fs-sm);color:var(--text2)">🧺 Canasta de aguacates (a)</div>
+    <div style="font-size:var(--fs-2xl);font-weight:800;color:#1A6B5A"><span id="mf-a">0</span> a</div>
+  </div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+  <div style="font-size:var(--fs-md);color:var(--text)">Compra reducida: <strong id="mf-exp" style="font-size:var(--fs-lg);color:var(--navy)">0m + 0a</strong></div>
+  <button type="button" onclick="mfCheck()">✔ Verificar</button>
+  <button type="button" onclick="mfReset()" style="background:var(--warm);color:var(--text);border:2px solid var(--border)">↺ Reiniciar</button>
+  <span id="mf-msg" style="font-size:var(--fs-sm);font-weight:700"></span>
+</div>
+<div style="margin-top:12px;font-size:var(--fs-sm);color:var(--text2);font-style:italic">En clase, en tríos: Comprador (selecciona), Cajero (escribe la expresión) y Auditor (verifica). Rotan los roles en cada ronda.</div>`},
+
+/* S1+ — RONDAS DE COMPRA */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Rondas de compra',badge:'CONSTRUCCIÓN',clicks:4,fL:'Sem. 3 · Sesión 1 · Rondas de compra',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Rondas de compra — arma, escribe y reduce</div>
+    <div class="slide-instr">Resuelve cada lista en tu hoja de registro. Revisamos juntos al final de cada ronda (clic para confirmar).</div>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;gap:clamp(8px,1vh,14px)">
+  <div class="paso-row vis"><div class="paso-num">1</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+      <div style="font-size:var(--fs-sm);color:var(--text2);font-style:italic">Ronda 1 — una fruta: «4 mangos + 3 mangos + 2 mangos»</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-xl);color:var(--blue-mid)">&rarr;</span> <span data-c="1" style="opacity:0;transition:opacity .3s"><span style="display:inline-block;background:#E8F5E9;border:2.5px solid var(--green);border-radius:10px;padding:6px 16px;font-weight:800;font-size:var(--fs-lg);color:var(--green)">= 9m</span></span></div>
+    </div></div>
+  <div class="paso-row vis"><div class="paso-num">2</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+      <div style="font-size:var(--fs-sm);color:var(--text2);font-style:italic">Ronda 2 — dos frutas: «5 mangos + 2 aguacates + 3 mangos + 4 aguacates»</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span> <span style="font-size:var(--fs-xl);color:var(--blue-mid)">&rarr;</span> <span data-c="2" style="opacity:0;transition:opacity .3s"><span style="display:inline-block;background:#E8F5E9;border:2.5px solid var(--green);border-radius:10px;padding:6px 16px;font-weight:800;font-size:var(--fs-lg);color:var(--green)">= 8m + 6a</span></span></div>
+    </div></div>
+  <div class="paso-row vis" style="border-left-color:var(--red)"><div class="paso-num" style="background:var(--red)">3</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+      <div style="font-size:var(--fs-sm);color:var(--red);font-style:italic;font-weight:700">Ronda 3 — ¡trampa de la caja!: «3 mangos + 2 cajas (m²) + 4 mangos + 1 caja»</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#6C3483;color:#fff;min-width:34px;height:30px;border-radius:7px">m²</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#6C3483;color:#fff;min-width:34px;height:30px;border-radius:7px">m²</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#6C3483;color:#fff;min-width:34px;height:30px;border-radius:7px">m²</span> <span style="font-size:var(--fs-xl);color:var(--blue-mid)">&rarr;</span> <span data-c="3" style="opacity:0;transition:opacity .3s"><span style="display:inline-block;background:#E8F5E9;border:2.5px solid var(--green);border-radius:10px;padding:6px 16px;font-weight:800;font-size:var(--fs-lg);color:var(--green)">= 7m + 3m²</span></span></div>
+    </div></div>
+  <div class="paso-row vis" style="border-left-color:var(--teal)"><div class="paso-num" style="background:var(--teal)">4</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+      <div style="font-size:var(--fs-sm);color:var(--teal);font-style:italic;font-weight:700">Ronda 4 — tres frutas: «2 mangos + 3 limones + 4 aguacates + 1 mango + 2 limones»</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#C47C1A;color:#fff;min-width:30px;height:30px;border-radius:7px">l</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#C47C1A;color:#fff;min-width:30px;height:30px;border-radius:7px">l</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#C47C1A;color:#fff;min-width:30px;height:30px;border-radius:7px">l</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#1A6B5A;color:#fff;min-width:30px;height:30px;border-radius:7px">a</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#B83232;color:#fff;min-width:30px;height:30px;border-radius:7px">m</span> <span style="font-size:var(--fs-lg);color:var(--text3);font-weight:700">+</span> <span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#C47C1A;color:#fff;min-width:30px;height:30px;border-radius:7px">l</span><span style="display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:var(--fs-xs);margin:2px;background:#C47C1A;color:#fff;min-width:30px;height:30px;border-radius:7px">l</span> <span style="font-size:var(--fs-xl);color:var(--blue-mid)">&rarr;</span> <span data-c="4" style="opacity:0;transition:opacity .3s"><span style="display:inline-block;background:#E8F5E9;border:2.5px solid var(--green);border-radius:10px;padding:6px 16px;font-weight:800;font-size:var(--fs-lg);color:var(--green)">= 3m + 4a + 5l</span></span></div>
+    </div></div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* S1+ — CREA TU COMPRA */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Crea y reta',badge:'CONSTRUCCIÓN',clicks:0,fL:'Sem. 3 · Sesión 1 · Crea y reta',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Crea tu compra y reta a tu pareja</div>
+    <div class="slide-instr">Inventa una lista de compra; tu pareja la traduce y reduce. Luego revisan juntos.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div style="background:var(--warm);border-radius:14px;padding:clamp(12px,1.8vh,22px) clamp(16px,2vw,26px)">
+    <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:10px">Pasos del reto</div>
+    <ol style="margin:0;padding-left:22px;font-size:var(--fs-sm);color:var(--text2);line-height:1.8">
+      <li>Escribe una lista con al menos 6 frutas usando mango (m), aguacate (a) y limón (l), en orden mezclado.</li>
+      <li>Intercambia tu lista con tu pareja.</li>
+      <li>Escribe la expresión de la lista de tu pareja: primero sin reducir y luego reducida.</li>
+      <li>Revisen juntos: ¿juntaron solo lo semejante? ¿separaron las frutas distintas?</li>
+    </ol>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div>
+      <div style="font-size:var(--fs-sm);font-weight:700;color:var(--navy);margin-bottom:4px">Mi lista de compra:</div>
+      <div class="espacio-respuesta" contenteditable="true" role="textbox" aria-label="Escribe tu lista de compra" style="min-height:60px"></div>
+    </div>
+    <div>
+      <div style="font-size:var(--fs-sm);font-weight:700;color:var(--navy);margin-bottom:4px">Expresión reducida de la lista de mi pareja:</div>
+      <div class="espacio-respuesta" contenteditable="true" role="textbox" aria-label="Escribe la expresión reducida" style="min-height:60px"></div>
+    </div>
+  </div>
+</div>`},
+
+/* GEOGEBRA */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Práctica GeoGebra',badge:'PRÁCTICA INTERACTIVA',badgeColor:'#1A6B5A',clicks:0,fL:'Sem. 3 · Sesión 1 · GeoGebra (mundo real)',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="slide-title">GeoGebra — términos semejantes en el mundo real</div>
+    <div class="slide-instr">Cierre digital de la sesión: agrupa términos semejantes en situaciones cotidianas.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:2.3fr 1fr;gap:var(--gap);align-items:start">
+  <div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:8px;overflow:hidden">
+    <iframe title="AF3: real world Like Terms" src="https://www.geogebra.org/material/iframe/id/natchddn/width/800/height/600/border/DEDBD3/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" style="width:100%;height:clamp(360px,64vh,660px);border:0;border-radius:10px" loading="lazy" allowfullscreen allow="fullscreen"></iframe>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="background:var(--warm);border-radius:12px;padding:clamp(10px,1.4vh,16px)">
+      <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:6px">Instrucciones (en español)</div>
+      <ul style="margin:0;padding-left:20px;font-size:var(--fs-sm);color:var(--text2);line-height:1.65"><li>Lee la situación cotidiana que muestra el applet (compras, dinero, objetos).</li><li>Identifica los términos semejantes: los que tienen la misma variable.</li><li>Junta (suma o resta) solo los semejantes y escribe la expresión reducida.</li><li>Comprueba; si falla, revisa qué términos juntaste e inténtalo otra vez.</li></ul>
+    </div>
+    <div style="font-size:var(--fs-sm);color:var(--text2)"><strong>Pantalla completa:</strong> toca el botón ⛶ en la esquina del applet para ampliarlo.</div>
+    <a class="video-link" href="https://www.geogebra.org/m/natchddn" target="_blank" rel="noopener">▶ Abrir en GeoGebra</a>
+    <div style="font-size:var(--fs-xs);color:var(--text3);font-style:italic">Autor: Ronan Downes / cemccourseware · «AF3: real world Like Terms» · geogebra.org</div>
+  </div>
+</div>`},
+
+/* 5 — DIVISOR SESIÓN 2 */
+{noH:true,noF:true,clicks:0,cls:'s-portada',html:`
+<div class="portada-inner">
+  <div class="p-area">Semana 3 · Términos semejantes</div>
+  <div class="p-title" style="font-size:var(--fs-2xl)">Sesión 2 — De la metáfora a la regla</div>
+  <div class="p-sub">Formalizar el concepto y reducir expresiones</div>
+  <div class="p-divider"></div>
+  <div class="p-card-grid">
+    <div class="p-card"><div class="p-card-num">✔️</div><div class="p-card-title">Formalización</div><div class="p-card-sub">Definición formal de término semejante</div></div>
+    <div class="p-card"><div class="p-card-num">👨‍🏫</div><div class="p-card-title">Yo hago</div><div class="p-card-sub">Reducir una expresión paso a paso</div></div>
+    <div class="p-card"><div class="p-card-num">🤝</div><div class="p-card-title">Hacemos</div><div class="p-card-sub">Reducir juntos, ronda de reto y relevo por equipos</div></div>
+  </div>
+</div>`},
+
+/* 6 — FORMALIZACIÓN */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Formalización',badge:'FORMALIZACIÓN',clicks:5,fL:'Sem. 3 · Sesión 2 · Formalización',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--green)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Escribe tu conjetura en el cuaderno</div>
+    <div class="slide-instr">Antes de avanzar, completa: «Dos términos se pueden sumar cuando ______ y cuando ______.»</div>
+  </div>
+</div>
+<div class="formal-box">
+  <div class="formal-title">Procedimiento formal: reducir términos semejantes</div>
+  <div class="contenido-ayuda"><strong>Ejemplo guiado:</strong> en \\(7x + 2x\\) la parte literal es la misma (\\(x\\)), así que se suman los coeficientes: \\(7+2=9 \\Rightarrow 9x\\).</div>
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:4px 0">
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')" aria-expanded="false">💡 ¿Necesitas ayuda?</button>
+  </div>
+  <div class="formal-step" data-c="1"><div class="formal-step-n">1</div><div class="formal-step-txt"><strong>Identifica la parte literal</strong> de cada término: las variables con sus exponentes (el coeficiente no cuenta para decidir semejanza).</div></div>
+  <div class="formal-step" data-c="2"><div class="formal-step-n">2</div><div class="formal-step-txt"><strong>Agrupa</strong> los términos que tienen idéntica parte literal (misma variable y mismo exponente).</div></div>
+  <div class="formal-step" data-c="3"><div class="formal-step-n">3</div><div class="formal-step-txt"><strong>Suma o resta solo los coeficientes</strong> de cada grupo; la parte literal se conserva sin cambios.</div></div>
+  <div class="formal-step" data-c="4"><div class="formal-step-n">4</div><div class="formal-step-txt"><strong>Deja igual</strong> los términos que no tienen semejantes. El resultado es la expresión reducida.</div></div>
+  <div class="check-box" data-c="5" style="width:100%">✔ Regla de oro: la parte literal es como el «apellido» del término. Solo se juntan los términos del mismo apellido — \\(x\\) y \\(x^2\\) son apellidos diferentes.</div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* 7 — YO HAGO */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Yo hago',badge:'YO HAGO',clicks:5,fL:'Sem. 3 · Sesión 2 · Ejemplo guiado',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Ejemplo resuelto</div>
+    <div class="slide-instr">Reduce: \\(4x^2y - 2xy^2 + 3x^2y + 5xy^2 - x^2y\\)</div>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--gap)">
+  <div class="paso-row" data-c="1"><div class="paso-num">1</div><div class="paso-lbl">Partes literales</div><div class="paso-body">Hay dos «apellidos»: \\(x^2y\\) y \\(xy^2\\). ¡Cuidado! \\(x^2y \\neq xy^2\\).</div><div class="paso-note">El orden del exponente importa</div></div>
+  <div class="paso-row" data-c="2"><div class="paso-num">2</div><div class="paso-lbl">Grupo \\(x^2y\\)</div><div class="paso-body">\\(4x^2y + 3x^2y - x^2y\\): coeficientes \\(4 + 3 - 1 = 6 \\Rightarrow 6x^2y\\)</div><div class="paso-note">Solo sumo coeficientes</div></div>
+  <div class="paso-row" data-c="3"><div class="paso-num">3</div><div class="paso-lbl">Grupo \\(xy^2\\)</div><div class="paso-body">\\(-2xy^2 + 5xy^2\\): coeficientes \\(-2 + 5 = 3 \\Rightarrow 3xy^2\\)</div><div class="paso-note">Cuido el signo</div></div>
+  <div class="result-bar" data-c="4">\\(6x^2y + 3xy^2\\) &nbsp; ✔</div>
+  <div data-c="5" style="margin-top:6px;background:var(--warm);border-radius:12px;padding:clamp(14px,1.8vh,22px);opacity:0;transition:opacity .4s">
+    <strong style="color:var(--navy);display:block;margin-bottom:10px;font-size:var(--fs-md)">📝 Ahora tú:</strong>
+    <div style="font-size:var(--fs-md);margin-bottom:10px">Reduce \\(8a - 3b + 2a - b\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ver solución</button>
+    <div class="contenido-ayuda"><ol style="padding-left:22px;margin:10px 0"><li>Grupo \\(a\\): \\(8 + 2 = 10 \\Rightarrow 10a\\)</li><li>Grupo \\(b\\): \\(-3 - 1 = -4 \\Rightarrow -4b\\)</li><li>Resultado: <strong>\\(10a - 4b\\)</strong> ✓</li></ol></div>
+  </div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* 8 — HACEMOS */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Hacemos',badge:'HACEMOS',clicks:4,fL:'Sem. 3 · Sesión 2 · Hacemos juntos',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--green)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Hacemos juntos — reduce paso a paso</div>
+    <div class="slide-instr">Resolvemos en plenaria. Identifica primero las partes literales con colores distintos.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div class="ex-card" data-c="1" style="border-top-color:var(--green)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--green)">1</div><div class="ex-title">Una sola letra</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(5x + 3x\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ayuda</button>
+    <div class="contenido-ayuda">Misma parte literal \\(x\\): \\(5 + 3 = 8 \\Rightarrow \\mathbf{8x}\\)</div>
+  </div>
+  <div class="ex-card" data-c="2" style="border-top-color:var(--blue)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--blue)">2</div><div class="ex-title">Dos letras</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(7a + 2b - 3a\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ayuda</button>
+    <div class="contenido-ayuda">Grupo \\(a\\): \\(7-3=4\\). \\(b\\) queda igual \\(\\Rightarrow \\mathbf{4a + 2b}\\)</div>
+  </div>
+  <div class="ex-card" data-c="3" style="border-top-color:var(--teal)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--teal)">3</div><div class="ex-title">Producto de variables</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(6xy - 4xy + xy\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ayuda</button>
+    <div class="contenido-ayuda">Todos son \\(xy\\): \\(6 - 4 + 1 = 3 \\Rightarrow \\mathbf{3xy}\\)</div>
+  </div>
+  <div class="ex-card" data-c="4" style="border-top-color:var(--amber)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--amber)">4</div><div class="ex-title">¡Trampa del exponente!</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(4m^2 + 3m - m^2\\)</div>
+    <button type="button" class="btn-desafio" onclick="toggleContent(this,'contenido-desafio')">🚀 Explicación</button>
+    <div class="contenido-desafio">\\(m^2\\) y \\(m\\) NO son semejantes. Grupo \\(m^2\\): \\(4-1=3\\). El \\(3m\\) queda solo \\(\\Rightarrow \\mathbf{3m^2 + 3m}\\)</div>
+  </div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* S2+ — HACEMOS RONDA 2 */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Hacemos (ronda 2)',badge:'HACEMOS',clicks:4,fL:'Sem. 3 · Sesión 2 · Hacemos — más reto',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--green)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Hacemos juntos — ronda 2 (sube el reto)</div>
+    <div class="slide-instr">Ahora con coeficientes negativos, constantes y la trampa de las dos variables. Resuelve antes de abrir la ayuda.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div class="ex-card" data-c="1" style="border-top-color:var(--green)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--green)">1</div><div class="ex-title">Resta de coeficientes</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(8x^2 - 3x^2 + x^2\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ayuda</button>
+    <div class="contenido-ayuda">Todos son \\(x^2\\): \\(8 - 3 + 1 = 6 \\Rightarrow \\mathbf{6x^2}\\)</div>
+  </div>
+  <div class="ex-card" data-c="2" style="border-top-color:var(--blue)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--blue)">2</div><div class="ex-title">\\(ab\\) no es \\(a\\)</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(5ab + 2a - 3ab + 4a\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ayuda</button>
+    <div class="contenido-ayuda">\\(ab\\): \\(5-3=2\\); \\(a\\): \\(2+4=6 \\Rightarrow \\mathbf{2ab + 6a}\\)</div>
+  </div>
+  <div class="ex-card" data-c="3" style="border-top-color:var(--teal)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--teal)">3</div><div class="ex-title">Dos variables con exponente</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(7m^2n - 2mn^2 - 4m^2n + mn^2\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ayuda</button>
+    <div class="contenido-ayuda">\\(m^2n\\): \\(7-4=3\\); \\(mn^2\\): \\(-2+1=-1 \\Rightarrow \\mathbf{3m^2n - mn^2}\\)</div>
+  </div>
+  <div class="ex-card" data-c="4" style="border-top-color:var(--amber)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--amber)">4</div><div class="ex-title">Con números sueltos</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(-3x + 5 - 7x - 2 + 4x\\)</div>
+    <button type="button" class="btn-desafio" onclick="toggleContent(this,'contenido-desafio')">🚀 Explicación</button>
+    <div class="contenido-desafio">\\(x\\): \\(-3-7+4=-6\\); constantes: \\(5-2=3 \\Rightarrow \\mathbf{-6x + 3}\\). Los números también son términos semejantes entre sí.</div>
+  </div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* S2+ — JUEGO RELEVO */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Juego por equipos',badge:'JUEGO',badgeColor:'#C47C1A',clicks:0,fL:'Sem. 3 · Sesión 2 · Relevo de reducción',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--amber)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Juego por equipos — Relevo de reducción</div>
+    <div class="slide-instr">Dos equipos en fila frente al tablero. Cada integrante reduce UNA expresión y pasa el marcador al siguiente.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1.1fr;gap:var(--gap)">
+  <div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px)">
+    <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:10px">🏁 Reglas</div>
+    <ul style="margin:0;padding-left:20px;font-size:var(--fs-sm);color:var(--text2);line-height:1.7">
+      <li>El docente dicta una expresión; el primer jugador la reduce y entrega el marcador (relevo).</li>
+      <li><strong>+2</strong> puntos por reducción correcta.</li>
+      <li><strong>+1</strong> punto si tu equipo corrige un error del rival y explica por qué.</li>
+      <li><strong>0</strong> puntos si junta términos no semejantes.</li>
+      <li>Gana el equipo con más puntos al terminar el banco de expresiones.</li>
+    </ul>
+  </div>
+  <div style="background:var(--warm);border-radius:14px;padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px)">
+    <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:10px">📋 Banco de expresiones (dificultad creciente)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:var(--fs-md)">
+      <div>1) \\(6x + 2x\\)</div><div>2) \\(9a - 4a\\)</div>
+      <div>3) \\(5m + 3n - 2m\\)</div><div>4) \\(7xy - 3xy + xy\\)</div>
+      <div>5) \\(4x^2 + 2x - x^2\\)</div><div>6) \\(8p - 3 - 5p + 7\\)</div>
+      <div>7) \\(2a^2b + 5ab^2 - a^2b\\)</div><div>8) \\(-3y + 6y - 8y\\)</div>
+    </div>
+    <div style="margin-top:12px;font-size:var(--fs-sm);color:var(--text2);font-style:italic">Las 4, 5 y 7 incluyen la trampa del exponente o de las dos variables: vigila los «apellidos».</div>
+  </div>
+</div>`},
+
+/* GEOGEBRA */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Práctica GeoGebra',badge:'PRÁCTICA INTERACTIVA',badgeColor:'#1A6B5A',clicks:0,fL:'Sem. 3 · Sesión 2 · GeoGebra (entre grupos)',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="slide-title">GeoGebra — agrupar semejantes entre grupos</div>
+    <div class="slide-instr">Práctica de formalización: reduce reconociendo semejantes aunque estén separados.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1.7fr 1fr;gap:var(--gap);align-items:start">
+  <div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:8px;overflow:hidden">
+    <iframe title="PR2-07-ET2: Like Terms Across Groups" src="https://www.geogebra.org/material/iframe/id/auccbg3g/width/800/height/600/border/DEDBD3/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" style="width:100%;height:clamp(280px,48vh,470px);border:0;border-radius:10px" loading="lazy" allowfullscreen allow="fullscreen"></iframe>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="background:var(--warm);border-radius:12px;padding:clamp(10px,1.4vh,16px)">
+      <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:6px">Instrucciones (en español)</div>
+      <ul style="margin:0;padding-left:20px;font-size:var(--fs-sm);color:var(--text2);line-height:1.65"><li>Observa los distintos grupos de términos que aparecen en pantalla.</li><li>Reconoce los semejantes aunque estén en grupos o posiciones distintas.</li><li>Suma o resta los coeficientes de cada familia de términos semejantes.</li><li>Recuerda: distinto exponente o distinta variable = NO son semejantes.</li><li>Comprueba tu resultado con el botón del applet.</li></ul>
+    </div>
+    <div style="font-size:var(--fs-sm);color:var(--text2)"><strong>Pantalla completa:</strong> toca el botón ⛶ en la esquina del applet para ampliarlo.</div>
+    <a class="video-link" href="https://www.geogebra.org/m/auccbg3g" target="_blank" rel="noopener">▶ Abrir en GeoGebra</a>
+    <div style="font-size:var(--fs-xs);color:var(--text3);font-style:italic">Autor: cemccourseware · «PR2-07-ET2 (Like Terms Across Groups)» · geogebra.org</div>
+  </div>
+</div>`},
+
+/* 9 — DIVISOR SESIÓN 3 */
+{noH:true,noF:true,clicks:0,cls:'s-portada',html:`
+<div class="portada-inner">
+  <div class="p-area">Semana 3 · Términos semejantes</div>
+  <div class="p-title" style="font-size:var(--fs-2xl)">Sesión 3 — Yo agrupo solo</div>
+  <div class="p-sub">Práctica independiente, error frecuente y cierre</div>
+  <div class="p-divider"></div>
+  <div class="p-card-grid">
+    <div class="p-card"><div class="p-card-num">⚠️</div><div class="p-card-title">Error</div><div class="p-card-sub">El enemigo del exponente: \\(3x^2 + 5x\\)</div></div>
+    <div class="p-card"><div class="p-card-num">✏️</div><div class="p-card-title">Tú haces</div><div class="p-card-sub">Práctica, reto contextual y memofichas de cierre</div></div>
+    <div class="p-card"><div class="p-card-num">🎬</div><div class="p-card-title">Recursos y cierre</div><div class="p-card-sub">Videos, tarea y semáforo de comprensión</div></div>
+  </div>
+</div>`},
+
+/* 10 — ERROR FRECUENTE */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Error anticipado',badge:' ERROR FRECUENTE',badgeColor:'#B71C1C',clicks:6,fL:'Sem. 3 · Sesión 3 · Error frecuente',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--red)"></div>
+  <div style="flex:1">
+    <div class="slide-title">El enemigo del exponente — misma letra no basta</div>
+    <div class="slide-instr">¿Se puede simplificar \\(3x^2 + 5x\\)? Escribe tu respuesta antes de avanzar.</div>
+  </div>
+</div>
+<div class="slide-7-layout">
+  <div class="slide-7-col">
+    <div class="error-box">
+      <div class="error-title">⚠ Error más frecuente</div>
+      <div class="error-txt">Ante \\(3x^2 + 5x\\), el estudiante escribe \\(8x^2\\) o \\(8x^3\\), porque cree que «misma letra = se pueden sumar», ignorando que el <strong>exponente</strong> cambia la naturaleza del término.</div>
+    </div>
+    <div class="paso-row" data-c="1" style="border-left-color:var(--blue)"><div class="paso-num" style="background:var(--blue)">A</div><div class="paso-body">\\(x^2\\) es un <strong>ÁREA</strong> (un cuadrado de lado \\(x\\)).</div><div class="paso-note">una región</div></div>
+    <div class="paso-row" data-c="2" style="border-left-color:var(--amber)"><div class="paso-num" style="background:var(--amber)">B</div><div class="paso-body">\\(x\\) es una <strong>LONGITUD</strong> (un segmento). ¿Puedo sumar un área con una longitud y obtener un área mayor? <strong>No.</strong></div><div class="paso-note">una medida distinta</div></div>
+  </div>
+  <div class="slide-7-col">
+    <div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px)">
+      <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:14px">¿Son semejantes?</div>
+      <table class="comp-table">
+        <thead><tr><th>Pareja</th><th>¿Misma variable?</th><th>¿Mismo exponente?</th><th>¿Semejantes?</th></tr></thead>
+        <tbody>
+          <tr class="tabla-row" data-c="3"><td>\\(3x^2,\\ 5x\\)</td><td>Sí</td><td style="color:var(--red)">No</td><td style="color:var(--red);font-weight:800">NO</td></tr>
+          <tr class="tabla-row" data-c="4"><td>\\(3x,\\ 5x\\)</td><td>Sí</td><td style="color:var(--green)">Sí</td><td style="color:var(--green);font-weight:800">SÍ → \\(8x\\)</td></tr>
+          <tr class="tabla-row" data-c="5"><td>\\(2ab,\\ 5ab\\)</td><td>Sí</td><td style="color:var(--green)">Sí</td><td style="color:var(--green);font-weight:800">SÍ → \\(7ab\\)</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:14px;font-size:var(--fs-sm);color:var(--text2);font-style:italic">La semejanza exige <strong>ambas</strong> condiciones: misma variable Y mismo exponente.</div>
+    </div>
+    <div class="checkpoint" data-c="6" style="opacity:0;transition:opacity .4s">
+      <strong>✅ Practica (verificación numérica):</strong> Si \\(x = 2\\), ¿cuánto vale \\(3x^2 + 5x\\)?
+      <input type="text" id="checkpoint-input" placeholder="Tu respuesta"
+             style="padding:8px 12px;border:2.5px solid var(--border);border-radius:6px;margin:8px 0;width:120px;font-size:var(--fs-md)"
+             aria-label="Valor de 3x cuadrado más 5x con x igual a 2">
+      <button type="button" onclick="verificarRespuesta('chk1', '22', '#checkpoint-input')">Verificar</button>
+      <div class="pista" hidden>\\(3(2)^2 + 5(2) = 3(4) + 10 = 12 + 10 = 22\\). No es \\(8x^2\\), porque para \\(x=2\\) eso daría \\(32\\).</div>
+    </div>
+  </div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* 11 — TÚ HACES (consigna; respuestas solo con botón) */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Tú haces',badge:'TÚ HACES',clicks:4,fL:'Sem. 3 · Sesión 3 · Tú haces',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Tú haces — reduce y verifica</div>
+    <div class="slide-instr">Subraya con colores las partes literales. Luego verifica evaluando en \\(x = 2,\\ y = 3\\). Las soluciones se revisan al final con tu compañero.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div class="ex-card" data-c="1" style="border-top-color:var(--green)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--green)">1</div><div class="ex-title">Dos variables</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(7x + 4y - 3x + 2y\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">\\(x\\): \\(7-3=4\\); \\(y\\): \\(4+2=6 \\Rightarrow \\mathbf{4x + 6y}\\)</div>
+  </div>
+  <div class="ex-card" data-c="2" style="border-top-color:var(--blue)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--blue)">2</div><div class="ex-title">Con productos</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(5a^2b - 3ab^2 + 2a^2b + 4ab^2 - a^2b\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">\\(a^2b\\): \\(5+2-1=6\\); \\(ab^2\\): \\(-3+4=1 \\Rightarrow \\mathbf{6a^2b + ab^2}\\)</div>
+  </div>
+  <div class="ex-card" data-c="3" style="border-top-color:var(--teal)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--teal)">3</div><div class="ex-title">Cuida el exponente</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(6x^2y - 4xy + 2x^2y + 3xy - 5x^2y\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">\\(x^2y\\): \\(6+2-5=3\\); \\(xy\\): \\(-4+3=-1 \\Rightarrow \\mathbf{3x^2y - xy}\\)</div>
+  </div>
+  <div class="ex-card" data-c="4" style="border-top-color:var(--red)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--red)">4</div><div class="ex-title">Muchos términos</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(-2m + 5n - 7m + 3n - 4m - 2n\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">\\(m\\): \\(-2-7-4=-13\\); \\(n\\): \\(5+3-2=6 \\Rightarrow \\mathbf{-13m + 6n}\\)</div>
+  </div>
+</div>
+<div class="evidencia-box" id="evidencia-box">
+  <h4>📋 Mis evidencias de aprendizaje</h4>
+  <ul>
+    <li>Reduje las cuatro expresiones identificando partes literales con colores.</li>
+    <li>Verifiqué al menos una evaluando la original y la simplificada en \\(x=2,\\ y=3\\).</li>
+    <li>Construí un ejemplo propio de dos términos NO semejantes fáciles de confundir.</li>
+  </ul>
+  <button class="btn-exportar" onclick="exportarEvidencia()"> Guardar para el portafolio</button>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e)e.classList.add('vis')});if(n===4){const ev=document.getElementById('evidencia-box');if(ev)ev.classList.add('visible');}}},
+
+/* S3+ — TÚ HACES RONDA 2 */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Tú haces (ronda 2)',badge:'TÚ HACES',clicks:4,fL:'Sem. 3 · Sesión 3 · Tú haces — reto',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Tú haces — ronda 2 y reto contextual</div>
+    <div class="slide-instr">Trabaja en tu cuaderno. Las soluciones se revisan al final con tu compañero; usa «Verificar» solo después de intentarlo.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div class="ex-card" data-c="1" style="border-top-color:var(--green)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--green)">1</div><div class="ex-title">Dos variables</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(9p - 4q + 2p - 5q + p\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">\\(p\\): \\(9+2+1=12\\); \\(q\\): \\(-4-5=-9 \\Rightarrow \\mathbf{12p - 9q}\\)</div>
+  </div>
+  <div class="ex-card" data-c="2" style="border-top-color:var(--blue)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--blue)">2</div><div class="ex-title">Cuida el exponente</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(6x^2 + 3x - 2x^2 - 5x + x^2\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">\\(x^2\\): \\(6-2+1=5\\); \\(x\\): \\(3-5=-2 \\Rightarrow \\mathbf{5x^2 - 2x}\\)</div>
+  </div>
+  <div class="ex-card" data-c="3" style="border-top-color:var(--teal)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--teal)">3</div><div class="ex-title">Productos parecidos</div></div>
+    <div class="ex-task" style="font-size:var(--fs-md)">\\(4ab + 7a^2b - ab - 2a^2b + 3ab\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">\\(ab\\): \\(4-1+3=6\\); \\(a^2b\\): \\(7-2=5 \\Rightarrow \\mathbf{6ab + 5a^2b}\\)</div>
+  </div>
+  <div class="ex-card" data-c="4" style="border-top-color:var(--amber)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--amber)">4</div><div class="ex-title">🚀 Reto — Plaza Minorista</div></div>
+    <div class="ex-task" style="font-size:var(--fs-sm);line-height:1.5">Doña Rosa registra su inventario: el lunes \\(8m + 5a + 3l\\); el martes recibe \\(6m + 2a\\); el miércoles vende \\(4m + 3a + 1l\\). Escribe el inventario total y redúcelo.</div>
+    <button type="button" class="btn-desafio" onclick="toggleContent(this,'contenido-desafio')">🚀 Verificar</button>
+    <div class="contenido-desafio">Sumar lo recibido y restar lo vendido: \\(m\\): \\(8+6-4=10\\); \\(a\\): \\(5+2-3=4\\); \\(l\\): \\(3-1=2 \\Rightarrow \\mathbf{10m + 4a + 2l}\\)</div>
+  </div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* GEOGEBRA */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Práctica GeoGebra',badge:'PRÁCTICA INTERACTIVA',badgeColor:'#1A6B5A',clicks:0,fL:'Sem. 3 · Sesión 3 · GeoGebra (quiz multinivel)',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="slide-title">GeoGebra — reto por niveles (autoevaluación)</div>
+    <div class="slide-instr">Práctica independiente multinivel (DUA): avanza a tu ritmo y mide tu dominio.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1.7fr 1fr;gap:var(--gap);align-items:start">
+  <div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:8px;overflow:hidden">
+    <iframe title="AF3: Multilevel Quiz on Combining Like Terms" src="https://www.geogebra.org/material/iframe/id/prarwjsp/width/800/height/600/border/DEDBD3/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" style="width:100%;height:clamp(280px,48vh,470px);border:0;border-radius:10px" loading="lazy" allowfullscreen allow="fullscreen"></iframe>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="background:var(--warm);border-radius:12px;padding:clamp(10px,1.4vh,16px)">
+      <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:6px">Instrucciones (en español)</div>
+      <ul style="margin:0;padding-left:20px;font-size:var(--fs-sm);color:var(--text2);line-height:1.65"><li>Es un cuestionario por niveles: empieza en el nivel 1.</li><li>En cada pregunta combina los términos semejantes y escribe la respuesta.</li><li>Acierta para subir de nivel; reta a llegar al nivel más alto.</li><li>Usa el nivel que alcanzaste para tu semáforo de autoevaluación del cierre.</li></ul>
+    </div>
+    <div style="font-size:var(--fs-sm);color:var(--text2)"><strong>Pantalla completa:</strong> toca el botón ⛶ en la esquina del applet para ampliarlo.</div>
+    <a class="video-link" href="https://www.geogebra.org/m/prarwjsp" target="_blank" rel="noopener">▶ Abrir en GeoGebra</a>
+    <div style="font-size:var(--fs-xs);color:var(--text3);font-style:italic">Autor: Ronan Downes / Alex Chik · «AF3: Multilevel Quiz on Combining Like Terms» · geogebra.org</div>
+  </div>
+</div>`},
+
+/* S3+ — MEMOFICHAS */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Memofichas (cierre)',badge:'CONSOLIDACIÓN',badgeColor:'#1A6B5A',clicks:6,fL:'Sem. 3 · Sesión 3 · Memofichas — empareja y reduce',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Memofichas — empareja cada expresión con su forma reducida</div>
+    <div class="slide-instr">En parejas, voltean dos fichas: una expresión y una forma reducida. Si coinciden, se quedan con el par. Revisamos al final (clic para confirmar cada pareja).</div>
+  </div>
+</div>
+<div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:clamp(12px,1.6vh,20px) clamp(16px,2vw,26px)">
+  <table class="comp-table">
+    <thead><tr><th>Ficha A — expresión</th><th>Ficha B — forma reducida</th></tr></thead>
+    <tbody>
+      <tr><td>\\(3x + 5x\\)</td><td><span data-c="1" style="opacity:0;transition:opacity .3s;font-weight:800;color:var(--green)">\\(8x\\)</span></td></tr>
+      <tr><td>\\(7a - 3a\\)</td><td><span data-c="2" style="opacity:0;transition:opacity .3s;font-weight:800;color:var(--green)">\\(4a\\)</span></td></tr>
+      <tr><td>\\(6xy - 2xy\\)</td><td><span data-c="3" style="opacity:0;transition:opacity .3s;font-weight:800;color:var(--green)">\\(4xy\\)</span></td></tr>
+      <tr><td>\\(4x^2 + x^2\\)</td><td><span data-c="4" style="opacity:0;transition:opacity .3s;font-weight:800;color:var(--green)">\\(5x^2\\)</span></td></tr>
+      <tr><td>\\(5b + 2b - 3b\\)</td><td><span data-c="5" style="opacity:0;transition:opacity .3s;font-weight:800;color:var(--green)">\\(4b\\)</span></td></tr>
+      <tr style="border-left:4px solid var(--red)"><td>\\(2m + 3m^2\\) <span style="font-size:var(--fs-xs);color:var(--red)">(¡ojo!)</span></td><td><span data-c="6" style="opacity:0;transition:opacity .3s;font-weight:800;color:var(--red)">\\(2m + 3m^2\\) — ya está reducida</span></td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:12px;font-size:var(--fs-sm);color:var(--text2);font-style:italic">La última ficha es la trampa: \\(2m\\) y \\(3m^2\\) no son semejantes, así que la pareja correcta es la MISMA expresión sin cambios.</div>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e){e.classList.add('vis');e.style.opacity='1'}});announceToScreenReader(`Paso ${n} revelado`);}},
+
+/* 12 — RECURSOS AUDIOVISUALES */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Recursos audiovisuales',badge:'RECURSOS',badgeColor:'#1C3A6E',clicks:0,fL:'Sem. 3 · Sesión 3 · Recursos',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Recursos audiovisuales de apoyo</div>
+    <div class="slide-instr">Para refuerzo en casa o práctica guiada antes de la próxima sesión.</div>
+  </div>
+</div>
+<div class="video-row">
+  <div class="video-card">
+    <div class="video-lbl">Video principal · Construcción</div>
+    <div class="video-title">Términos semejantes (Matemáticas con Juan)</div>
+    <div class="video-desc">Explicación clara del concepto con ejercicios progresivos. Pertinente para el momento de construcción o como repaso antes de la sesión.</div>
+    <a class="video-link" href="https://www.youtube.com/watch?v=_0vaN7XMUsg" target="_blank" rel="noopener">▶ Ver en YouTube</a>
+  </div>
+  <div class="video-card">
+    <div class="video-lbl">Video complementario · Consolidación</div>
+    <div class="video-title">Reducción de términos semejantes — Ejemplo 1 (Julioprofe)</div>
+    <div class="video-desc">Ejercicios resueltos paso a paso. Ideal como apoyo para la tarea de consolidación en casa.</div>
+    <a class="video-link" href="https://www.youtube.com/watch?v=FDZ18L6kooQ" target="_blank" rel="noopener">▶ Ver en YouTube</a>
+  </div>
+</div>
+<div style="margin-top:var(--gap);background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px)">
+  <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:12px">Tarea de consolidación</div>
+  <div style="font-size:var(--fs-sm);color:var(--text2);line-height:1.6">
+    <strong>Tarea 1 — «La cuenta del mercado»:</strong> un comerciante de la Plaza Minorista compra en la semana 1: 15 cajas de mangos \\(m\\), 8 de aguacates \\(a\\), 12 de limones \\(l\\); en la semana 2: 9 \\(m\\), 6 \\(a\\), 7 \\(l\\); en la semana 3 vende 20 \\(m\\), 10 \\(a\\), 15 \\(l\\). Escribe la expresión del inventario total y simplifícala. ¿Qué significa un coeficiente negativo en este contexto?<br><br>
+    <strong>Tarea 2 — «Agrupar o no agrupar»:</strong> simplifica identificando primero los términos semejantes con colores y verifica en \\(x=2,\\ y=3\\): (1) \\(7x+4y-3x+2y\\); (2) \\(5a^2b-3ab^2+2a^2b+4ab^2-a^2b\\); (3) \\(6x^2y-4xy+2x^2y+3xy-5x^2y\\); (4) \\(-2m+5n-7m+3n-4m-2n\\).
+  </div>
+</div>`},
+
+/* 13 — METACOGNICIÓN */
+{bread:'Sem. 3  ·  Términos semejantes  ›  Metacognición',badge:'METACOGNICIÓN',badgeColor:'#00695C',clicks:3,fL:'Sem. 3 · Sesión 3 · Cierre y semáforo',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--teal);color:#fff"> Cierre reflexivo</div>
+    <div class="slide-title">¿Cómo le explicarías la regla a alguien que nunca ha visto álgebra?</div>
+  </div>
+</div>
+<div class="meta-q">
+  <div class="meta-qlbl">Pregunta metacognitiva</div>
+  <div class="meta-qtxt">«Si a alguien que nunca ha estudiado álgebra le tuvieras que explicar en un minuto por qué \\(3x + 5x\\) sí se puede simplificar pero \\(3x + 5x^2\\) no, ¿qué ejemplo concreto usarías?»</div>
+</div>
+<div class="espacio-respuesta" contenteditable="true" role="textbox" aria-label="Escribe tu reflexión" style="min-height:90px;margin:var(--gap) 0"></div>
+<div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-top:6px">Semáforo de comprensión — marca tu color y escribe UNA oración de justificación</div>
+<div class="semaforo">
+  <div class="sema-item" data-c="1"><div class="sema-circle" style="background:#27AE60" role="img" aria-label="Verde"></div><div class="sema-txt">Identifico términos semejantes y reduzco con confianza.<span class="sema-sub">Puedo explicar por qué el exponente decide si dos términos se juntan.</span></div></div>
+  <div class="sema-item" data-c="2"><div class="sema-circle" style="background:#E08C20" role="img" aria-label="Ámbar"></div><div class="sema-txt">Entiendo la idea, pero me confundo con productos como \\(x^2y\\) y \\(xy^2\\).<span class="sema-sub">Necesito más ejemplos con dos variables.</span></div></div>
+  <div class="sema-item" data-c="3"><div class="sema-circle" style="background:#C0392B" role="img" aria-label="Rojo"></div><div class="sema-txt">Necesito más práctica antes de seguir.<span class="sema-sub">Veré los videos de apoyo antes de la próxima clase.</span></div></div>
+</div>
+<div style="margin-top:var(--gap);text-align:center">
+  <button class="btn-exportar" onclick="guardarReflexion()">💾 Guardar mi reflexión y semáforo</button>
+</div>`,
+onReveal:n=>{document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e)e.classList.add('vis')});announceToScreenReader(`Opción ${n} resaltada`);}},
+];
+let cur=0,clicks=0;
+const deck=document.getElementById('deck');
+const savedProgress = loadProgress();
+if(savedProgress) { cur = savedProgress.slide; clicks = savedProgress.clicks; }
+
+function buildSlide(idx){
+  const s=SLIDES[idx];
+  const d=document.createElement('div');
+  d.className='slide'+(s.cls?' '+s.cls:'');
+  d.setAttribute('role', 'region');
+  d.setAttribute('aria-label', `Diapositiva ${idx+1} de ${SLIDES.length}`);
+  let h='';
+  if(!s.noH){
+    const bc=s.badgeColor||'var(--blue)';
+    h+=`<header class="hdr"><span class="hdr-b">${s.bread||''}</span>${s.badge?`<span class="hdr-badge" style="background:${bc}">${s.badge}</span>`:''}</header>`;
+  }
+  h+=`<main class="body">${s.html}</main>`;
+  if(!s.noF) h+=`<footer class="ftr"><span>${s.fL||''}</span><span>I.E. Merceditas Gómez Martínez · Álgebra 8°</span></footer>`;
+  d.innerHTML=h; return d;
+}
+
+function show(idx,dir){
+  const prev=deck.querySelector('.slide.active');
+  if(prev) { prev.classList.remove('active','enter-r','enter-l'); prev.querySelectorAll('input').forEach(inp => inp.replaceWith(inp.cloneNode(true))); }
+  const el=buildSlide(idx); deck.appendChild(el);
+  const all=deck.querySelectorAll('.slide'); if(all.length>3) all[0].remove();
+  requestAnimationFrame(()=>{
+    el.classList.add('active',dir>=0?'enter-r':'enter-l');
+    setTimeout(()=>el.classList.remove('enter-r','enter-l'),360);
+    doKatex(el); if(SLIDES[idx].onEnter) SLIDES[idx].onEnter();
+    const title = el.querySelector('.slide-title');
+    if(title) announceToScreenReader(`Diapositiva ${idx+1}: ${title.textContent}`);
+    else announceToScreenReader(`Diapositiva ${idx+1} de ${SLIDES.length}`);
+    const main = el.querySelector('main.body');
+    if(main) main.scrollTop = 0;
+  });
+  clicks=0;
+  document.getElementById('ncnt').textContent=`${idx+1} / ${SLIDES.length}`;
+  document.getElementById('pbar').style.width=(((idx+1)/SLIDES.length)*100)+'%';
+  document.getElementById('pbar').setAttribute('aria-valuenow', idx+1);
+  saveProgress(idx, 0);
+}
+
+function doKatex(el){
+  if(window.renderMathInElement) renderMathInElement(el,{
+    delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true},{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+    throwOnError:false, macros:{"\\ee":"\\mathrm{e}"}
+  });
+}
+
+function advance(){
+  const s=SLIDES[cur];
+  const maxClicks = s.clicks || 0;
+  if(clicks < maxClicks){
+    clicks++;
+    if(s.onReveal) s.onReveal(clicks);
+    announceToScreenReader(`Paso ${clicks} de ${maxClicks}`);
+    saveProgress(cur, clicks);
+    return;
+  }
+  if(cur<SLIDES.length-1){ cur++; show(cur,1); }
+  else { showFeedback('¡Has completado la lección! 🎉 Revisa tus evidencias guardadas.'); announceToScreenReader('Lección completada. Puedes repasar las diapositivas o guardar tus evidencias.'); }
+}
+function retreat(){ if(cur>0){ cur--; show(cur,-1); } }
+
+document.addEventListener('keydown',e=>{
+  if(['Space','ArrowRight','ArrowLeft'].includes(e.code)) e.preventDefault();
+  if(e.code==='Space'||e.code==='ArrowRight') advance();
+  if(e.code==='ArrowLeft') retreat();
+  if(e.code==='KeyF') document.getElementById('fs-btn')?.click();
+});
+
+const btnNext = document.getElementById('bn');
+const btnPrev = document.getElementById('bp');
+if(btnNext) btnNext.addEventListener('click', advance);
+if(btnPrev) btnPrev.addEventListener('click', retreat);
+
+let tx=0;
+document.addEventListener('touchstart',e=>{ if(e.touches?.[0]) tx = e.touches[0].clientX; },{passive:true});
+document.addEventListener('touchend',e=>{
+  const touch = e.changedTouches?.[0]; if(!touch) return;
+  const dx = touch.clientX - tx;
+  if(Math.abs(dx) > 50) { dx < 0 ? advance() : retreat(); }
+});
+
+const fsBtn = document.getElementById('fs-btn');
+if(fsBtn) {
+  fsBtn.addEventListener('click', async () => {
+    try {
+      if(!document.fullscreenElement) await document.documentElement.requestFullscreen();
+      else await document.exitFullscreen();
+    } catch(err) { console.warn('Fullscreen no disponible:', err); showFeedback('Pantalla completa no disponible en este dispositivo', true); }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    if(fsBtn) fsBtn.textContent = document.fullscreenElement ? '✕' : '⛶';
+    fsBtn?.setAttribute('aria-label', document.fullscreenElement ? 'Salir de pantalla completa' : 'Entrar en pantalla completa');
+  });
+}
+
+setTimeout(()=>{ const hint = document.getElementById('hint'); if(hint) hint.style.opacity='0'; },5000);
+document.addEventListener('katex-ready',()=>{ const a=deck.querySelector('.slide.active'); if(a) doKatex(a); });
+show(savedProgress?.slide || 0, 1);
+window.addEventListener('beforeunload', () => { const saved = loadProgress(); if(saved && Date.now() - saved.timestamp > 86400000) localStorage.removeItem('algebra8_sem3_progress'); });
+</script>
+</body>
+</html>

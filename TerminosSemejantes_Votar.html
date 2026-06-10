@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Votación · ¿Términos semejantes? · Álgebra 8°</title>
+<style>
+  :root{
+    --navy:#0F2040; --blue:#1C3A6E; --green:#1A6B5A; --red:#B83232;
+    --cream:#F7F6F2; --warm:#EDECEA; --border:#DEDBD3; --text:#1C1C1E; --text2:#3A3A3C;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--cream);color:var(--text);padding:16px;line-height:1.4}
+  header{text-align:center;margin-bottom:14px}
+  h1{font-size:20px;margin:0 0 4px;color:var(--navy)}
+  .sub{font-size:14px;color:var(--text2);margin:0}
+  .card{background:#fff;border:2px solid var(--border);border-radius:14px;
+    padding:14px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .pair{font-size:22px;font-weight:800;text-align:center;color:var(--navy);margin-bottom:10px}
+  .qn{font-size:13px;color:var(--text2);text-align:center;margin-bottom:6px}
+  .btns{display:flex;gap:10px}
+  button{flex:1;font-size:16px;font-weight:700;padding:14px 8px;border-radius:10px;
+    border:2px solid;cursor:pointer;background:#fff;transition:.15s}
+  .si{color:var(--green);border-color:var(--green)}
+  .no{color:var(--red);border-color:var(--red)}
+  button:active{transform:scale(.97)}
+  .card.voted .btns{opacity:.5;pointer-events:none}
+  .card.voted button.chosen{opacity:1;color:#fff}
+  .card.voted button.chosen.si{background:var(--green)}
+  .card.voted button.chosen.no{background:var(--red)}
+  .done{font-size:13px;font-weight:700;text-align:center;margin-top:8px;min-height:18px}
+  .done.ok{color:var(--green)}
+  .done.err{color:var(--red)}
+  footer{text-align:center;font-size:12px;color:var(--text2);margin-top:10px}
+  .progress{position:sticky;top:0;background:var(--cream);padding:6px 0 10px;
+    text-align:center;font-size:14px;font-weight:700;color:var(--blue)}
+</style>
+</head>
+<body>
+<header>
+  <h1>¿Son términos semejantes?</h1>
+  <p class="sub">Toca tu respuesta en cada par. Solo cuentan una vez.</p>
+</header>
+<div class="progress" id="progress">Respondidas: 0 / 6</div>
+<div id="cards"></div>
+<footer>Álgebra 8° · I.E. Merceditas Gómez Martínez</footer>
+
+<script>
+  // ====== Configuración Firebase (mismo RTDB del colegio) ======
+  const FB = "https://fracciones-merceditas-default-rtdb.firebaseio.com";
+  const NS = "semejantes"; // espacio de nombres propio para no chocar con otras votaciones
+  const DATE = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+  // Identificador anónimo por dispositivo (evita doble conteo del mismo celular)
+  let DEVICE = localStorage.getItem('vot_device');
+  if(!DEVICE){ DEVICE = 'd'+Math.random().toString(36).slice(2,10); localStorage.setItem('vot_device', DEVICE); }
+
+  // Los 6 pares (mismo orden que el tablero del docente)
+  const PAIRS = [
+    {q:1, text:"3x  y  5x"},
+    {q:2, text:"4x²  y  7x"},
+    {q:3, text:"2m  y  9n"},
+    {q:4, text:"6  y  10"},
+    {q:5, text:"5ab  y  2ab"},
+    {q:6, text:"3a²b  y  4ab²"}
+  ];
+
+  const cardsEl = document.getElementById('cards');
+  let answered = 0;
+
+  function lockKey(q){ return 'vot_'+NS+'_'+DATE+'_q'+q; }
+
+  function updateProgress(){
+    document.getElementById('progress').textContent = 'Respondidas: '+answered+' / 6';
+  }
+
+  async function sendVote(q, choice, card, btn){
+    const done = card.querySelector('.done');
+    try{
+      const res = await fetch(FB+'/'+NS+'/'+DATE+'/q'+q+'/'+DEVICE+'.json', {
+        method:'PUT', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(choice)
+      });
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      localStorage.setItem(lockKey(q), choice);
+      card.classList.add('voted');
+      btn.classList.add('chosen');
+      done.textContent = '✓ Enviado';
+      done.className = 'done ok';
+      answered++; updateProgress();
+    }catch(err){
+      done.textContent = 'No se pudo enviar. Revisa tu conexión y vuelve a tocar.';
+      done.className = 'done err';
+    }
+  }
+
+  PAIRS.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.q = p.q;
+    card.innerHTML =
+      '<div class="qn">Par '+p.q+' de 6</div>'+
+      '<div class="pair">'+p.text+'</div>'+
+      '<div class="btns">'+
+        '<button class="si">Semejantes ✓</button>'+
+        '<button class="no">No ✗</button>'+
+      '</div>'+
+      '<div class="done"></div>';
+    const bSi = card.querySelector('.si');
+    const bNo = card.querySelector('.no');
+    bSi.addEventListener('click', ()=>sendVote(p.q,'si',card,bSi));
+    bNo.addEventListener('click', ()=>sendVote(p.q,'no',card,bNo));
+
+    // Si ya votó hoy este par, bloquear
+    const prev = localStorage.getItem(lockKey(p.q));
+    if(prev){
+      card.classList.add('voted');
+      (prev==='si'?bSi:bNo).classList.add('chosen');
+      const done = card.querySelector('.done');
+      done.textContent = '✓ Ya respondiste'; done.className='done ok';
+      answered++;
+    }
+    cardsEl.appendChild(card);
+  });
+  updateProgress();
+</script>
+</body>
+</html>
