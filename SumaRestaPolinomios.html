@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="description" content="Recurso educativo interactivo: Suma y resta de polinomios - Álgebra 8° - I.E. Merceditas Gómez Martínez, Medellín">
+<meta property="og:title" content="Álgebra 8° · Suma y Resta de Polinomios">
+<meta property="og:description" content="Aprende a sumar y restar polinomios con contextos reales de Medellín">
+<meta property="og:type" content="website">
+<title>Álgebra 8° · Sem. 4 · Suma y Resta de Polinomios · I.E. Merceditas Gómez Martínez</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="window._katexReady=true;document.dispatchEvent(new Event('katex-ready'))"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F2040;--blue:#1C3A6E;--blue-mid:#2E75B6;
+  --green:#2E7D32;--teal:#00695C;--amber:#C47C1A;--red:#7B1818;
+  --green-b:#27AE60;--amber-b:#E08C20;--red-b:#9B2020;
+  --cream:#F7F6F2;--warm:#EDECEA;--border:#C0BDB4;
+  --text:#1C1C1E;--text2:#3A3A3C;--text3:#6B6B6E;
+  --fs-xs:clamp(18px, 1.25vw, 26px);
+  --fs-sm:clamp(22px, 1.6vw, 32px);
+  --fs-md:clamp(26px, 2vw, 40px);
+  --fs-lg:clamp(32px, 2.6vw, 50px);
+  --fs-xl:clamp(38px, 3.2vw, 62px);
+  --fs-2xl:clamp(48px, 4.2vw, 80px);
+  --fs-3xl:clamp(60px, 5.8vw, 105px);
+  --gap:clamp(14px, 1.6vw, 22px);
+  --pad:clamp(20px, 2.8vw, 40px);
+  --line-h:1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+  }
+}
+.nbtn:focus, #fs-btn:focus, .video-link:focus, button:focus {
+  outline: 3px solid var(--amber-b); outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(224,140,32,0.3);
+}
+.sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+
+html,body{width:100%;height:100%;overflow:hidden;background:#0a101e;
+  font-family:'DM Sans',system-ui,sans-serif; font-size:16px; line-height:var(--line-h)}
+#deck{width:100vw;height:100vh;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;background:var(--cream)}
+.slide.active{opacity:1;pointer-events:all}
+.slide.enter-r{animation:inR .32s cubic-bezier(.22,.68,0,1.1) forwards}
+.slide.enter-l{animation:inL .32s cubic-bezier(.22,.68,0,1.1) forwards}
+@keyframes inR{from{transform:translateX(3.5%);opacity:0}to{transform:none;opacity:1}}
+@keyframes inL{from{transform:translateX(-3.5%);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+header.hdr{background:var(--navy);height:clamp(44px,5.2vh,60px);display:flex;align-items:center;
+  padding:0 var(--pad);justify-content:space-between;flex-shrink:0}
+.hdr-b{font-size:var(--fs-xs);font-weight:500;color:#A8C4E8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-badge{background:var(--blue);color:#fff;font-size:var(--fs-xs);font-weight:800;
+  padding:6px clamp(12px,1.8vw,22px);border-radius:6px;letter-spacing:.08em;
+  text-transform:uppercase;white-space:nowrap;flex-shrink:0;margin-left:14px}
+
+footer.ftr{background:var(--warm);border-top:2px solid var(--border);height:clamp(36px,4vh,48px);
+  display:flex;align-items:center;padding:0 var(--pad);justify-content:space-between;flex-shrink:0}
+.ftr span{font-size:var(--fs-xs);color:var(--text3);font-weight:500}
+
+main.body {
+  flex: 1; overflow-y: auto; overflow-x: hidden; min-height: 0; scroll-behavior: smooth;
+  padding: clamp(16px,2.2vh,28px) var(--pad) clamp(12px,1.5vh,20px);
+  display: flex; flex-direction: column; gap: var(--gap);
+}
+main.body::-webkit-scrollbar { width: 6px; }
+main.body::-webkit-scrollbar-track { background: transparent; }
+main.body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+main.body::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+
+/* ── PORTADA ─────────────────────────────────────────── */
+.s-portada{background:var(--red)}
+.portada-inner{width:100%;max-width:1400px;margin:0 auto;
+  padding:clamp(36px,6vh,80px) clamp(48px,7vw,100px);
+  display:flex;flex-direction:column;gap:clamp(16px,2.8vh,32px)}
+.p-ie{font-size:var(--fs-sm);color:rgba(255,210,210,.85);text-align:center;letter-spacing:.05em}
+.p-area{font-size:var(--fs-md);font-weight:700;color:rgba(255,210,210,.95);
+  text-align:center;letter-spacing:.16em;text-transform:uppercase}
+.p-title{font-family:'DM Serif Display',serif;font-size:var(--fs-3xl);
+  color:#fff;text-align:center;line-height:1.05;animation:fadeUp .9s .1s both}
+.p-sub{font-size:var(--fs-xl);color:rgba(255,220,220,.9);text-align:center;
+  font-style:italic;animation:fadeUp .9s .25s both}
+.p-divider{height:3px;background:rgba(255,255,255,.25);border-radius:2px; margin:clamp(8px,1.5vh,14px) 0}
+.p-card-grid{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(12px,1.4vw,20px);animation:fadeUp .9s .4s both}
+.p-card{background:rgba(255,255,255,.09);border:2px solid rgba(255,255,255,.18);
+  border-radius:14px;padding:clamp(18px,2.2vh,30px) clamp(14px,1.8vw,24px);
+  display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.p-card-num{width:clamp(48px,5vw,64px);height:clamp(48px,5vw,64px);border-radius:50%;
+  background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;
+  font-size:var(--fs-lg);font-weight:700;color:#fff}
+.p-card-title{font-size:var(--fs-lg);font-weight:700;color:#fff;line-height:1.15}
+.p-card-sub{font-size:var(--fs-sm);color:rgba(255,210,210,.8);font-style:italic;line-height:1.4}
+.p-docente{font-size:var(--fs-sm);color:rgba(255,200,200,.7);text-align:right;font-style:italic}
+
+/* ── ELEMENTOS DE SLIDES ─────────────────────────────── */
+.title-row{display:flex;align-items:flex-start;gap:16px}
+.accent-bar{width:clamp(10px,1vw,14px);border-radius:6px;flex-shrink:0;align-self:stretch;min-height:48px}
+.slide-title{font-family:'DM Serif Display',serif;
+  font-size:var(--fs-xl);color:var(--navy);line-height:1.08}
+.slide-instr{font-size:var(--fs-md);color:var(--text2);font-style:italic;margin-top:6px;line-height:1.4}
+.badge{display:inline-flex;align-items:center;font-size:var(--fs-sm);font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:6px;margin-bottom:4px}
+
+.activacion-previa{
+  background:var(--warm);border-left:5px solid var(--blue-mid);
+  border-radius:0 10px 10px 0;padding:clamp(14px,1.6vh,22px) clamp(16px,2vw,28px);
+  font-size:var(--fs-md);color:var(--text2);margin-bottom:var(--gap);font-style:italic}
+.activacion-previa strong{color:var(--navy);font-style:normal}
+
+.det-box{background:#FFF8ED;border:3px solid var(--amber);border-radius:14px;
+  padding:clamp(16px,2vh,24px) clamp(18px,2.2vw,30px);
+  display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px)}
+.det-label{font-size:var(--fs-sm);font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber)}
+.det-text{font-family:'DM Serif Display',serif;
+  font-size:var(--fs-lg);color:var(--text);line-height:1.55;font-style:italic}
+.det-q{font-size:var(--fs-xl);font-weight:800;color:var(--navy);line-height:1.35}
+
+/* ── PASO A PASO (YO HAGO) ────────────────────────────── */
+.paso-row{display:flex;align-items:center;gap:clamp(12px,1.4vw,20px);
+  background:#fff;border:2px solid var(--border);border-radius:12px;
+  padding:clamp(12px,1.4vh,20px) clamp(16px,2vw,26px);border-left:6px solid var(--red);
+  opacity:0;transform:translateY(14px);transition:opacity .4s,transform .4s}
+.paso-row.vis{opacity:1;transform:none}
+.paso-num{width:clamp(32px,3.4vw,48px);height:clamp(32px,3.4vw,48px);border-radius:50%;
+  background:var(--red);display:flex;align-items:center;justify-content:center;
+  font-size:var(--fs-md);font-weight:800;color:#fff;flex-shrink:0}
+.paso-lbl{font-size:var(--fs-sm);font-weight:800;color:var(--red);
+  flex-shrink:0;min-width:clamp(110px,12vw,160px)}
+.paso-body{font-size:var(--fs-md);color:var(--text);flex:1;line-height:1.4}
+.paso-note{font-size:var(--fs-xs);color:var(--text3);font-style:italic;
+  text-align:right;flex-shrink:0}
+
+.result-bar{background:var(--navy);border-radius:12px;
+  padding:clamp(14px,1.8vh,24px) clamp(18px,2.2vw,30px);
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  font-size:var(--fs-2xl);font-weight:800;color:var(--amber-b);text-align:center;
+  opacity:0;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.result-bar.vis{opacity:1;transform:none}
+
+/* ── FORMAL BOX ──────────────────────────────────────── */
+.formal-box{background:var(--warm);border:3px solid var(--red);border-radius:14px;
+  padding:clamp(16px,2vh,28px) clamp(18px,2.2vw,32px);
+  display:flex;flex-direction:column;gap:clamp(14px,1.8vh,22px);align-items:stretch}
+.formal-title{font-size:var(--fs-lg);font-weight:800;color:var(--red);text-align:center}
+.formal-step{background:#fff;border:2px solid var(--border);border-radius:10px;
+  padding:clamp(12px,1.4vh,20px) clamp(16px,2vw,24px);
+  display:flex;align-items:center;gap:16px;width:100%;
+  opacity:0;transition:opacity .4s}
+.formal-step.vis{opacity:1}
+.formal-step-n{width:clamp(32px,3.4vw,44px);height:clamp(32px,3.4vw,44px);border-radius:50%;
+  background:var(--red);display:flex;align-items:center;justify-content:center;
+  font-size:var(--fs-md);font-weight:800;color:#fff;flex-shrink:0}
+.formal-step-txt{font-size:var(--fs-md);color:var(--text);line-height:1.4}
+.conj-box{background:#FCE4E4;border:3px solid var(--red);border-radius:12px;
+  padding:clamp(12px,1.4vh,20px) clamp(16px,2vw,24px);
+  font-size:var(--fs-md);color:var(--red);font-style:italic;line-height:1.5;
+  opacity:0;transition:opacity .4s}
+.conj-box.vis{opacity:1}
+
+/* ── FICHAS ALGEBRAICAS ──────────────────────────────── */
+.fichas-layout{display:flex;gap:var(--gap);align-items:flex-start;flex-wrap:wrap}
+.fichas-panel{background:var(--navy);border-radius:14px;
+  padding:clamp(18px,2.2vh,28px) clamp(18px,2.2vw,28px);
+  display:flex;flex-direction:column;gap:clamp(12px,1.4vh,18px);
+  flex:0 0 auto;min-width:clamp(220px,22vw,300px)}
+.fichas-title{font-size:var(--fs-xs);font-weight:800;color:#A8C4E8;
+  text-transform:uppercase;letter-spacing:.12em;text-align:center}
+.fichas-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.ficha{display:inline-flex;align-items:center;justify-content:center;
+  border-radius:8px;font-weight:800;font-size:var(--fs-md);
+  width:clamp(44px,4.8vw,66px);height:clamp(44px,4.8vw,66px);
+  border:3px solid rgba(255,255,255,.3);color:#fff;
+  transition:transform .2s}
+.ficha:hover{transform:scale(1.08)}
+.ficha-x2{background:#1C3A6E}
+.ficha-x{background:#2E75B6}
+.ficha-1{background:#2E7D32}
+.ficha-neg{background:#7B1818}
+.fichas-legend{font-size:var(--fs-xs);color:rgba(255,255,255,.6);text-align:center;font-style:italic}
+
+/* ── TARJETAS HACEMOS / TÚ HACES ─────────────────────── */
+.ex-card{background:#fff;border-radius:14px;border:2.5px solid var(--border);
+  border-top:6px solid transparent;
+  padding:clamp(14px,1.8vh,22px) clamp(14px,1.8vw,22px);
+  display:flex;flex-direction:column;gap:clamp(10px,1.2vh,14px);
+  opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s}
+.ex-card.vis{opacity:1;transform:none}
+.ex-head{display:flex;align-items:center;gap:14px}
+.ex-num{width:clamp(32px,3.4vw,48px);height:clamp(32px,3.4vw,48px);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:var(--fs-md);color:#fff;flex-shrink:0}
+.ex-title{font-size:var(--fs-md);font-weight:800;color:var(--text)}
+.ex-ctx{font-size:var(--fs-sm);color:var(--text2);font-style:italic;line-height:1.4}
+.ex-task{background:var(--warm);border-radius:10px;
+  padding:clamp(12px,1.4vh,18px) clamp(14px,1.8vw,20px);
+  font-size:var(--fs-md);font-weight:800;color:var(--navy);text-align:center;
+  border:2px solid var(--border)}
+
+/* ── TABLA COMPARATIVA SUMA / RESTA ─────────────────── */
+.comp-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm)}
+.comp-table th{background:var(--red);color:#fff;
+  padding:clamp(10px,1.2vh,16px) clamp(12px,1.5vw,20px);text-align:left}
+.comp-table td{padding:clamp(10px,1.2vh,15px) clamp(12px,1.5vw,20px);
+  border-bottom:2px solid var(--border);color:var(--text);
+  vertical-align:top;line-height:1.4}
+.comp-table tr:nth-child(even) td{background:#fff}
+.comp-table tr:nth-child(odd) td{background:var(--warm)}
+.comp-table td:first-child{font-weight:800;color:var(--red);background:#FCE4E4!important}
+.comp-table tr.tabla-row{opacity:0;transition:opacity .4s}
+.comp-table tr.tabla-row.vis{opacity:1}
+
+/* ── ERROR BOX ───────────────────────────────────────── */
+.error-box{background:#FFF0F0;border:3px solid var(--red-b);border-radius:14px;
+  padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px);
+  display:flex;flex-direction:column;gap:clamp(8px,1vh,12px)}
+.error-title{font-size:var(--fs-sm);font-weight:800;color:var(--red-b)}
+.error-txt{font-size:var(--fs-sm);color:var(--text);line-height:1.55}
+.error-row{opacity:0;transition:opacity .4s}
+.error-row.vis{opacity:1}
+
+/* ── METACOGNICIÓN ───────────────────────────────────── */
+.meta-q{background:#E0F2F1;border:3px solid var(--teal);border-radius:14px;
+  padding:clamp(14px,1.8vh,24px) clamp(16px,2vw,28px)}
+.meta-qlbl{font-size:var(--fs-sm);font-weight:800;color:var(--teal);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.meta-qtxt{font-family:'DM Serif Display',serif;font-size:var(--fs-lg);
+  color:var(--text);font-style:italic;line-height:1.5}
+
+.semaforo{display:flex;flex-direction:column;gap:clamp(10px,1.2vh,16px);margin-top:var(--gap)}
+.sema-item{display:flex;align-items:flex-start;gap:clamp(14px,1.6vw,22px);
+  background:#fff;border:2px solid var(--border);border-radius:12px;
+  padding:clamp(12px,1.4vh,18px) clamp(14px,1.8vw,22px);
+  opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s}
+.sema-item.vis{opacity:1;transform:none}
+.sema-circle{width:clamp(36px,4vw,54px);height:clamp(36px,4vw,54px);border-radius:50%;flex-shrink:0}
+.sema-txt{font-size:var(--fs-md);color:var(--text);font-weight:600;line-height:1.4}
+.sema-sub{display:block;font-size:var(--fs-xs);color:var(--text3);font-weight:400;
+  font-style:italic;margin-top:6px}
+
+/* ── RECURSOS AUDIOVISUALES ─────────────────────────── */
+.video-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.video-card{background:#fff;border:2.5px solid var(--border);border-radius:14px;
+  padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,26px);
+  display:flex;flex-direction:column;gap:12px;border-top:5px solid var(--red)}
+.video-lbl{font-size:var(--fs-xs);font-weight:800;color:var(--red);
+  text-transform:uppercase;letter-spacing:.1em}
+.video-title{font-size:var(--fs-md);font-weight:700;color:var(--navy);line-height:1.35}
+.video-desc{font-size:var(--fs-sm);color:var(--text2);line-height:1.5;font-style:italic}
+.video-link{display:inline-flex;align-items:center;gap:8px;
+  background:var(--red);color:#fff;text-decoration:none;
+  padding:8px 18px;border-radius:8px;font-size:var(--fs-sm);font-weight:700;
+  align-self:flex-start;transition:background .2s}
+.video-link:hover{background:var(--red-b)}
+
+/* ── CHECKPOINT / PISTA ──────────────────────────────── */
+.checkpoint{background:#E8F4FD;border:2.5px solid var(--blue-mid);border-radius:12px;
+  padding:clamp(12px,1.4vh,18px) clamp(14px,1.8vw,22px);
+  margin:var(--gap) 0;font-size:var(--fs-sm); line-height:1.6}
+.checkpoint strong{color:var(--navy);display:block;margin-bottom:8px}
+.checkpoint .pista{background:#fff;padding:10px 14px;border-radius:8px;margin-top:10px;
+  border-left:4px solid var(--amber);font-style:italic;color:var(--text2)}
+.checkpoint button{background:var(--blue-mid);color:#fff;border:none;padding:6px 14px;
+  border-radius:6px;font-size:var(--fs-xs);cursor:pointer;margin-top:8px; font-weight:600}
+.checkpoint button:hover{background:var(--blue)}
+
+.btn-ayuda,.btn-desafio{
+  font-size:var(--fs-xs);padding:8px 16px;border-radius:24px;
+  border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  transition:transform .1s,box-shadow .2s; font-weight:600}
+.btn-ayuda{background:#E8F5E9;color:var(--green);border:2.5px solid var(--green)}
+.btn-ayuda:hover{background:#C8E6C9;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}
+.btn-desafio{background:#FFF3E0;color:var(--amber);border:2.5px solid var(--amber)}
+.btn-desafio:hover{background:#FFE0B2;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}
+.contenido-ayuda,.contenido-desafio{
+  display:none;background:var(--warm);border-radius:10px;
+  padding:clamp(12px,1.4vh,18px) clamp(14px,1.8vw,22px);
+  margin:10px 0;font-size:var(--fs-sm);border-left:5px solid var(--blue-mid); line-height:1.6}
+.contenido-ayuda.visible,.contenido-desafio.visible{display:block;animation:fadeUp .3s}
+
+/* ── EVIDENCIA / EXPORTAR ─────────────────────────────── */
+.evidencia-box{background:#EBF4FB;border:2.5px solid var(--blue-mid);border-radius:14px;
+  padding:clamp(14px,1.8vh,20px) clamp(16px,2vw,26px);
+  margin-top:var(--gap);display:none;animation:fadeUp .4s}
+.evidencia-box.visible{display:block}
+.evidencia-box h4{font-size:var(--fs-md);color:var(--navy);margin-bottom:10px;font-weight:800}
+.evidencia-box ul{padding-left:24px;font-size:var(--fs-sm);color:var(--text2);line-height:1.7}
+.btn-exportar{background:var(--blue);color:#fff;border:none;
+  padding:10px 22px;border-radius:8px;font-size:var(--fs-sm);
+  font-weight:700;cursor:pointer;margin-top:12px;transition:background .2s}
+.btn-exportar:hover{background:var(--navy)}
+
+/* ── SOC FML (fórmula definición en caja) ────────────── */
+.soc-fml{background:var(--warm);border:3px solid var(--red);border-radius:14px;
+  padding:clamp(16px,2vh,28px) clamp(18px,2.2vw,32px);
+  text-align:center;font-size:var(--fs-xl);color:var(--navy);
+  opacity:0;transition:opacity .4s}
+.soc-fml.vis{opacity:1}
+
+/* ── COLUMNA 2 PARA SLIDE DE FORMALIZACIÓN ─────────────── */
+.two-col{display:flex;gap:var(--gap);align-items:flex-start;flex-wrap:wrap}
+.two-col > *{flex:1;min-width:min(100%, 300px)}
+
+/* ── LAYOUT FICHAS + PROCESO ──────────────────────────── */
+.proceso-box{flex:1;display:flex;flex-direction:column;gap:clamp(10px,1.2vh,16px)}
+
+/* ── DIVISOR DE SESIÓN ───────────────────────────────── */
+.s-sesion{background:var(--navy)}
+.ses-inner{display:flex;flex:1;align-items:stretch;min-height:0}
+.ses-num-panel{flex:0 0 30%;background:var(--red);display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:clamp(6px,1vh,12px)}
+.ses-lbl{color:rgba(255,255,255,.8);font-size:var(--fs-md);letter-spacing:.3em;
+  text-transform:uppercase;font-weight:800}
+.ses-num{font-family:'DM Serif Display',serif;font-size:clamp(110px,16vw,240px);
+  color:#fff;line-height:1;animation:fadeUp .7s .1s both}
+.ses-content{flex:1;display:flex;flex-direction:column;justify-content:center;
+  gap:clamp(14px,2vh,26px);padding:clamp(28px,4.5vw,64px);overflow-y:auto}
+.ses-title{font-family:'DM Serif Display',serif;font-size:var(--fs-2xl);color:#fff;line-height:1.12}
+.ses-sub{font-size:var(--fs-md);color:#A8C4E8;font-style:italic;line-height:1.4}
+.ses-agenda{display:flex;flex-direction:column;gap:clamp(8px,1.2vh,14px)}
+.ses-agenda-lbl{font-size:var(--fs-xs);font-weight:800;color:rgba(255,255,255,.55);
+  text-transform:uppercase;letter-spacing:.18em}
+.ses-item{display:flex;align-items:center;gap:clamp(10px,1.4vw,18px);
+  background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.16);
+  border-radius:12px;padding:clamp(9px,1.3vh,15px) clamp(14px,1.8vw,24px)}
+.ses-item-time{background:var(--red);color:#fff;font-weight:800;font-size:var(--fs-xs);
+  border-radius:8px;padding:4px 12px;flex-shrink:0;min-width:clamp(78px,8vw,110px);text-align:center}
+.ses-item-txt{color:#fff;font-size:var(--fs-sm);font-weight:600;line-height:1.35}
+
+/* ── GEOGEBRA EMBED ──────────────────────────────────── */
+.geo-wrap{position:relative;width:100%;flex:1;min-height:clamp(320px,52vh,660px);
+  background:#fff;border:3px solid var(--border);border-radius:14px;overflow:hidden}
+.geo-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.geo-note{font-size:var(--fs-xs);color:var(--text3);font-style:italic;
+  text-align:center;line-height:1.5}
+.geo-link-fallback{display:inline-flex;align-items:center;gap:8px;background:var(--blue);
+  color:#fff;text-decoration:none;padding:6px 16px;border-radius:8px;
+  font-size:var(--fs-xs);font-weight:700}
+.geo-link-fallback:hover{background:var(--navy)}
+
+/* ── INPUT DE VERIFICACIÓN ───────────────────────────── */
+.input-poly{font-family:'DM Sans',monospace;font-size:var(--fs-md);
+  padding:clamp(8px,1vh,14px) clamp(12px,1.5vw,18px);
+  border:3px solid var(--border);border-radius:10px;width:100%;
+  background:#fff;color:var(--navy);font-weight:700;
+  transition:border-color .2s,background .2s}
+.input-poly:focus{outline:none;border-color:var(--blue-mid)}
+.btn-check{background:var(--blue-mid);color:#fff;border:none;
+  padding:8px 20px;border-radius:8px;font-size:var(--fs-sm);
+  font-weight:700;cursor:pointer;transition:background .2s;align-self:flex-start}
+.btn-check:hover{background:var(--blue)}
+
+/* ── NAVEGACIÓN ──────────────────────────────────────── */
+#nav{position:fixed;bottom:clamp(14px,1.8vh,22px);left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:clamp(10px,1.2vw,18px);z-index:200}
+.nbtn{background:rgba(15,32,64,.88);color:#fff;border:none;cursor:pointer;
+  font-size:clamp(20px,2.2vw,28px);width:clamp(44px,4.8vw,58px);height:clamp(44px,4.8vw,58px);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .15s}
+.nbtn:hover{background:rgba(28,58,110,.95)}
+#ncnt{font-size:clamp(15px,1.6vw,20px);color:rgba(255,255,255,.9);
+  background:rgba(15,32,64,.85);padding:clamp(6px,.8vh,10px) clamp(14px,1.8vw,22px);
+  border-radius:24px;font-family:monospace;font-weight:700}
+#fs-btn{position:fixed;top:clamp(8px,1vh,14px);right:clamp(12px,1.4vw,20px);
+  background:rgba(15,32,64,.8);color:#fff;border:none;cursor:pointer;
+  font-size:clamp(18px,1.8vw,24px);width:clamp(36px,3.8vw,46px);height:clamp(36px,3.8vw,46px);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;z-index:200}
+#pbar{position:fixed;bottom:0;left:0;height:5px;background:var(--red);
+  transition:width .32s ease;z-index:100}
+#hint{position:fixed;bottom:clamp(16px,2.2vh,26px);left:clamp(20px,2.8vw,34px);
+  font-size:14px;color:rgba(255,255,255,.55);background:rgba(15,32,64,.75);
+  padding:8px 16px;border-radius:24px;font-family:monospace;
+  transition:opacity .3s;z-index:100}
+.feedback-msg{
+  position:fixed;top:clamp(70px,9vh,90px);left:50%;transform:translateX(-50%);
+  background:var(--green);color:#fff;padding:12px 24px;border-radius:10px;
+  font-size:var(--fs-sm);font-weight:600;box-shadow:0 6px 16px rgba(0,0,0,0.25);
+  z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;max-width:90vw;text-align:center}
+.feedback-msg.error{background:var(--red-b)}
+.feedback-msg.show{opacity:1}
+
+.katex{font-size:1.2em !important}
+.katex-display{margin:0 !important}
+.kbig .katex{font-size:1.4em !important}
+
+@media(max-width:1100px) and (orientation:landscape){
+  :root{
+    --fs-xs:clamp(16px,1.6vw,24px); --fs-sm:clamp(19px,2vw,28px);
+    --fs-md:clamp(22px,2.4vw,34px); --fs-lg:clamp(26px,2.8vw,42px);
+    --fs-xl:clamp(30px,3.4vw,50px); --fs-2xl:clamp(38px,4.4vw,64px);
+  }
+  .p-card-grid{grid-template-columns:repeat(3,1fr)}
+  .fichas-layout{flex-direction:column}
+  .fichas-panel{width:100%}
+  .video-row{grid-template-columns:1fr}
+  .two-col{flex-direction:column}
+}
+@media(min-width:1920px){
+  :root{
+    --fs-xs:26px; --fs-sm:32px; --fs-md:40px; --fs-lg:50px;
+    --fs-xl:62px; --fs-2xl:80px; --fs-3xl:105px; --gap:22px; --pad:40px;
+  }
+}
+@media print {
+  #deck,#nav,#fs-btn,#pbar,#hint,.feedback-msg{display:none!important}
+  .slide{position:static!important;opacity:1!important;page-break-after:always; background:#fff!important}
+  .slide.active{pointer-events:auto}
+  body{background:#fff;height:auto;overflow:visible}
+  main.body{padding:24px;overflow:visible}
+}
+</style>
+</head>
+<body>
+
+<div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+<div id="deck"></div>
+<button id="fs-btn" title="Pantalla completa (F)" aria-label="Alternar pantalla completa">⛶</button>
+<div id="nav" role="navigation" aria-label="Navegación de diapositivas">
+  <button class="nbtn" id="bp" aria-label="Diapositiva anterior">&#8592;</button>
+  <span id="ncnt" aria-live="polite">1 / 19</span>
+  <button class="nbtn" id="bn" aria-label="Siguiente diapositiva">&#8594;</button>
+</div>
+<div id="pbar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+<div id="hint">Espacio / → avanzar  ·  ← retroceder  ·  F pantalla completa</div>
+<div id="feedback" class="feedback-msg" role="status" aria-live="polite"></div>
+
+<script>
+function announceToScreenReader(message) {
+  const region = document.getElementById('live-region');
+  if (region) { region.textContent = ''; setTimeout(() => { region.textContent = message; }, 100); }
+}
+function showFeedback(message, isError = false) {
+  const fb = document.getElementById('feedback');
+  if (!fb) return;
+  fb.textContent = message;
+  fb.className = 'feedback-msg' + (isError ? ' error' : '') + ' show';
+  setTimeout(() => { fb.classList.remove('show'); }, 3000);
+}
+function saveProgress(slideIndex, clicks) {
+  try { localStorage.setItem('algebra8_s4_progress_v2', JSON.stringify({ slide: slideIndex, clicks: clicks, timestamp: Date.now() })); }
+  catch(e) { console.warn('No se pudo guardar el progreso:', e); }
+}
+function loadProgress() {
+  try {
+    const saved = localStorage.getItem('algebra8_s4_progress_v2');
+    if (saved) {
+      const data = JSON.parse(saved);
+      if (Date.now() - data.timestamp < 86400000 && typeof data.slide === 'number' && data.slide >= 0 && data.slide < SLIDES.length) return data;
+    }
+  } catch(e) {}
+  return null;
+}
+function toggleContent(btn, targetClass) {
+  const card = btn.closest('.ex-card') || btn.closest('.formal-box') || document.body;
+  const content = card.querySelector('.' + targetClass);
+  if (content) {
+    content.classList.toggle('visible');
+    const isExpanded = content.classList.contains('visible');
+    btn.setAttribute('aria-expanded', isExpanded);
+  }
+}
+function togglePista(btn) {
+  const pista = btn.nextElementSibling;
+  if(pista && pista.classList.contains('pista')) {
+    const isHidden = pista.hasAttribute('hidden');
+    pista.hidden = !isHidden;
+    btn.textContent = isHidden ? 'Ocultar pista' : 'Ver pista';
+  }
+}
+function verificarRespuesta(id, esperada, selector) {
+  const input = document.querySelector(selector);
+  if (!input) return;
+  const valor = input.value.trim().replace(/\s+/g,'');
+  const exp = esperada.toString().trim().replace(/\s+/g,'');
+  if (valor === exp) {
+    showFeedback('¡Correcto! 🎉');
+    input.style.borderColor='var(--green)'; input.style.backgroundColor='#E8F5E9';
+  } else {
+    showFeedback('Revisa los términos semejantes y los signos.', true);
+    input.style.borderColor='var(--red)'; input.style.backgroundColor='#FFF0F0';
+  }
+}
+function verificarPolinomio(inputId, esperadas) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const norm = s => s.toLowerCase()
+    .replace(/\s+/g,'')
+    .replace(/²/g,'^2').replace(/³/g,'^3')
+    .replace(/\*\*/g,'^').replace(/\*/g,'')
+    .replace(/−/g,'-').replace(/–/g,'-');
+  const valor = norm(input.value);
+  if (!valor) { showFeedback('Escribe primero tu respuesta 💡', true); return; }
+  const ok = esperadas.some(e => norm(e) === valor);
+  if (ok) {
+    showFeedback('¡Correcto! 🎉 Coeficientes y signos perfectos.');
+    input.style.borderColor='var(--green)'; input.style.backgroundColor='#E8F5E9';
+  } else {
+    showFeedback('Aún no. Revisa términos semejantes, signos y el orden descendente.', true);
+    input.style.borderColor='var(--red)'; input.style.backgroundColor='#FFF0F0';
+  }
+}
+/* ── RETO GENERADOR DE POLINOMIOS ── */
+function _rndNZ(a, b) {
+  let v = 0;
+  while (v === 0) v = Math.floor(Math.random() * (b - a + 1)) + a;
+  return v;
+}
+function _polyToStr(c) { // c = [a, b, k] para ax^2 + bx + k
+  const parts = [];
+  const push = (coef, lit) => {
+    if (coef === 0) return;
+    let s;
+    if (lit) s = (coef === 1 ? '' : coef === -1 ? '-' : String(coef)) + lit;
+    else s = String(coef);
+    parts.push(s);
+  };
+  push(c[0], 'x^2'); push(c[1], 'x'); push(c[2], '');
+  if (!parts.length) return '0';
+  return parts.map((p, i) => i === 0 ? p : (p.startsWith('-') ? p : '+' + p)).join('');
+}
+function renderReto() {
+  const disp = document.getElementById('reto-display');
+  if (!disp || !window._reto || !window._reto.P) return;
+  disp.innerHTML = '\\(P = ' + _polyToStr(window._reto.P) + '\\)\u00A0\u00A0\u00A0·\u00A0\u00A0\u00A0\\(Q = ' + _polyToStr(window._reto.Q) + '\\)';
+  doKatex(disp);
+}
+function generarReto() {
+  const P = [_rndNZ(-4, 4), _rndNZ(-7, 7), _rndNZ(-9, 9)];
+  const Q = [_rndNZ(-4, 4), _rndNZ(-7, 7), _rndNZ(-9, 9)];
+  if (P[0] === Q[0] && P[1] === Q[1] && P[2] === Q[2]) Q[2] += (Q[2] === 9 ? -1 : 1); // evitar P−Q = 0
+  window._reto = {
+    P, Q,
+    suma:  _polyToStr([P[0] + Q[0], P[1] + Q[1], P[2] + Q[2]]),
+    resta: _polyToStr([P[0] - Q[0], P[1] - Q[1], P[2] - Q[2]])
+  };
+  renderReto();
+  ['in-reto-suma', 'in-reto-resta'].forEach(id => {
+    const i = document.getElementById(id);
+    if (i) { i.value = ''; i.style.borderColor = 'var(--border)'; i.style.backgroundColor = '#fff'; }
+  });
+}
+function verificarReto(tipo, inputId) {
+  const esperado = window._reto && window._reto[tipo];
+  if (!esperado) { showFeedback('Primero genera un reto 🎲', true); return; }
+  // aceptar también la variante con coeficiente 1 explícito (1x^2, -1x)
+  const conUnos = esperado.replace(/(^|[+\-])x/g, (m, g) => g + '1x');
+  verificarPolinomio(inputId, [esperado, conUnos]);
+}
+
+function exportarEvidencia() {
+  const respuestas = [];
+  document.querySelectorAll('.espacio-respuesta').forEach((el, i) => { if(el.textContent.trim()) respuestas.push(`Espacio ${i+1}: ${el.textContent.trim()}`); });
+  if(respuestas.length === 0) { showFeedback('Escribe primero en los espacios de respuesta 💡', true); return; }
+  const contenido = `EVIDENCIAS - Álgebra 8° - Suma y Resta de Polinomios\n${new Date().toLocaleString('es-CO')}\n\n${respuestas.join('\n\n---\n\n')}`;
+  try {
+    const blob = new Blob([contenido], {type: 'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url;
+    a.download = `algebra8_s4_evidencias_${new Date().toISOString().slice(0,10)}.txt`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    showFeedback('📥 Evidencias guardadas');
+  } catch(e) { navigator.clipboard?.writeText(contenido); showFeedback('📋 Copiado al portapapeles'); }
+}
+function guardarReflexion() {
+  const reflexion = document.querySelector('.meta-q + .espacio-respuesta');
+  const semaforo = document.querySelector('.sema-item.vis');
+  let mensaje = 'Reflexión guardada:\n';
+  if(reflexion?.textContent.trim()) mensaje += `• Mi reflexión: ${reflexion.textContent.trim()}\n`;
+  if(semaforo) {
+    const color = semaforo.querySelector('.sema-circle').style.background;
+    const texto = semaforo.querySelector('.sema-txt')?.textContent.trim();
+    mensaje += `• Semáforo: ${color} - ${texto}`;
+  }
+  navigator.clipboard?.writeText(mensaje);
+  showFeedback('💾 Reflexión guardada');
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SLIDES — Semana 4 · Suma y Resta de Polinomios
+   3 sesiones de 55 min · GRR: yo hago → hacemos → tú haces
+═══════════════════════════════════════════════════════════ */
+const SLIDES=[
+
+/* ── 1 · PORTADA ─────────────────────────────────────────── */
+{noH:true,noF:true,clicks:0,cls:'s-portada',html:`
+<div class="portada-inner">
+  <div class="p-ie">I.E. Merceditas Gómez Martínez — Medellín, Antioquia</div>
+  <div class="p-area">Álgebra · Grado 8° · Período 2 · Bloque 1</div>
+  <div class="p-title">Suma y resta de polinomios</div>
+  <div class="p-sub">«El álgebra como idioma para diseñar espacios»</div>
+  <div class="p-divider"></div>
+  <div class="p-card-grid">
+    <div class="p-card"><div class="p-card-num">🏗️</div><div class="p-card-title">Sesión 1</div><div class="p-card-sub">Detonante Manrique · fichas algebraicas · Algeblocks en GeoGebra · suma formal</div></div>
+    <div class="p-card"><div class="p-card-num">⚙️</div><div class="p-card-title">Sesión 2</div><div class="p-card-sub">Resta y la trampa del signo «−» · comparación suma/resta · formalización · práctica guiada</div></div>
+    <div class="p-card"><div class="p-card-num">✔️</div><div class="p-card-title">Sesión 3</div><div class="p-card-sub">Error anticipado · práctica independiente · reto de polinomios aleatorios · cierre Manrique · semáforo</div></div>
+  </div>
+  <div class="p-docente">Docente: Carlos Alberto Mena Romaña</div>
+</div>`},
+
+/* ── DIVISOR · SESIÓN 1 ──────────────────────────────────── */
+{noH:true,noF:true,clicks:0,cls:'s-sesion',html:`
+<div class="ses-inner">
+  <div class="ses-num-panel">
+    <div class="ses-lbl">Sesión</div>
+    <div class="ses-num">1</div>
+  </div>
+  <div class="ses-content">
+    <div class="ses-title">Ver para sumar</div>
+    <div class="ses-sub">«Antes de operar con símbolos, las fichas nos muestran qué se puede juntar y qué no.»</div>
+    <div class="ses-agenda">
+      <div class="ses-agenda-lbl">Agenda de hoy — 55 minutos</div>
+      <div class="ses-item"><div class="ses-item-time">10 min</div><div class="ses-item-txt">Detonante: el parque de Manrique — ¿cuánta malla necesita la Alcaldía?</div></div>
+      <div class="ses-item"><div class="ses-item-time">25 min</div><div class="ses-item-txt">Construcción: fichas algebraicas físicas + Algeblocks virtuales en GeoGebra</div></div>
+      <div class="ses-item"><div class="ses-item-time">20 min</div><div class="ses-item-txt">Yo hago: suma formal paso a paso + verificación exprés en pantalla</div></div>
+    </div>
+  </div>
+</div>`},
+
+/* ── 2 · DETONANTE — SESIÓN 1 ────────────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Exploración',badge:'EXPLORACIÓN',badgeColor:'#C47C1A',clicks:0,fL:'Sem. 4 · Sesión 1 — Exploración',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--amber)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--amber);color:#fff">Situación detonante</div>
+    <div class="slide-title">El parque de Manrique — ¿cuánto cuesta el cercado?</div>
+    <div class="slide-instr">Lee el problema. Escribe tu estimación antes de calcular.</div>
+  </div>
+</div>
+<div class="activacion-previa">
+  <strong>🧠 Recordemos:</strong> ¿Qué es un término semejante? ¿Para qué sirve reducir expresiones antes de operar?
+</div>
+<div class="det-box">
+  <div class="det-label">Contexto real — Medellín · Barrio Manrique</div>
+  <div class="det-text">
+    La Alcaldía de Medellín va a renovar dos zonas verdes contiguas en el barrio Manrique.<br>
+    La zona A tiene un perímetro de <strong style="background:rgba(196,124,26,0.15);padding:3px 9px;border-radius:6px">\\(P_A = 3x^2 + 2x + 5\\)</strong> metros,<br>
+    y la zona B tiene un perímetro de <strong style="background:rgba(196,124,26,0.15);padding:3px 9px;border-radius:6px">\\(P_B = x^2 - 4x + 8\\)</strong> metros,<br>
+    donde <em>x</em> representa una medida base en metros.
+  </div>
+  <div class="det-q">¿Cuántos metros de malla necesita la Alcaldía para cercar ambas zonas juntas?<br>
+    <span style="font-size:var(--fs-md);font-weight:400;color:var(--text2)">Escribe en palabras qué operación harías y por qué.</span>
+  </div>
+  <div class="espacio-respuesta" contenteditable="true" role="textbox" aria-label="Escribe tu estrategia aquí" style="min-height:60px"></div>
+  <div style="font-size:var(--fs-md);color:var(--text2);line-height:1.6">
+    <strong>Pregunta 1:</strong> ¿Puedes simplemente «pegar» los dos polinomios o hay que hacer algo especial?<br>
+    <strong>Pregunta 2:</strong> Si \\(x = 10\\) m, ¿cuántos metros de malla se necesitarían aproximadamente?
+  </div>
+</div>`},
+
+/* ── 3 · FICHAS ALGEBRAICAS — CONSTRUCCIÓN ──────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Construcción',badge:'CONSTRUCCIÓN',clicks:6,fL:'Sem. 4 · Sesión 1 — Fichas algebraicas',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--red)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Fichas algebraicas — ver para sumar</div>
+    <div class="slide-instr">Antes de operar con símbolos, representamos con fichas. Solo se agrupan fichas del mismo tipo.</div>
+  </div>
+</div>
+<div class="fichas-layout">
+  <div class="fichas-panel">
+    <div class="fichas-title">Leyenda de fichas</div>
+    <div class="fichas-row">
+      <div class="ficha ficha-x2" title="x²">\\(x^2\\)</div>
+      <div class="ficha ficha-x" title="x">\\(x\\)</div>
+      <div class="ficha ficha-1" title="1">\\(1\\)</div>
+    </div>
+    <div class="fichas-legend">Fichas <span style="color:#9B2020;font-weight:800">rojas</span> = negativas</div>
+    <div class="fichas-row" style="margin-top:6px">
+      <div class="ficha ficha-neg" title="-x">\\(-x\\)</div>
+      <div class="ficha ficha-neg" title="-1">\\(-1\\)</div>
+    </div>
+    <div style="margin-top:clamp(10px,1.2vh,16px);font-size:var(--fs-xs);color:rgba(255,255,255,.7);text-align:center;line-height:1.6">
+      Un par <span style="color:#27AE60">x</span> + <span style="color:#9B2020">(−x)</span> se cancela.<br>
+      Solo se agrupan fichas del <strong style="color:#fff">mismo tipo</strong>.
+    </div>
+  </div>
+  <div class="proceso-box">
+    <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:4px">Suma: \\((2x^2 + 3x - 1) + (x^2 - x + 4)\\)</div>
+    <div class="paso-row vis" style="border-left-color:var(--amber)">
+      <div class="paso-num" style="background:var(--amber)">▶</div>
+      <div class="paso-lbl" style="color:var(--amber)">Representar</div>
+      <div class="paso-body">Coloca las fichas del polinomio A — luego las del polinomio B debajo, sin mezclar aún.</div>
+    </div>
+    <div class="paso-row" data-c="1">
+      <div class="paso-num">1</div>
+      <div class="paso-lbl">Identificar</div>
+      <div class="paso-body">Agrupa por tipo: fichas \\(x^2\\) con \\(x^2\\), fichas \\(x\\) con \\(x\\), fichas \\(1\\) con \\(1\\).</div>
+      <div class="paso-note">Términos semejantes</div>
+    </div>
+    <div class="paso-row" data-c="2">
+      <div class="paso-num">2</div>
+      <div class="paso-lbl">Cancelar</div>
+      <div class="paso-body">¿Hay fichas \\(x\\) y \\(-x\\)? Una azul + una roja = \\(0\\). Retíralas del grupo.</div>
+      <div class="paso-note">Pares nulos</div>
+    </div>
+    <div class="paso-row" data-c="3">
+      <div class="paso-num">3</div>
+      <div class="paso-lbl">Contar</div>
+      <div class="paso-body">Cuenta lo que queda: \\(3x^2\\) fichas de \\(x^2\\), \\(2x\\) fichas de \\(x\\), \\(3\\) fichas de \\(1\\).</div>
+    </div>
+    <div class="paso-row" data-c="4">
+      <div class="paso-num">4</div>
+      <div class="paso-lbl">Resultado</div>
+      <div class="paso-body">Escribe el polinomio resultante en orden descendente de grado.</div>
+    </div>
+    <div class="result-bar" data-c="5" style="font-size:var(--fs-lg);white-space:nowrap;padding-left:clamp(10px,1.2vw,18px);padding-right:clamp(10px,1.2vw,18px)">\\((2x^2+3x-1)+(x^2-x+4) = 3x^2+2x+3\\)</div>
+    <div id="obs-fichas" style="background:#EBF4FB;border-radius:10px;padding:clamp(10px,1.2vh,14px) clamp(12px,1.5vw,18px);font-size:var(--fs-sm);color:var(--navy);line-height:1.6;opacity:0;transition:opacity .4s">
+      <strong>Observación clave:</strong> Solo se suman o restan los <em>coeficientes</em> de fichas del mismo tipo. La parte literal (\\(x^2\\), \\(x\\), o \\(1\\)) no cambia.
+    </div>
+  </div>
+</div>`,
+onReveal:n=>{
+  if(n>=1&&n<=4){document.querySelectorAll(`.paso-row[data-c="${n}"]`).forEach(e=>e.classList.add('vis'));}
+  if(n===5){document.querySelectorAll(`.result-bar[data-c="5"]`).forEach(e=>e.classList.add('vis'));}
+  if(n===6){const o=document.getElementById('obs-fichas');if(o)o.style.opacity='1';}
+}},
+
+/* ── GEOGEBRA · ALGEBLOCKS VIRTUALES ─────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Laboratorio GeoGebra',badge:'GEOGEBRA',badgeColor:'#1A6B5A',clicks:0,fL:'Sem. 4 · Sesión 1 — Algeblocks virtuales',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:#1A6B5A"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:#1A6B5A;color:#fff">Algeblocks virtuales</div>
+    <div class="slide-title">Baldosas algebraicas en GeoGebra — suma y resta</div>
+    <div class="slide-instr">Quien quiera, pasa al frente y manipula las baldosas. Los demás resuelven en el cuaderno y verificamos juntos. Incluye 6 ejercicios autoevaluables (1,67 pts c/u).</div>
+  </div>
+</div>
+<div class="geo-wrap">
+  <iframe src="https://www.geogebra.org/material/iframe/id/mc3bkm4n/width/1500/height/650/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
+    allowfullscreen allow="fullscreen" loading="lazy"
+    title="GeoGebra: Suma y resta de polinomios con baldosas algebraicas"></iframe>
+</div>
+<div class="geo-note">
+  Applet «Suma y resta de polinomios con baldosas Algebra-Tiles» — Javier Cayetano Rodríguez (GeoGebra).
+  Si el applet no carga: <a class="geo-link-fallback" href="https://www.geogebra.org/m/mc3bkm4n" target="_blank" rel="noopener">↗ Abrir en GeoGebra</a>
+</div>`},
+
+/* ── 4 · YO HAGO — SUMA FORMAL ──────────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Yo hago',badge:'YO HAGO',badgeColor:'#1C3A6E',clicks:7,fL:'Sem. 4 · Sesión 1 — Yo hago',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--blue);color:#fff">Yo hago</div>
+    <div class="slide-title">Suma de polinomios — proceso paso a paso</div>
+    <div class="slide-instr">Copia el proceso en tu cuaderno <strong>antes</strong> de que aparezca cada paso.</div>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--gap)">
+  <div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,28px)">
+    <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:10px">Problema del parque de Manrique:</div>
+    <div style="font-size:var(--fs-lg);color:var(--text);text-align:center;font-weight:700">\\(P_A + P_B = (3x^2+2x+5)+(x^2-4x+8)\\)</div>
+  </div>
+  <div class="paso-row" data-c="1">
+    <div class="paso-num">1</div>
+    <div class="paso-lbl">Eliminar paréntesis</div>
+    <div class="paso-body">En la suma, los paréntesis se eliminan <strong>sin cambio de signo</strong>:<br>\\(3x^2+2x+5+x^2-4x+8\\)</div>
+    <div class="paso-note">Sin cambio de signo</div>
+  </div>
+  <div class="paso-row" data-c="2">
+    <div class="paso-num">2</div>
+    <div class="paso-lbl">Identificar semejantes</div>
+    <div class="paso-body">Términos en \\(x^2\\): \\(3x^2\\) y \\(x^2\\) · Términos en \\(x\\): \\(2x\\) y \\(-4x\\) · Independientes: \\(5\\) y \\(8\\)</div>
+    <div class="paso-note">Agrupar mentalmente</div>
+  </div>
+  <div class="paso-row" data-c="3">
+    <div class="paso-num">3</div>
+    <div class="paso-lbl">Agrupar (optativo)</div>
+    <div class="paso-body">\\((3x^2+x^2)+(2x-4x)+(5+8)\\)</div>
+    <div class="paso-note">Los paréntesis aquí solo organizan</div>
+  </div>
+  <div class="paso-row" data-c="4">
+    <div class="paso-num">4</div>
+    <div class="paso-lbl">Sumar coeficientes</div>
+    <div class="paso-body">
+      \\(3+1=4\\) &nbsp;→&nbsp; \\(4x^2\\)<br>
+      \\(2+(-4)=-2\\) &nbsp;→&nbsp; \\(-2x\\)<br>
+      \\(5+8=13\\) &nbsp;→&nbsp; \\(13\\)
+    </div>
+    <div class="paso-note">Solo se opera el coeficiente</div>
+  </div>
+  <div class="paso-row" data-c="5">
+    <div class="paso-num">5</div>
+    <div class="paso-lbl">Escribir resultado</div>
+    <div class="paso-body">En orden descendente de grado: \\(4x^2 - 2x + 13\\)</div>
+    <div class="paso-note">Mayor grado primero</div>
+  </div>
+  <div class="result-bar" id="result-suma" style="font-size:var(--fs-lg);white-space:nowrap;padding-left:clamp(10px,1.2vw,18px);padding-right:clamp(10px,1.2vw,18px)">La Alcaldía necesita \\(\\;4x^2 - 2x + 13\\;\\) metros de malla</div>
+  <div id="chk-suma" class="checkpoint" style="opacity:0;transition:opacity .4s">
+    <strong>✅ Comprueba con \\(x = 10\\):</strong> ¿Cuántos metros de malla se necesitan realmente?
+    <button type="button" onclick="togglePista(this)">Ver pista</button>
+    <div class="pista" hidden>Sustituye: 4(100) − 2(10) + 13 = 400 − 20 + 13 = <strong>393 m</strong></div>
+  </div>
+</div>`,
+onReveal:n=>{
+  if(n>=1&&n<=5){document.querySelectorAll(`.paso-row[data-c="${n}"]`).forEach(e=>e.classList.add('vis'));}
+  if(n===6){const r=document.getElementById('result-suma');if(r)r.classList.add('vis');}
+  if(n===7){const c=document.getElementById('chk-suma');if(c)c.style.opacity='1';}
+}},
+
+/* ── HACEMOS EXPRÉS — CIERRE SESIÓN 1 ────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Verificación exprés',badge:'HACEMOS',badgeColor:'#00695C',clicks:0,fL:'Sem. 4 · Sesión 1 — Verificación exprés',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--teal);color:#fff">Verificación exprés</div>
+    <div class="slide-title">¿Quedó clara la suma? — comprobamos en pantalla</div>
+    <div class="slide-instr">Resuelve en el cuaderno. Un voluntario escribe la respuesta en el teclado y verificamos en vivo. Escríbela en orden descendente, sin espacios (ej.: 5x^2+3x-2).</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div class="ex-card vis" style="border-top-color:var(--teal)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--teal)">1</div><div class="ex-title">Factura EPM — dos meses de consumo</div></div>
+    <div class="ex-ctx">El consumo de energía de una casa en Manrique, en dos meses consecutivos, se modela con estos polinomios (kWh).</div>
+    <div class="ex-task">\\((2x^2+5x-3)+(3x^2-2x+1)\\)</div>
+    <input type="text" id="in-expres-1" class="input-poly" placeholder="Escribe el resultado aquí…" aria-label="Respuesta del ejercicio 1" autocomplete="off" spellcheck="false">
+    <button type="button" class="btn-check" onclick="verificarPolinomio('in-expres-1',['5x^2+3x-2'])">✓ Verificar</button>
+  </div>
+  <div class="ex-card vis" style="border-top-color:var(--green)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--green)">2</div><div class="ex-title">Pares que se cancelan</div></div>
+    <div class="ex-ctx">Como con las fichas: ¿qué pasa con los términos en \\(x\\) de esta suma? Obsérvalo antes de operar.</div>
+    <div class="ex-task">\\((x^2-4x+6)+(2x^2+4x-1)\\)</div>
+    <input type="text" id="in-expres-2" class="input-poly" placeholder="Escribe el resultado aquí…" aria-label="Respuesta del ejercicio 2" autocomplete="off" spellcheck="false">
+    <button type="button" class="btn-check" onclick="verificarPolinomio('in-expres-2',['3x^2+5'])">✓ Verificar</button>
+  </div>
+</div>
+<div class="checkpoint">
+  <strong>🎒 Antes de salir:</strong> en una frase, escribe en tu cuaderno qué significa «términos semejantes» con tus propias palabras. La próxima sesión: la resta… y su trampa.
+</div>`},
+
+/* ── DIVISOR · SESIÓN 2 ──────────────────────────────────── */
+{noH:true,noF:true,clicks:0,cls:'s-sesion',html:`
+<div class="ses-inner">
+  <div class="ses-num-panel">
+    <div class="ses-lbl">Sesión</div>
+    <div class="ses-num">2</div>
+  </div>
+  <div class="ses-content">
+    <div class="ses-title">La trampa del signo «−»</div>
+    <div class="ses-sub">«Restar un polinomio no es quitar un paréntesis: es cambiar el signo de todo lo que hay adentro.»</div>
+    <div class="ses-agenda">
+      <div class="ses-agenda-lbl">Agenda de hoy — 55 minutos</div>
+      <div class="ses-item"><div class="ses-item-time">15 min</div><div class="ses-item-txt">Yo hago: resta paso a paso — atención al paso crítico de distribuir el «−»</div></div>
+      <div class="ses-item"><div class="ses-item-time">10 min</div><div class="ses-item-txt">Comparamos: tabla suma vs. resta — ¿en qué se parecen, en qué se diferencian?</div></div>
+      <div class="ses-item"><div class="ses-item-time">10 min</div><div class="ses-item-txt">Formalización: reglas generales (completa tu conjetura antes de verlas)</div></div>
+      <div class="ses-item"><div class="ses-item-time">20 min</div><div class="ses-item-txt">Hacemos en pares: contexto Plaza Minorista y redes de EPM</div></div>
+    </div>
+  </div>
+</div>`},
+
+/* ── 5 · YO HAGO — RESTA FORMAL ─────────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Yo hago',badge:'YO HAGO',badgeColor:'#1C3A6E',clicks:7,fL:'Sem. 4 · Sesión 2 — Resta de polinomios',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--blue);color:#fff">Yo hago</div>
+    <div class="slide-title">Resta de polinomios — la trampa del signo menos</div>
+    <div class="slide-instr">Escribe en tu cuaderno cada paso <strong>antes</strong> de verlo. Presta atención al paso 1.</div>
+  </div>
+</div>
+<div style="background:#FCE4E4;border:2.5px solid var(--red);border-radius:14px;padding:clamp(12px,1.5vh,20px) clamp(16px,2vw,28px);font-size:var(--fs-md);color:var(--red);font-style:italic;line-height:1.5;font-weight:700">
+  ⚠️ En la resta, el signo <strong style="font-size:var(--fs-lg)">−</strong> distribuye sobre <em>todos</em> los términos del segundo paréntesis.
+</div>
+<div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:clamp(14px,1.8vh,22px) clamp(16px,2vw,28px);text-align:center">
+  <div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-bottom:10px">Problema: reducir gastos del proyecto</div>
+  <div style="font-size:var(--fs-lg);font-weight:700">\\((5x^2 + 3x - 2) - (2x^2 - x + 6)\\)</div>
+</div>
+<div class="paso-row" data-c="1">
+  <div class="paso-num" style="background:var(--red)">1</div>
+  <div class="paso-lbl" style="color:var(--red)">Distribuir «−»</div>
+  <div class="paso-body">El signo menos cambia el signo de <em>cada</em> término del 2.° polinomio:
+    \\[5x^2+3x-2\\;\\textcolor{#9B2020}{-2x^2}\\;\\textcolor{#9B2020}{+x}\\;\\textcolor{#9B2020}{-6}\\]
+  </div>
+  <div class="paso-note" style="color:var(--red)">Paso crítico</div>
+</div>
+<div class="paso-row" data-c="2">
+  <div class="paso-num">2</div>
+  <div class="paso-lbl">Identificar semejantes</div>
+  <div class="paso-body">\\(x^2\\): \\(5x^2\\) y \\(-2x^2\\) · \\(x\\): \\(3x\\) y \\(+x\\) · ctes: \\(-2\\) y \\(-6\\)</div>
+</div>
+<div class="paso-row" data-c="3">
+  <div class="paso-num">3</div>
+  <div class="paso-lbl">Agrupar</div>
+  <div class="paso-body">\\((5x^2-2x^2)+(3x+x)+(-2-6)\\)</div>
+</div>
+<div class="paso-row" data-c="4">
+  <div class="paso-num">4</div>
+  <div class="paso-lbl">Sumar coeficientes</div>
+  <div class="paso-body">\\(5-2=3\\) → \\(3x^2\\) · \\(3+1=4\\) → \\(4x\\) · \\(-2-6=-8\\)</div>
+</div>
+<div class="paso-row" data-c="5">
+  <div class="paso-num">5</div>
+  <div class="paso-lbl">Resultado</div>
+  <div class="paso-body">\\(3x^2 + 4x - 8\\)</div>
+</div>
+<div class="result-bar" id="result-resta">\\((5x^2+3x-2)-(2x^2-x+6) = 3x^2+4x-8\\)</div>
+<div id="chk-resta" class="checkpoint" style="opacity:0;transition:opacity .4s">
+  <strong>✅ Autochequeo:</strong> ¿Qué habría pasado si olvidamos distribuir el «−» sobre el \\(-x\\) del 2.° polinomio?
+  <button type="button" onclick="togglePista(this)">Ver pista</button>
+  <div class="pista" hidden>El término \\(-x\\) se habría sumado en lugar de restarse, obteniendo \\(2x\\) en lugar de \\(4x\\). ¡Un error de signo cambia el resultado!</div>
+</div>`,
+onReveal:n=>{
+  if(n>=1&&n<=5){document.querySelectorAll(`.paso-row[data-c="${n}"]`).forEach(e=>e.classList.add('vis'));}
+  if(n===6){const r=document.getElementById('result-resta');if(r)r.classList.add('vis');}
+  if(n===7){const c=document.getElementById('chk-resta');if(c)c.style.opacity='1';}
+}},
+
+/* ── TABLA COMPARATIVA — SUMA VS RESTA ──────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Comparación',badge:'COMPARAMOS',badgeColor:'#7B1818',clicks:4,fL:'Sem. 4 · Sesión 2 — Suma vs. resta',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--red)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--red);color:#fff">Comparamos</div>
+    <div class="slide-title">Suma vs. resta — ¿en qué se diferencian realmente?</div>
+    <div class="slide-instr">Antes de cada clic, di en voz alta qué crees que va en la fila. Luego comparamos.</div>
+  </div>
+</div>
+<table class="comp-table">
+  <thead>
+    <tr><th style="width:22%">Aspecto</th><th style="width:39%;background:var(--green)">SUMA \\(P+Q\\)</th><th style="width:39%">RESTA \\(P-Q\\)</th></tr>
+  </thead>
+  <tbody>
+    <tr class="tabla-row" data-c="1">
+      <td>Paréntesis</td>
+      <td>Se eliminan <strong>sin cambiar</strong> ningún signo.</td>
+      <td>El «−» cambia el signo de <strong>todos</strong> los términos del segundo polinomio.</td>
+    </tr>
+    <tr class="tabla-row" data-c="2">
+      <td>Ejemplo</td>
+      <td>\\((5x+3)+(2x-1)\\)<br>\\(=5x+3+2x-1=7x+2\\)</td>
+      <td>\\((5x+3)-(2x-1)\\)<br>\\(=5x+3\\,\\textcolor{#9B2020}{-2x+1}=3x+4\\)</td>
+    </tr>
+    <tr class="tabla-row" data-c="3">
+      <td>Error típico</td>
+      <td>Mezclar términos que <strong>no</strong> son semejantes (\\(x^2\\) con \\(x\\)).</td>
+      <td>Cambiar el signo solo del <strong>primer</strong> término y olvidar los demás.</td>
+    </tr>
+    <tr class="tabla-row" data-c="4">
+      <td>Cómo verificar</td>
+      <td colspan="2"><strong>Truco del 1:</strong> sustituye \\(x=1\\) en la expresión original y en tu resultado. Si los dos números no coinciden, hay un error. Ejemplo: en \\((5x+3)-(2x-1)\\) con \\(x=1\\): \\(8-1=7\\); y en \\(3x+4\\): \\(3+4=7\\) ✓</td>
+    </tr>
+  </tbody>
+</table>`,
+onReveal:n=>{
+  document.querySelectorAll(`.tabla-row[data-c="${n}"]`).forEach(e=>e.classList.add('vis'));
+}},
+
+/* ── 6 · FORMALIZACIÓN ───────────────────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Formalización',badge:'FORMALIZACIÓN',badgeColor:'#2E7D32',clicks:5,fL:'Sem. 4 · Sesión 2 — Formalización',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--green)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--green);color:#fff">Formalización</div>
+    <div class="slide-title">Definición y procedimiento general</div>
+    <div class="slide-instr">Completa en tu cuaderno <strong>antes</strong> de que aparezca cada recuadro. (PPT animado)</div>
+  </div>
+</div>
+<div class="formal-box">
+  <div class="formal-title">Reglas para sumar y restar polinomios</div>
+  <div class="formal-step" data-fs="1">
+    <div class="formal-step-n">1</div>
+    <div class="formal-step-txt"><strong>Suma:</strong> elimina los paréntesis <em>sin cambiar ningún signo</em>. Luego reduce términos semejantes.</div>
+  </div>
+  <div class="formal-step" data-fs="2">
+    <div class="formal-step-n">2</div>
+    <div class="formal-step-txt"><strong>Resta:</strong> distribuye el signo «−» sobre <em>cada término</em> del segundo polinomio (cambia todos los signos). Luego reduce términos semejantes.</div>
+  </div>
+  <div class="formal-step" data-fs="3">
+    <div class="formal-step-n">3</div>
+    <div class="formal-step-txt"><strong>Propiedad:</strong> solo se operan los <em>coeficientes</em> de términos con la misma parte literal. La parte literal no cambia.</div>
+  </div>
+  <div class="formal-step" data-fs="4">
+    <div class="formal-step-n">4</div>
+    <div class="formal-step-txt"><strong>Orden:</strong> el resultado se escribe en orden descendente de grado del exponente.</div>
+  </div>
+</div>
+<div class="soc-fml" id="fml-general" style="margin-top:10px">
+  Si \\(P = a_n x^n + \\cdots + a_1 x + a_0\\) y \\(Q = b_n x^n + \\cdots + b_1 x + b_0\\), entonces:<br><br>
+  \\(P + Q = (a_n+b_n)x^n + \\cdots + (a_1+b_1)x + (a_0+b_0)\\)<br>
+  \\(P - Q = (a_n-b_n)x^n + \\cdots + (a_1-b_1)x + (a_0-b_0)\\)
+</div>`,
+onReveal:n=>{
+  if(n>=1&&n<=4){document.querySelectorAll(`.formal-step[data-fs="${n}"]`).forEach(e=>e.classList.add('vis'));}
+  if(n===5){const f=document.getElementById('fml-general');if(f)f.classList.add('vis');}
+}},
+
+/* ── 7 · HACEMOS — PRÁCTICA GUIADA ──────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Hacemos',badge:'HACEMOS',badgeColor:'#00695C',clicks:4,fL:'Sem. 4 · Sesión 2 — Hacemos',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--teal);color:#fff">Hacemos juntos</div>
+    <div class="slide-title">Resolvemos en pares — contexto Plaza Minorista</div>
+    <div class="slide-instr">Trabaja con un compañero. Escribe el proceso completo antes de verificar.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div class="ex-card" data-c="1" style="border-top-color:var(--teal)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--teal)">A</div><div class="ex-title">Frutas del mercado</div></div>
+    <div class="ex-ctx">Un vendedor de frutas en la Plaza Minorista tiene dos lotes de canastas con expresiones de costo.</div>
+    <div class="ex-task">\\((4x^2 - 3x + 7) + (2x^2 + x - 5)\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ver resultado</button>
+    <div class="contenido-ayuda">Suma los coeficientes semejantes:<br>\\((4+2)x^2 + (-3+1)x + (7-5)\\) = <strong>\\(6x^2 - 2x + 2\\)</strong></div>
+  </div>
+  <div class="ex-card" data-c="2" style="border-top-color:var(--blue)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--blue)">B</div><div class="ex-title">Diferencia de rutas EPM</div></div>
+    <div class="ex-ctx">EPM calcula la diferencia de longitud entre dos redes de cables en metros.</div>
+    <div class="ex-task">\\((6x^2 + x - 3) - (x^2 + 4x - 1)\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ver resultado</button>
+    <div class="contenido-ayuda">Distribuir «−»: \\(6x^2+x-3-x^2-4x+1\\)<br>Reducir: <strong>\\(5x^2 - 3x - 2\\)</strong></div>
+  </div>
+  <div class="ex-card" data-c="3" style="border-top-color:var(--amber)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--amber)">C</div><div class="ex-title">Doble operación</div></div>
+    <div class="ex-ctx">Combina suma y resta en una sola expresión. ¡Cuida el orden de las operaciones!</div>
+    <div class="ex-task">\\((3x^2-2x+1)+(x^2+5x)-(2x^2-x+3)\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Ver resultado</button>
+    <div class="contenido-ayuda">Paso 1: \\(3x^2-2x+1+x^2+5x-2x^2+x-3\\)<br>Reducir: <strong>\\(2x^2 + 4x - 2\\)</strong></div>
+  </div>
+  <div class="ex-card" data-c="4" style="border-top-color:var(--red)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--red)">D</div><div class="ex-title">Desafío — polinomio incompleto</div></div>
+    <div class="ex-ctx">¿Qué polinomio P hay que sumar a \\(2x^2 - x + 3\\) para obtener \\(5x^2 + 2x - 1\\)?</div>
+    <div class="ex-task">\\(P = (5x^2+2x-1) - (2x^2-x+3)\\)</div>
+    <button type="button" class="btn-desafio" onclick="toggleContent(this,'contenido-desafio')">🚀 Ver solución</button>
+    <div class="contenido-desafio">Distribuir: \\(5x^2+2x-1-2x^2+x-3\\)<br>\\(P = \\) <strong>\\(3x^2 + 3x - 4\\)</strong></div>
+  </div>
+</div>`,
+onReveal:n=>{
+  document.querySelectorAll(`.ex-card[data-c="${n}"]`).forEach(e=>e.classList.add('vis'));
+}},
+
+/* ── DIVISOR · SESIÓN 3 ──────────────────────────────────── */
+{noH:true,noF:true,clicks:0,cls:'s-sesion',html:`
+<div class="ses-inner">
+  <div class="ses-num-panel">
+    <div class="ses-lbl">Sesión</div>
+    <div class="ses-num">3</div>
+  </div>
+  <div class="ses-content">
+    <div class="ses-title">Demuestra lo aprendido</div>
+    <div class="ses-sub">«Hoy el protagonista eres tú: detectas el error, resuelves solo y cierras el problema del parque de Manrique.»</div>
+    <div class="ses-agenda">
+      <div class="ses-agenda-lbl">Agenda de hoy — 55 minutos</div>
+      <div class="ses-item"><div class="ses-item-time">10 min</div><div class="ses-item-txt">Análisis de error: ¿dónde se equivocó Andrés?</div></div>
+      <div class="ses-item"><div class="ses-item-time">15 min</div><div class="ses-item-txt">Tú haces: 4 ejercicios con proceso completo en el cuaderno</div></div>
+      <div class="ses-item"><div class="ses-item-time">12 min</div><div class="ses-item-txt">Reto generador: polinomios aleatorios — resuelve antes de verificar en pantalla</div></div>
+      <div class="ses-item"><div class="ses-item-time">8 min</div><div class="ses-item-txt">Cierre Manrique: ¿cuánta malla más necesita la zona A que la zona B?</div></div>
+      <div class="ses-item"><div class="ses-item-time">10 min</div><div class="ses-item-txt">Metacognición y semáforo de comprensión</div></div>
+    </div>
+  </div>
+</div>`},
+
+/* ── 8 · ERROR FRECUENTE ─────────────────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Error frecuente',badge:'ERROR FRECUENTE',badgeColor:'#7B1818',clicks:3,fL:'Sem. 4 · Sesión 3 — Error anticipado',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--red)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--red);color:#fff">Error frecuente</div>
+    <div class="slide-title">El error del signo menos — el más común en resta de polinomios</div>
+    <div class="slide-instr">Identifica el error antes de verlo. ¿Dónde se equivocó Andrés?</div>
+  </div>
+</div>
+<div class="error-box">
+  <div class="error-title">Solución de Andrés — ¿es correcta?</div>
+  <div class="error-txt">
+    Andrés resuelve \\((4x^2 + 3x - 5) - (2x^2 - x + 2)\\) así:<br><br>
+    <span style="font-family:'DM Serif Display',serif;font-size:var(--fs-lg)">
+      \\(4x^2 + 3x - 5 - 2x^2 - x + 2\\)
+    </span>
+    <span style="display:block;margin-top:8px;font-size:var(--fs-sm);color:var(--red)">(Andrés escribe: \\( = 2x^2 + 2x - 3\\))</span>
+  </div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--gap);margin-top:4px">
+  <div class="error-row" id="err-1">
+    <div class="paso-row vis" style="border-left-color:var(--red)">
+      <div class="paso-num" style="background:var(--red)">❌</div>
+      <div class="paso-lbl" style="color:var(--red)">El error</div>
+      <div class="paso-body">Al distribuir el «−», Andrés cambió el signo de \\(-2x^2\\) (correcto) pero <strong>no cambió el signo de \\(-x\\)</strong>. Escribió \\(-x\\) en lugar de \\(+x\\).</div>
+    </div>
+  </div>
+  <div class="error-row" id="err-2">
+    <div class="paso-row vis" style="border-left-color:var(--green)">
+      <div class="paso-num" style="background:var(--green)">✓</div>
+      <div class="paso-lbl" style="color:var(--green)">Corrección</div>
+      <div class="paso-body">Correcto: \\(4x^2+3x-5-2x^2\\mathbf{+x}-2\\)<br>Reducir: \\(2x^2+4x-7\\)</div>
+    </div>
+  </div>
+  <div class="error-row" id="err-3">
+    <div class="conj-box vis" style="background:#E8F5E9;border-color:var(--green);color:var(--green)">
+      <strong>Regla de oro:</strong> Al restar un polinomio, <em>todos</em> los términos del segundo paréntesis cambian de signo — positivos se vuelven negativos y negativos se vuelven positivos.
+    </div>
+  </div>
+</div>`,
+onReveal:n=>{
+  const e1=document.getElementById('err-1');
+  const e2=document.getElementById('err-2');
+  const e3=document.getElementById('err-3');
+  if(n===1&&e1)e1.classList.add('vis');
+  if(n===2&&e2)e2.classList.add('vis');
+  if(n===3&&e3)e3.classList.add('vis');
+}},
+
+/* ── 9 · TÚ HACES ────────────────────────────────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Tú haces',badge:'APLICACIÓN',clicks:4,fL:'Sem. 4 · Sesión 3 — Tú haces',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--red)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Tú haces — proceso completo y verificación</div>
+    <div class="slide-instr">Para cada ejercicio: escribe el proceso paso a paso en tu cuaderno, luego verifica con el compañero.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div class="ex-card" data-c="1" style="border-top-color:var(--green)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--green)">1</div><div class="ex-title">Metro Cívica — distancias</div></div>
+    <div class="ex-ctx">La tarjeta de Metro Cívica calcula rutas con estas expresiones de distancia en km.</div>
+    <div class="ex-task">\\((3x^2-x+4)+(2x^2+5x-3)\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">Suma coeficientes: \\((3+2)x^2+(-1+5)x+(4-3)\\) = <strong>\\(5x^2+4x+1\\)</strong></div>
+  </div>
+  <div class="ex-card" data-c="2" style="border-top-color:var(--blue)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--blue)">2</div><div class="ex-title">Tienda escolar — ganancia neta</div></div>
+    <div class="ex-ctx">La tienda del colegio calcula ganancia neta restando el costo al ingreso.</div>
+    <div class="ex-task">\\((7x^2+2x-1)-(3x^2-4x+5)\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">Distribuir «−»: \\(7x^2+2x-1-3x^2+4x-5\\)<br>Reducir: <strong>\\(4x^2+6x-6\\)</strong></div>
+  </div>
+  <div class="ex-card" data-c="3" style="border-top-color:var(--teal)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--teal)">3</div><div class="ex-title">Ruta Santa Elena — bus</div></div>
+    <div class="ex-ctx">Dos rutas del bus Santa Elena tienen perfiles de elevación expresados como polinomios.</div>
+    <div class="ex-task">\\((x^3+2x^2-3x)-(x^3-x^2+x-4)\\)</div>
+    <button type="button" class="btn-ayuda" onclick="toggleContent(this,'contenido-ayuda')">💡 Verificar</button>
+    <div class="contenido-ayuda">Distribuir: \\(x^3+2x^2-3x-x^3+x^2-x+4\\)<br>Reducir: <strong>\\(3x^2-4x+4\\)</strong></div>
+  </div>
+  <div class="ex-card" data-c="4" style="border-top-color:var(--amber)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--amber)">4</div><div class="ex-title">Éxito El Poblado — inventario</div></div>
+    <div class="ex-ctx">¿Puedes construir el ejercicio tú mismo? Crea dos polinomios de grado 2 con coeficientes del contexto de la tienda y súmalos.</div>
+    <div class="ex-task">Inventa y resuelve tu propio ejercicio.</div>
+    <button type="button" class="btn-desafio" onclick="toggleContent(this,'contenido-desafio')">🚀 Ver ejemplo</button>
+    <div class="contenido-desafio">Ejemplo: \\((2x^2+3x-1)+(4x^2-x+7) = 6x^2+2x+6\\)</div>
+  </div>
+</div>
+<div class="evidencia-box" id="evidencia-box-th">
+  <h4>📋 Mis evidencias de aprendizaje</h4>
+  <ul>
+    <li>He resuelto los 4 ejercicios con proceso completo en el cuaderno</li>
+    <li>He identificado en qué pasos debo prestar más atención al signo</li>
+    <li>He verificado mis respuestas con un compañero</li>
+  </ul>
+  <button class="btn-exportar" onclick="exportarEvidencia()">💾 Guardar para el portafolio</button>
+</div>`,
+onReveal:n=>{
+  document.querySelectorAll(`.ex-card[data-c="${n}"]`).forEach(e=>e.classList.add('vis'));
+  if(n===4){const ev=document.getElementById('evidencia-box-th');if(ev)ev.classList.add('visible');}
+}},
+
+/* ── RETO GENERADOR — POLINOMIOS ALEATORIOS NATIVO ───────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Reto generador',badge:'RETO',badgeColor:'#1A6B5A',clicks:0,fL:'Sem. 4 · Sesión 3 — Reto de polinomios aleatorios',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:#1A6B5A"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:#1A6B5A;color:#fff">Reto generador</div>
+    <div class="slide-title">Polinomios infinitos — la presentación propone, tú resuelves</div>
+    <div class="slide-instr">En parejas: calculen la suma y la resta en el cuaderno <strong>antes</strong> de verificar en pantalla. Con «🎲 Nuevo reto» se generan otros polinomios. (La multiplicación llega en la Semana 5 😉)</div>
+  </div>
+</div>
+<div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:clamp(14px,1.8vh,24px) clamp(16px,2vw,28px);text-align:center">
+  <div style="font-size:var(--fs-sm);font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px">Polinomios del reto</div>
+  <div id="reto-display" class="kbig" style="font-size:var(--fs-lg);font-weight:700;color:var(--navy)">…</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)">
+  <div class="ex-card vis" style="border-top-color:var(--green)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--green)">+</div><div class="ex-title">Calcula \\(P + Q\\)</div></div>
+    <input type="text" id="in-reto-suma" class="input-poly" placeholder="Orden descendente, ej.: 5x^2+3x-2" aria-label="Respuesta de la suma" autocomplete="off" spellcheck="false">
+    <button type="button" class="btn-check" onclick="verificarReto('suma','in-reto-suma')">✓ Verificar suma</button>
+  </div>
+  <div class="ex-card vis" style="border-top-color:var(--red)">
+    <div class="ex-head"><div class="ex-num" style="background:var(--red)">−</div><div class="ex-title">Calcula \\(P - Q\\)</div></div>
+    <input type="text" id="in-reto-resta" class="input-poly" placeholder="¡Cuidado con los signos!" aria-label="Respuesta de la resta" autocomplete="off" spellcheck="false">
+    <button type="button" class="btn-check" onclick="verificarReto('resta','in-reto-resta')">✓ Verificar resta</button>
+  </div>
+</div>
+<div style="text-align:center">
+  <button type="button" class="btn-exportar" style="font-size:var(--fs-md);padding:12px 28px" onclick="generarReto()">🎲 Nuevo reto</button>
+</div>
+<div class="geo-note">Sugerencia: la primera pareja en verificar ambas respuestas correctamente propone el grado de dificultad del siguiente reto.</div>`,
+onEnter:()=>{
+  if(window._reto && window._reto.P){ renderReto(); } else { generarReto(); }
+}},
+
+/* ── CIERRE DEL DETONANTE — VUELTA A MANRIQUE ────────────── */
+{bread:'Sem. 4  ·  Polinomios  ›  Cierre del problema',badge:'APLICACIÓN',badgeColor:'#C47C1A',clicks:4,fL:'Sem. 4 · Sesión 3 — Cierre Manrique',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--amber)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--amber);color:#fff">Cerramos el problema</div>
+    <div class="slide-title">Vuelta al parque de Manrique — ahora con la resta</div>
+    <div class="slide-instr">Resuelve solo en tu cuaderno. Socializamos paso a paso cuando todos hayan terminado.</div>
+  </div>
+</div>
+<div class="det-box">
+  <div class="det-label">El mismo contexto, una nueva pregunta</div>
+  <div class="det-text">
+    Recuerda: la zona A tiene perímetro \\(P_A = 3x^2 + 2x + 5\\) m y la zona B tiene perímetro \\(P_B = x^2 - 4x + 8\\) m.
+  </div>
+  <div class="det-q">¿Cuántos metros <em>más</em> de malla necesita la zona A que la zona B?<br>
+    <span style="font-size:var(--fs-md);font-weight:400;color:var(--text2)">Calcula \\(P_A - P_B\\) y evalúa tu resultado con \\(x = 10\\) m.</span>
+  </div>
+</div>
+<div class="paso-row" data-c="1">
+  <div class="paso-num" style="background:var(--amber)">1</div>
+  <div class="paso-lbl" style="color:var(--amber)">Distribuir «−»</div>
+  <div class="paso-body">\\(P_A - P_B = 3x^2+2x+5\\;\\textcolor{#9B2020}{-x^2}\\;\\textcolor{#9B2020}{+4x}\\;\\textcolor{#9B2020}{-8}\\)</div>
+  <div class="paso-note">Todos los signos cambian</div>
+</div>
+<div class="paso-row" data-c="2">
+  <div class="paso-num" style="background:var(--amber)">2</div>
+  <div class="paso-lbl" style="color:var(--amber)">Reducir</div>
+  <div class="paso-body">\\((3x^2-x^2)+(2x+4x)+(5-8) = 2x^2+6x-3\\)</div>
+</div>
+<div class="result-bar" data-c="3" style="font-size:var(--fs-lg)">La zona A necesita \\(\\;2x^2+6x-3\\;\\) metros más de malla</div>
+<div class="paso-row" data-c="4" style="border-left-color:var(--green)">
+  <div class="paso-num" style="background:var(--green)">✓</div>
+  <div class="paso-lbl" style="color:var(--green)">Con \\(x=10\\)</div>
+  <div class="paso-body">\\(2(100)+6(10)-3 = 200+60-3 = \\mathbf{257}\\) metros más de malla. ¿Tu cuenta dio lo mismo?</div>
+</div>`,
+onReveal:n=>{
+  if(n===1||n===2||n===4){document.querySelectorAll(`.paso-row[data-c="${n}"]`).forEach(e=>e.classList.add('vis'));}
+  if(n===3){document.querySelectorAll(`.result-bar[data-c="3"]`).forEach(e=>e.classList.add('vis'));}
+}},
+
+{bread:'Sem. 4  ·  Polinomios  ›  Metacognición',badge:'METACOGNICIÓN',badgeColor:'#00695C',clicks:3,fL:'Sem. 4 · Cierre y semáforo',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="badge" style="background:var(--teal);color:#fff">Cierre reflexivo</div>
+    <div class="slide-title">¿Por qué el signo «−» cambia todo?</div>
+  </div>
+</div>
+<div class="meta-q">
+  <div class="meta-qlbl">Pregunta metacognitiva</div>
+  <div class="meta-qtxt">«Al restar dos polinomios, el signo menos distribuye sobre <em>todos</em> los términos del segundo polinomio. ¿Por qué no es lo mismo que simplemente quitar los paréntesis? ¿Qué propiedad matemática explica esto y cómo podrías explicárselo a alguien que recién aprendió términos semejantes?»</div>
+</div>
+<div class="espacio-respuesta" contenteditable="true" role="textbox" aria-label="Escribe tu reflexión" style="min-height:90px;margin:var(--gap) 0"></div>
+<div style="font-size:var(--fs-md);font-weight:800;color:var(--navy);margin-top:6px">Semáforo de comprensión — marca tu color y escribe UNA oración de justificación</div>
+<div class="semaforo">
+  <div class="sema-item" data-c="1"><div class="sema-circle" style="background:#27AE60" role="img" aria-label="Verde: Lo entendí"></div><div class="sema-txt">Entiendo la diferencia entre suma y resta de polinomios y puedo resolver ambas con confianza.<span class="sema-sub">Puedo explicar por qué el «−» cambia todos los signos del segundo paréntesis.</span></div></div>
+  <div class="sema-item" data-c="2"><div class="sema-circle" style="background:#E08C20" role="img" aria-label="Ámbar: Entiendo pero me confundo"></div><div class="sema-txt">Entiendo la suma bien, pero aún me confundo con los signos en la resta.<span class="sema-sub">Necesito practicar más la distribución del «−» antes de continuar.</span></div></div>
+  <div class="sema-item" data-c="3"><div class="sema-circle" style="background:#C0392B" role="img" aria-label="Rojo: Necesito más práctica"></div><div class="sema-txt">Necesito repasar términos semejantes antes de avanzar con operaciones de polinomios.<span class="sema-sub">Voy a ver los videos de Matemóvil y pedir apoyo a la docente Karol.</span></div></div>
+</div>
+<div style="margin-top:var(--gap);text-align:center">
+  <button class="btn-exportar" onclick="guardarReflexion()">💾 Guardar mi reflexión y semáforo</button>
+</div>`,
+onReveal:n=>{
+  document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>{if(e)e.classList.add('vis')});
+}},
+
+/* ── 11 · RECURSOS + TAREA + CONEXIÓN S5 (último slide) ──── */
+{bread:'Sem. 4  ·  Polinomios  ›  Recursos y cierre',badge:'RECURSOS',badgeColor:'#1C3A6E',clicks:0,fL:'Sem. 4 · Cierre — Recursos y Semana 5',html:`
+<div class="title-row">
+  <div class="accent-bar" style="background:var(--blue)"></div>
+  <div style="flex:1">
+    <div class="slide-title">Recursos audiovisuales · Tarea · Próxima semana</div>
+    <div class="slide-instr">Canal Matemóvil — para refuerzo en casa. Anota la tarea antes de salir.</div>
+  </div>
+</div>
+<div class="video-row">
+  <div class="video-card">
+    <div class="video-lbl">Video principal · Formalización</div>
+    <div class="video-title">Suma y resta de polinomios — Introducción y ejemplos (Matemóvil)</div>
+    <div class="video-desc">Repasa eliminar paréntesis y reducir términos semejantes. Ideal antes de la sesión 2 o como refuerzo en casa.</div>
+    <a class="video-link" href="https://www.youtube.com/watch?v=_A1_S6jAnds" target="_blank" rel="noopener">▶ Ver en YouTube</a>
+  </div>
+  <div class="video-card">
+    <div class="video-lbl">Video complementario · Error de signo</div>
+    <div class="video-title">Resta de polinomios — cuidado con el signo menos (Matemóvil)</div>
+    <div class="video-desc">Ejercicio resuelto que enfatiza la distribución del signo negativo. Para ver en casa antes de la práctica independiente.</div>
+    <a class="video-link" href="https://www.youtube.com/watch?v=5dsFdJ3J_lI" target="_blank" rel="noopener">▶ Ver en YouTube</a>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap)">
+  <div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;padding:clamp(14px,1.8vh,20px) clamp(14px,1.8vw,22px)">
+    <div style="font-size:var(--fs-sm);font-weight:800;color:var(--navy);margin-bottom:10px">📋 Tarea de consolidación</div>
+    <div style="font-size:var(--fs-xs);color:var(--text2);line-height:1.7">
+      <strong>Tarea 1:</strong> Inventa dos polinomios \\(P_A\\) y \\(P_B\\) con datos de tu factura de casa. Calcula \\(P_A+P_B\\) y \\(P_A-P_B\\).<br><br>
+      <strong>Tarea 2:</strong> Resuelve con proceso completo:<br>
+      (1)&nbsp;\\((2x^2+3x-1)+(x^2-2x+4)\\)<br>
+      (2)&nbsp;\\((5x^2-x+2)-(3x^2+x-5)\\)<br>
+      (3)&nbsp;\\((4x^3+2x-3)+(x^3-x^2+1)\\)
+    </div>
+  </div>
+  <div style="background:#fff;border:2.5px solid var(--border);border-radius:14px;border-top:5px solid var(--blue);padding:clamp(14px,1.8vh,20px) clamp(14px,1.8vw,22px)">
+    <div style="font-size:var(--fs-sm);font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Semana 5 — Áreas Rectangulares</div>
+    <div style="font-size:var(--fs-xs);color:var(--text2);line-height:1.7;font-style:italic">
+      Multiplicación monomio \\(\\times\\) polinomio.<br>
+      ¿Qué área tiene un rectángulo de base \\(3x\\) y altura \\((2x+5)\\)?<br><br>
+      <strong style="font-style:normal;color:var(--navy)">Traer:</strong> regla y colores para construir diagramas de área.
+    </div>
+  </div>
+</div>`},
+
+];/* fin SLIDES */
+
+/* ═══════════════════════════════════════════════════════════
+   MOTOR DE PRESENTACIÓN
+═══════════════════════════════════════════════════════════ */
+let cur=0,clicks=0;
+const deck=document.getElementById('deck');
+const savedProgress = loadProgress();
+if(savedProgress) { cur = savedProgress.slide; clicks = savedProgress.clicks; }
+
+function buildSlide(idx){
+  const s=SLIDES[idx];
+  const d=document.createElement('div');
+  d.className='slide'+(s.cls?' '+s.cls:'');
+  d.setAttribute('role','region');
+  d.setAttribute('aria-label',`Diapositiva ${idx+1} de ${SLIDES.length}`);
+  let h='';
+  if(!s.noH){
+    const bc=s.badgeColor||'var(--blue)';
+    h+=`<header class="hdr"><span class="hdr-b">${s.bread||''}</span>${s.badge?`<span class="hdr-badge" style="background:${bc}">${s.badge}</span>`:''}</header>`;
+  }
+  h+=`<main class="body">${s.html}</main>`;
+  if(!s.noF) h+=`<footer class="ftr"><span>${s.fL||''}</span><span>I.E. Merceditas Gómez Martínez · Álgebra 8°</span></footer>`;
+  d.innerHTML=h; return d;
+}
+
+function show(idx,dir){
+  const prev=deck.querySelector('.slide.active');
+  if(prev){prev.classList.remove('active','enter-r','enter-l');}
+  const el=buildSlide(idx); deck.appendChild(el);
+  const all=deck.querySelectorAll('.slide'); if(all.length>3) all[0].remove();
+  requestAnimationFrame(()=>{
+    el.classList.add('active',dir>=0?'enter-r':'enter-l');
+    setTimeout(()=>el.classList.remove('enter-r','enter-l'),360);
+    doKatex(el); if(SLIDES[idx].onEnter) SLIDES[idx].onEnter();
+    const title=el.querySelector('.slide-title');
+    if(title) announceToScreenReader(`Diapositiva ${idx+1}: ${title.textContent}`);
+    else announceToScreenReader(`Diapositiva ${idx+1} de ${SLIDES.length}`);
+    const main=el.querySelector('main.body');
+    if(main) main.scrollTop=0;
+  });
+  clicks=0;
+  document.getElementById('ncnt').textContent=`${idx+1} / ${SLIDES.length}`;
+  document.getElementById('pbar').style.width=(((idx+1)/SLIDES.length)*100)+'%';
+  document.getElementById('pbar').setAttribute('aria-valuenow',idx+1);
+  saveProgress(idx,0);
+}
+
+function doKatex(el){
+  if(window.renderMathInElement){
+    try{
+      renderMathInElement(el,{
+        delimiters:[
+          {left:'\\(',right:'\\)',display:false},
+          {left:'\\[',right:'\\]',display:true},
+          {left:'$$',right:'$$',display:true},
+          {left:'$',right:'$',display:false}
+        ],
+        throwOnError:false
+      });
+    }catch(e){ console.warn('KaTeX error:',e); }
+  } else {
+    // KaTeX not ready yet — queue for when it loads
+    document.addEventListener('katex-ready', function onKR(){
+      document.removeEventListener('katex-ready', onKR);
+      if(window.renderMathInElement){
+        try{
+          renderMathInElement(el,{
+            delimiters:[
+              {left:'\\(',right:'\\)',display:false},
+              {left:'\\[',right:'\\]',display:true},
+              {left:'$$',right:'$$',display:true},
+              {left:'$',right:'$',display:false}
+            ],
+            throwOnError:false
+          });
+        }catch(e){ console.warn('KaTeX error:',e); }
+      }
+    });
+  }
+}
+
+function advance(){
+  const s=SLIDES[cur];
+  const maxClicks=s.clicks||0;
+  if(clicks<maxClicks){
+    clicks++;
+    if(s.onReveal) s.onReveal(clicks);
+    announceToScreenReader(`Paso ${clicks} de ${maxClicks}`);
+    saveProgress(cur,clicks);
+    return;
+  }
+  if(cur<SLIDES.length-1){ cur++; show(cur,1); }
+  else { showFeedback('¡Semana 4 completada! 🎉 Revisa tus evidencias guardadas.'); }
+}
+function retreat(){ if(cur>0){ cur--; show(cur,-1); } }
+
+document.addEventListener('keydown',e=>{
+  const t=e.target;
+  if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable)) return;
+  if(['Space','ArrowRight','ArrowLeft'].includes(e.code)) e.preventDefault();
+  if(e.code==='Space'||e.code==='ArrowRight') advance();
+  if(e.code==='ArrowLeft') retreat();
+  if(e.code==='KeyF') document.getElementById('fs-btn')?.click();
+});
+
+const btnNext=document.getElementById('bn');
+const btnPrev=document.getElementById('bp');
+if(btnNext) btnNext.addEventListener('click',advance);
+if(btnPrev) btnPrev.addEventListener('click',retreat);
+
+let tx=0;
+document.addEventListener('touchstart',e=>{if(e.touches?.[0]) tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const touch=e.changedTouches?.[0]; if(!touch) return;
+  const dx=touch.clientX-tx;
+  if(Math.abs(dx)>50){dx<0?advance():retreat();}
+});
+
+const fsBtn=document.getElementById('fs-btn');
+if(fsBtn){
+  fsBtn.addEventListener('click',async()=>{
+    try{
+      if(!document.fullscreenElement) await document.documentElement.requestFullscreen();
+      else await document.exitFullscreen();
+    }catch(err){showFeedback('Pantalla completa no disponible en este dispositivo',true);}
+  });
+  document.addEventListener('fullscreenchange',()=>{
+    if(fsBtn) fsBtn.textContent=document.fullscreenElement?'✕':'⛶';
+    fsBtn?.setAttribute('aria-label',document.fullscreenElement?'Salir de pantalla completa':'Entrar en pantalla completa');
+  });
+}
+
+// Arrancar presentación — con fallback robusto
+function iniciar() {
+  try {
+    const idx = (savedProgress && savedProgress.slide < SLIDES.length) ? savedProgress.slide : 0;
+    show(idx, 1);
+  } catch(e) {
+    console.error('Error al iniciar presentación:', e);
+    try { show(0, 1); } catch(e2) { console.error('Error crítico:', e2); }
+  }
+}
+
+setTimeout(()=>{const hint=document.getElementById('hint');if(hint)hint.style.opacity='0';},5000);
+// katex-ready is handled inside doKatex() with per-element queuing
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', iniciar);
+} else {
+  iniciar();
+}
+window.addEventListener('beforeunload',()=>{const saved=loadProgress();if(saved&&Date.now()-saved.timestamp>86400000) localStorage.removeItem('algebra8_s4_progress_v2');});
+</script>
+</body>
+</html>
